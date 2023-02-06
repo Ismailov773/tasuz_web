@@ -59,8 +59,6 @@ class _CatalogPageState extends State<CatalogPage> {
       });
     });
 
-
-
     uniquelist = _controller.listSection
         .where((section) => seen.add(section.name!))
         .toList();
