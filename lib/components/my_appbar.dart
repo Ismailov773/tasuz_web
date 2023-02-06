@@ -7,8 +7,6 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:tasuz_web/components/responsive.dart';
 import 'package:tasuz_web/controller/controller.dart';
 
-Controller _controller = Get.put(Controller());
-
 List<String> titles = <String>[
   'Главное',
   'Каталоги',
@@ -33,6 +31,7 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
 
 class _MyAppBarState extends State<MyAppBar> {
   bool isAppbarCollapsing = false;
+  Controller _controller = Get.put(Controller());
 
   @override
   void initState() {
@@ -74,10 +73,10 @@ class _MyAppBarState extends State<MyAppBar> {
           isAppbarCollapsing ? Colors.yellow.shade400 : Colors.transparent,
       leadingWidth: 150,
       leading: Container(
-        padding: EdgeInsets.only(right: 15, left: 15, top:5),
+        padding: EdgeInsets.only(right: 15, left: 15, top: 5),
         child: Image.asset(
           'assets/images/tss.png',
-          width: MediaQuery.of(context).size.width /2,
+          width: MediaQuery.of(context).size.width / 2,
           fit: BoxFit.fill,
         ),
       ),
@@ -124,7 +123,9 @@ class _MyAppBarState extends State<MyAppBar> {
             foregroundColor: MaterialStateProperty.resolveWith<Color>(
                 (Set<MaterialState> states) {
               if (states.contains(MaterialState.hovered))
-                return isAppbarCollapsing ? Colors.white : Colors.yellow.shade400;
+                return isAppbarCollapsing
+                    ? Colors.white
+                    : Colors.yellow.shade400;
               return isAppbarCollapsing ? Colors.black : Colors.white;
             }),
           ),
@@ -136,12 +137,14 @@ class _MyAppBarState extends State<MyAppBar> {
         ),
       ],
       bottom: TabBar(
-        indicatorColor:
-            isAppbarCollapsing ? Colors.lightBlueAccent : Colors.yellow.shade400,
+        indicatorColor: isAppbarCollapsing
+            ? Colors.lightBlueAccent
+            : Colors.yellow.shade400,
         indicatorSize: TabBarIndicatorSize.label,
         indicatorWeight: 4.0,
-        labelColor:
-            isAppbarCollapsing ? Colors.lightBlueAccent : Colors.yellow.shade400,
+        labelColor: isAppbarCollapsing
+            ? Colors.lightBlueAccent
+            : Colors.yellow.shade400,
         unselectedLabelColor:
             isAppbarCollapsing ? Colors.black : Colors.white70,
         tabs: <Widget>[

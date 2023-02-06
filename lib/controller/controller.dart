@@ -36,6 +36,8 @@ class Controller extends GetxController {
     fetchProducer();
     changeModelSet;
     changeOptionSet;
+
+
     // _controller.listProducer.forEach((element) {
     //   _listModel = element.modelSet!.where((element) => element.section!.id == _controller.section!.id).toList();
 

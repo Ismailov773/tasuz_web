@@ -22,14 +22,19 @@ class CatalogPage extends StatefulWidget {
 
 class _CatalogPageState extends State<CatalogPage> {
   final Controller _controller = Get.put(Controller());
+
   List<ModelSet> _listModelset = [];
   List<OptionSet> _listOptionset = [];
 
   int selectedIndex = 0;
 
+  var seen = Set<String>();
+  List<Section> uniquelist = [];
+
   @override
   void initState() {
     super.initState();
+
     _controller.listProducer.forEach((element) {
       element.modelSet!.forEach((element) {
         int i = _controller.listSection
@@ -56,19 +61,13 @@ class _CatalogPageState extends State<CatalogPage> {
 
 
 
-    _listModelset = [];
-    _listOptionset = [];
-
+    uniquelist = _controller.listSection
+        .where((section) => seen.add(section.name!))
+        .toList();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
-    var seen = Set<String>();
-    List<Section> uniquelist = _controller.listSection
-        .where((section) => seen.add(section.name!))
-        .toList();
     return SingleChildScrollView(
       child: Expanded(
         child: Container(
@@ -110,7 +109,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       NavigationRail(
-                        groupAlignment: 0.0,
+                        groupAlignment: isMobile(context) ? -1.0 : 0.0,
                         minWidth: isMobile(context) ? 30.0 : 70.0,
                         selectedIndex: selectedIndex,
                         useIndicator: true,
@@ -123,18 +122,18 @@ class _CatalogPageState extends State<CatalogPage> {
                                 .where((mod) =>
                                     mod.section!.id == uniquelist[index].id)
                                 .toList());
-                            // print();
-
                           });
                           setState(() {
                             selectedIndex = index;
                           });
                         },
-                        labelType: NavigationRailLabelType.all,
-                        selectedLabelTextStyle:  TextStyle(
+                        labelType: isMobile(context)
+                            ? NavigationRailLabelType.none
+                            : NavigationRailLabelType.all,
+                        selectedLabelTextStyle: TextStyle(
                           color: Colors.lightBlueAccent,
                         ),
-                        unselectedLabelTextStyle:  TextStyle(
+                        unselectedLabelTextStyle: TextStyle(
                           color: Colors.black54,
                         ),
                         destinations: List.generate(
@@ -146,10 +145,9 @@ class _CatalogPageState extends State<CatalogPage> {
                                   icon: Image.network(
                                     'https://admin.tascom.uz:8083/api/download/section/${uniquelist[index].imagepath}',
                                     fit: BoxFit.fill,
+                                    height: 32,
                                   ),
-                                  label: isMobile(context)
-                                      ? Text("")
-                                      : Text(uniquelist[index].name!),
+                                  label: Text(uniquelist[index].name!),
                                 )),
                       ),
                       SizedBox(
@@ -175,118 +173,121 @@ class _CatalogPageState extends State<CatalogPage> {
   GridView getCatalog() {
     var numberFormat = NumberFormat();
     return GridView.builder(
-        padding: EdgeInsets.only(top: 10, bottom: 0),
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          childAspectRatio: isMobile(context) ? 2 / 2.8 : 6 / 5,
-          crossAxisCount: !isMobile(context) ? 3 : 2,
-          crossAxisSpacing: 15,
-          mainAxisSpacing: 15,
-        ),
-        itemCount: _listModelset.length,
-        itemBuilder: (BuildContext context, int index) => InkWell(
-          onTap: () {
-            setState(() {
-              _controller.changeModelSet(_listModelset[index]);
-
-              _controller.listModelSet.forEach((element) {
-                _listOptionset.addAll(element.optionSet!
-                    .where((mod) =>
-                mod.id == _listModelset[index].id)
-                    .toList());
-                _controller.changeOptionSet(_listOptionset[index]);
-                // print();
-
-              });
-
-              Get.to(CatalogSelectPage());
+      padding: EdgeInsets.only(top: 10, bottom: 0),
+      shrinkWrap: true,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        childAspectRatio: isMobile(context) ? 2 / 2.8 : 6 / 5,
+        crossAxisCount: !isMobile(context) ? 3 : 2,
+        crossAxisSpacing: 15,
+        mainAxisSpacing: 15,
+      ),
+      itemCount: _listModelset.length,
+      itemBuilder: (BuildContext context, int index) => InkWell(
+        onTap: () {
+          setState(() {
+            _controller.changeModelSet(_listModelset[index]);
+            _controller.listModelSet.forEach((element) {
+              _listOptionset.addAll(element.optionSet!
+                  .where((mod) => mod.id == _listModelset[index].id)
+                  .toList());
+              _controller.changeOptionSet(_listOptionset[index]);
+              // print();
             });
-          },
-          child:  OnHover(
-              builder: (isHovered) {
-                final color = isHovered ? Colors.yellow.shade400 : white;
-                return Expanded(
-                  child: PhysicalModel(
-                    color: Colors.white60,
-                    shadowColor: Colors.lime,
-                    elevation: isHovered ? 10 : 0,
-                    child: Container(
-                          padding: EdgeInsets.all(5),
-                          color: color,
-                          child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                 Text(
-                                      "${_listModelset[index].section!.name!}: ${_listModelset[index].producername} (китай)",
-                                      textAlign: isMobile(context) ? TextAlign.center : TextAlign.start,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: isDesktop(context) ? 20 : 10,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-
-                                  SizedBox(height: 10,),
-                                  Image.network(
-                                    'https://admin.tascom.uz:8083/api/download/model/${_listModelset[index].imagepath}',
-                                    width: isMobile(context)
-                                        ? MediaQuery.of(context).size.width / 2
-                                        : MediaQuery.of(context).size.width / 5,
-                                    height: isMobile(context)
-                                        ? MediaQuery.of(context).size.height / 3
-                                        : MediaQuery.of(context).size.height / 4,
-                                    fit: BoxFit.fill,
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Text(
-                                    (_listModelset[index].name).toString(),
-                                    textAlign: isMobile(context) ? TextAlign.center : TextAlign.start,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: isDesktop(context) ? 20 : 10,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Divider(),
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        "цены от: ",
-                                        textAlign: isMobile(context) ? TextAlign.center : TextAlign.start,
-                                        style: TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 15,
-                                            fontStyle: FontStyle.italic),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        // "${(_listModelset[index].priceuzs).toString()}",
-                                        "${
-                                          numberFormat
-                                              .format(_listModelset[index].priceuzs)
-                                        } cум ",
-                                        textAlign: isMobile(context) ? TextAlign.center : TextAlign.start,
-                                        style: TextStyle(
-                                            color: Colors.blue,
-                                            fontSize: isDesktop(context) ? 18 : 10,
-                                            fontWeight: FontWeight.w400,
-                                            fontStyle: FontStyle.italic),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+            Get.to(CatalogSelectPage());
+          });
+        },
+        child: OnHover(
+          builder: (isHovered) {
+            final color = isHovered ? Colors.yellow.shade400 : white;
+            return Expanded(
+              child: PhysicalModel(
+                color: Colors.white60,
+                shadowColor: Colors.lime,
+                elevation: isHovered ? 10 : 0,
+                child: Container(
+                  padding: EdgeInsets.all(5),
+                  color: color,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${_listModelset[index].section!.name!}: ${_listModelset[index].producername} (китай)",
+                        textAlign: isMobile(context)
+                            ? TextAlign.center
+                            : TextAlign.start,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: isDesktop(context) ? 20 : 10,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Image.network(
+                        'https://admin.tascom.uz:8083/api/download/model/${_listModelset[index].imagepath}',
+                        width: isMobile(context)
+                            ? MediaQuery.of(context).size.width / 2
+                            : MediaQuery.of(context).size.width / 5,
+                        height: isMobile(context)
+                            ? MediaQuery.of(context).size.height / 3
+                            : MediaQuery.of(context).size.height / 4,
+                        fit: BoxFit.fill,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        (_listModelset[index].name).toString(),
+                        textAlign: isMobile(context)
+                            ? TextAlign.center
+                            : TextAlign.start,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: isDesktop(context) ? 20 : 10,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Divider(),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            "цены от: ",
+                            textAlign: isMobile(context)
+                                ? TextAlign.center
+                                : TextAlign.start,
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic),
                           ),
-
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            // "${(_listModelset[index].priceuzs).toString()}",
+                            "${numberFormat.format(_listModelset[index].priceuzs)} cум ",
+                            textAlign: isMobile(context)
+                                ? TextAlign.center
+                                : TextAlign.start,
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: isDesktop(context) ? 18 : 10,
+                                fontWeight: FontWeight.w400,
+                                fontStyle: FontStyle.italic),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                );
-              },
-            ),
+                ),
+              ),
+            );
+          },
         ),
-      );
+      ),
+    );
     ;
   }
 }
