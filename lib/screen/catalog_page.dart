@@ -8,7 +8,6 @@ import 'package:tasuz_web/models/producers/ModelSet.dart';
 import 'package:tasuz_web/models/producers/OptionSet.dart';
 import 'package:tasuz_web/models/producers/Producer.dart';
 import 'package:tasuz_web/models/producers/Section.dart';
-import 'package:tasuz_web/screen/test.dart';
 import 'package:tasuz_web/screen/catalog_select_page.dart';
 import '../components/onhover.dart';
 import '../components/responsive.dart';
