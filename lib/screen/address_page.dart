@@ -41,8 +41,7 @@ class DesktopFooter extends StatelessWidget {
             );
           },
         ),
-        Expanded(
-          child: Container(
+        Container(
             height: MediaQuery.of(context).size.height / 2,
             color: Colors.transparent,
             padding: EdgeInsets.all(20),
@@ -230,7 +229,6 @@ class DesktopFooter extends StatelessWidget {
                 ],
               ),
           ),
-        ),
       ],
     );
   }

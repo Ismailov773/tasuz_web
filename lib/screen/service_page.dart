@@ -35,33 +35,35 @@ class _ServicePageState extends State<ServicePage> {
           ? MediaQuery.of(context).size.height * 2
           : MediaQuery.of(context).size.height * 2.1,
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      child: Column(
-        children: <Widget>[
-          Stack(
-            children: [
-              SvgPicture.asset(
-                "assets/images/tassvg.svg",
-                fit: BoxFit.contain,
-                alignment: Alignment.center,
-              ),
-              Text('Сервисный центр', style: styleTitle(context)),
-            ],
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Text(
-            "TAS стремится к высочайшему качеству обслуживания во всех аспектах работы. Наша цель состоит в том, чтобы обеспечить ценность за счет высококачественного ремонта автомобилей, обслуживания клиентов и доступных цен. TAS предлагает комплексные услуги, выходящие за рамки общего ремонта. Мы предлагаем лучший сервис по разумной цене."
-            " От рабочей этики до делового взаимодействия наша цель — всегда быть честными и понимающими. "
-            "Мы ценим наши долгосрочные отношения с клиентами, сообществами, поставщиками и арендодателями.",
-            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 17,  color: Colors.black.withOpacity(0.6)),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          getCatalog(),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Stack(
+              children: [
+                SvgPicture.asset(
+                  "assets/images/tassvg.svg",
+                  fit: BoxFit.contain,
+                  alignment: Alignment.center,
+                ),
+                Text('Сервисный центр', style: styleTitle(context)),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              "TAS стремится к высочайшему качеству обслуживания во всех аспектах работы. Наша цель состоит в том, чтобы обеспечить ценность за счет высококачественного ремонта автомобилей, обслуживания клиентов и доступных цен. TAS предлагает комплексные услуги, выходящие за рамки общего ремонта. Мы предлагаем лучший сервис по разумной цене."
+              " От рабочей этики до делового взаимодействия наша цель — всегда быть честными и понимающими. "
+              "Мы ценим наши долгосрочные отношения с клиентами, сообществами, поставщиками и арендодателями.",
+              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 17,  color: Colors.black.withOpacity(0.6)),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            getCatalog(),
+          ],
+        ),
       ),
     );
   }
@@ -217,8 +219,7 @@ class _ServicePageState extends State<ServicePage> {
 
   Widget getCatalog() {
     if (isMobile(context)) assert(debugCheckHasMaterial(context));
-    return Expanded(
-      child: GridView.builder(
+    return GridView.builder(
         padding: EdgeInsets.all(15),
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -408,7 +409,6 @@ class _ServicePageState extends State<ServicePage> {
             },
           ),
         ),
-      ),
-    );
+      );
   }
 }

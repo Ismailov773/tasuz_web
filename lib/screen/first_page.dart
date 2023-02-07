@@ -26,8 +26,7 @@ class _FirstPageState extends State<FirstPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Expanded(
-          child: Builder(
+            Builder(
             builder: (context) {
               final double height = MediaQuery.of(context).size.height;
               final double width = MediaQuery.of(context).size.width;
@@ -54,9 +53,7 @@ class _FirstPageState extends State<FirstPage> {
               );
             },
           ),
-        ),
-       Expanded(
-            child: Container(
+             Container(
               height: MediaQuery.of(context).size.height,
                 color: Colors.black.withOpacity(0.4),
                 padding: EdgeInsets.symmetric( horizontal: 40),
@@ -117,7 +114,6 @@ class _FirstPageState extends State<FirstPage> {
 
 
             ),
-          ),
 
       ],
     );

@@ -35,8 +35,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                 );
               },
             ),
-            Expanded(
-              child: Container(
+             Container(
                 height: MediaQuery.of(context).size.height,
                 color: Colors.black.withOpacity(0.55),
                 padding:
@@ -91,7 +90,6 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                   ),
                 ),
               ),
-            ),
           ],
         ),
         Container(

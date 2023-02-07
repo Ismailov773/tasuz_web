@@ -196,8 +196,7 @@ class _CatalogPageState extends State<CatalogPage> {
         child: OnHover(
           builder: (isHovered) {
             final color = isHovered ? Colors.yellow.shade400 : white;
-            return Expanded(
-              child: PhysicalModel(
+            return PhysicalModel(
                 color: Colors.white60,
                 shadowColor: Colors.lime,
                 elevation: isHovered ? 10 : 0,
@@ -279,8 +278,7 @@ class _CatalogPageState extends State<CatalogPage> {
                     ],
                   ),
                 ),
-              ),
-            );
+              );
           },
         ),
       ),
