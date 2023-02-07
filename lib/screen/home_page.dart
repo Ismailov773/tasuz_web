@@ -12,6 +12,7 @@ import 'package:tasuz_web/screen/service_page.dart';
 
 import '../components/responsive.dart';
 import '../controller/controller.dart';
+import 'credit_page.dart';
 
 Controller _controller = Get.put(Controller());
 
@@ -54,14 +55,9 @@ class HomePage extends StatelessWidget {
                 child: CatalogPage(),
               ),
             ),
-            ListView.builder(
-              controller: _controller.homeController,
-              itemCount: 25,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text('${titles[4]} $index'),
-                );
-              },
+            Padding(
+              padding: const EdgeInsets.only(top: 114),
+              child: CreditPage(),
             ),
             SingleChildScrollView(
               padding: EdgeInsets.only(top: 114),
