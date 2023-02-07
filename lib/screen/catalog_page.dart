@@ -133,7 +133,8 @@ class _CatalogPageState extends State<CatalogPage> {
                         unselectedLabelTextStyle: TextStyle(
                           color: Colors.black54,
                         ),
-                        destinations: List.generate(
+                        destinations:
+                        List.generate(
                             uniquelist.length,
                             (index) => NavigationRailDestination(
                                   padding: isMobile(context)
