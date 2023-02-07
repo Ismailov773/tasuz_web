@@ -81,68 +81,69 @@ class _ServicePageState extends State<ServicePage> {
               width: !isMobile(context)
                   ? MediaQuery.of(context).size.width / 1.5
                   : MediaQuery.of(context).size.width / 1,
-              child: Expanded(
-                child: !isMobile(context)
+              child: !isMobile(context)
                     ? Row(
                         children: [
                           catalogServiceItem!.imageDialog,
                           Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                mainAxisAlignment: !isMobile(context)
-                                    ? MainAxisAlignment.start
-                                    : MainAxisAlignment.center,
-                                crossAxisAlignment: !isMobile(context)
-                                    ? CrossAxisAlignment.start
-                                    : CrossAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                            child: Container(
+                              child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Column(
+                                    mainAxisAlignment: !isMobile(context)
+                                        ? MainAxisAlignment.start
+                                        : MainAxisAlignment.center,
+                                    crossAxisAlignment: !isMobile(context)
+                                        ? CrossAxisAlignment.start
+                                        : CrossAxisAlignment.center,
                                     children: [
-                                      catalogServiceItem!.icon,
-                                      IconButton(
-                                          onPressed: () =>
-                                              Navigator.pop(context),
-                                          icon: const Icon(
-                                            Icons.cancel_outlined,
-                                            size: 30,
-                                          ))
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          catalogServiceItem!.icon,
+                                          IconButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                              icon: const Icon(
+                                                Icons.cancel_outlined,
+                                                size: 30,
+                                              ))
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 50,
+                                      ),
+                                      Text(
+                                        catalogServiceItem!.title,
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        catalogServiceItem!.description,
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        catalogServiceItem!.descriptionDialog,
+                                        style: const TextStyle(
+                                            color: Colors.blueGrey,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ],
                                   ),
-                                  const SizedBox(
-                                    height: 50,
-                                  ),
-                                  Text(
-                                    catalogServiceItem!.title,
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    catalogServiceItem!.description,
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    catalogServiceItem!.descriptionDialog,
-                                    style: const TextStyle(
-                                        color: Colors.blueGrey,
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
+                                ),
                             ),
                           ),
                         ],
@@ -150,8 +151,7 @@ class _ServicePageState extends State<ServicePage> {
                     : Column(
                         children: [
                           catalogServiceItem!.imageDialog,
-                          Expanded(
-                            child: Padding(
+                          Padding(
                               padding: const EdgeInsets.all(10),
                               child: Column(
                                 mainAxisAlignment: !isMobile(context)
@@ -208,10 +208,8 @@ class _ServicePageState extends State<ServicePage> {
                                 ],
                               ),
                             ),
-                          ),
                         ],
                       ),
-              ),
             ),
           );
         });

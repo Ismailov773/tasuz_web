@@ -71,8 +71,7 @@ class _CatalogPageState extends State<CatalogPage> {
         child: Container(
           decoration: stylePageBackground(context),
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          child: Expanded(
-              child: Padding(
+          child: Padding(
             padding: EdgeInsets.only(right: !isMobile(context) ? 10 : 10),
             child: Column(
               mainAxisAlignment: !isMobile(context)
@@ -162,7 +161,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 ),
               ],
             ),
-          )),
+          ),
         ),
       ),
     );

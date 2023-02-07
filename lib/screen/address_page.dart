@@ -46,8 +46,7 @@ class DesktopFooter extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 2,
             color: Colors.transparent,
             padding: EdgeInsets.all(20),
-            child: Expanded(
-              child: Row(
+            child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -230,7 +229,6 @@ class DesktopFooter extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
           ),
         ),
       ],
@@ -366,8 +364,7 @@ class MobileFooter extends StatelessWidget {
           ),
           Container(
             color: Colors.transparent,
-            child: (Expanded(
-              child: Column(
+            child: (Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -406,8 +403,8 @@ class MobileFooter extends StatelessWidget {
                         color: Colors.white),
                   ),
                 ],
-              ),
-            )),
+              )
+            ),
           ),
           SizedBox(
             height: 10,
@@ -415,15 +412,14 @@ class MobileFooter extends StatelessWidget {
           Expanded(
             child: Container(
                 color: Colors.grey,
-                child: Expanded(
-                  child: Column(
+                child: Column(
                     children: [
                       Expanded(
                         child: Container(),
                       )
                     ],
                   ),
-                )),
+                ),
           ),
         ],
       ),

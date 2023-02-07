@@ -41,8 +41,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                 color: Colors.black.withOpacity(0.55),
                 padding:
                     EdgeInsets.only(left: 40, right: 40, top: 100, bottom: 10),
-                child: Expanded(
-                    child: Padding(
+                child: Padding(
                   padding: EdgeInsets.all(!isMobile(context) ? 40 : 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,7 +89,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                       ),
                     ],
                   ),
-                )),
+                ),
               ),
             ),
           ],

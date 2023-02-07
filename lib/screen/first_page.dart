@@ -26,41 +26,41 @@ class _FirstPageState extends State<FirstPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Builder(
-          builder: (context) {
-            final double height = MediaQuery.of(context).size.height;
-            final double width = MediaQuery.of(context).size.width;
-            return CarouselSlider(
-              carouselController: _controller,
-              options: CarouselOptions(
-                height: height,
-                // aspectRatio: 16/10,
-                viewportFraction: 1,
-                enlargeCenterPage: false,
-                autoPlay: true,
-              ),
-              items: imgList
-                  .map((item) => Container(
-                        child: Center(
-                            child: Image.network(
-                          item,
-                          fit: BoxFit.fill,
-                          height: height,
-                          width: width,
-                        )),
-                      ))
-                  .toList(),
-            );
-          },
+        Expanded(
+          child: Builder(
+            builder: (context) {
+              final double height = MediaQuery.of(context).size.height;
+              final double width = MediaQuery.of(context).size.width;
+              return CarouselSlider(
+                carouselController: _controller,
+                options: CarouselOptions(
+                  height: height,
+                  // aspectRatio: 16/10,
+                  viewportFraction: 1,
+                  enlargeCenterPage: false,
+                  autoPlay: true,
+                ),
+                items: imgList
+                    .map((item) => Container(
+                          child: Center(
+                              child: Image.network(
+                            item,
+                            fit: BoxFit.fill,
+                            height: height,
+                            width: width,
+                          )),
+                        ))
+                    .toList(),
+              );
+            },
+          ),
         ),
        Expanded(
             child: Container(
               height: MediaQuery.of(context).size.height,
                 color: Colors.black.withOpacity(0.4),
                 padding: EdgeInsets.symmetric( horizontal: 40),
-                child:
-                    Expanded(
-                        child: Padding(
+                child: Padding(
                       padding: EdgeInsets.all(!isMobile(context) ? 40 : 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -113,7 +113,7 @@ class _FirstPageState extends State<FirstPage> {
                           )
                         ],
                       ),
-                    )),
+                    ),
 
 
             ),
