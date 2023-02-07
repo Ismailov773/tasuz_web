@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(fontFamily: "Oswald", useMaterial3: true),
-        home: Container() //HomePage(),
-        // getPages: [
+      title: 'Flutter Demo',
+      theme: ThemeData(fontFamily: "Oswald", useMaterial3: true),
+      home: HomePage(),
+      // getPages: [
         //   GetPage(name: '/', page: () => HomePage()),
         //   GetPage(name: '/first_page', page: () => FirstPage()),
         //   GetPage(name: '/catalog_page', page: () => CatalogPage()),
