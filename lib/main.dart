@@ -22,24 +22,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-          fontFamily: "Oswald",
-        useMaterial3: true
-      ),
-      home: HomePage(),
-      // getPages: [
-      //   GetPage(name: '/', page: () => HomePage()),
-      //   GetPage(name: '/first_page', page: () => FirstPage()),
-      //   GetPage(name: '/catalog_page', page: () => CatalogPage()),
-      //   GetPage(name: '/catalog_select_page', page: () => CatalogSelectPage(),),
-      //   // GetPage(name: '/credit_page', page: () => CreditPage()),
-      //   GetPage(name: '/catalog_inside', page: () => CatalogInside()),
-      //   GetPage(name: '/service_page', page: () => ServicePage()),
-      //   GetPage(name: '/news_page', page: () => NewsPage()),
-      //   GetPage(name: '/about_company_page', page: () => AboutCompanyPage()),
-      //   GetPage(name: '/address_page', page: () => AddressPage()),
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(fontFamily: "Oswald", useMaterial3: true),
+        home: Container() //HomePage(),
+        // getPages: [
+        //   GetPage(name: '/', page: () => HomePage()),
+        //   GetPage(name: '/first_page', page: () => FirstPage()),
+        //   GetPage(name: '/catalog_page', page: () => CatalogPage()),
+        //   GetPage(name: '/catalog_select_page', page: () => CatalogSelectPage(),),
+        //   // GetPage(name: '/credit_page', page: () => CreditPage()),
+        //   GetPage(name: '/catalog_inside', page: () => CatalogInside()),
+        //   GetPage(name: '/service_page', page: () => ServicePage()),
+        //   GetPage(name: '/news_page', page: () => NewsPage()),
+        //   GetPage(name: '/about_company_page', page: () => AboutCompanyPage()),
+        //   GetPage(name: '/address_page', page: () => AddressPage()),
       // ],
     );
   }
