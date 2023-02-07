@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:tasuz_web/screen/about_company_page.dart';
-import 'package:tasuz_web/screen/address_page.dart';
-import 'package:tasuz_web/screen/catalog_page.dart';
-import 'package:tasuz_web/screen/first_page.dart';
-import 'package:tasuz_web/screen/home_page.dart';
-import 'package:tasuz_web/screen/news_page.dart';
-import 'package:tasuz_web/screen/service_page.dart';
-import 'package:tasuz_web/screen/catalog_select_page.dart';
 
 void main() {
   runApp(const MyApp());
