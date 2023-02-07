@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
+import 'package:tasuz_web/screen/googlemap.dart';
 import '../components/responsive.dart';
 
 class AddressPage extends StatelessWidget {
@@ -46,189 +47,192 @@ class DesktopFooter extends StatelessWidget {
             color: Colors.transparent,
             padding: EdgeInsets.all(20),
             child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/tss.png',
-                            width: MediaQuery.of(context).size.width / 8,
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Wrap(
-                            alignment: WrapAlignment.center,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: <Widget>[
-                              SizedBox(
-                                width: 10,
-                              ),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.telegram_outlined,
-                                    size: 40,
-                                  ),
-                                  color: Colors.blue,
-                                  hoverColor: Colors.yellow,
-                                  style: ButtonStyle(
-                                      shape: MaterialStateProperty
-                                          .all<CircleBorder>(CircleBorder(
-                                              side: BorderSide.none)))),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    FontAwesome.instagram,
-                                    size: 40,
-                                  ),
-                                  color: Colors.pinkAccent,
-                                  highlightColor: Colors.amberAccent,
-                                  hoverColor: Colors.yellow,
-                                  style: ButtonStyle(
-                                      shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                          RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(14),
-                                              side: BorderSide.none))
-                                  )),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.facebook_outlined,
-                                    size: 40,
-                                  ),
-                                  color: Colors.blue,
-                                  highlightColor: Colors.amberAccent,
-                                  hoverColor: Colors.yellow,
-                                  style: ButtonStyle(
-                                      shape: MaterialStateProperty
-                                          .all<CircleBorder>(CircleBorder(
-                                              side: BorderSide.none)))),
-                            ],
-                          ),
-                        ],
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/tss.png',
+                              width: MediaQuery.of(context).size.width / 8,
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Wrap(
+                              alignment: WrapAlignment.center,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.telegram_outlined,
+                                      size: 40,
+                                    ),
+                                    color: Colors.blue,
+                                    hoverColor: Colors.yellow,
+                                    style: ButtonStyle(
+                                        shape: MaterialStateProperty
+                                            .all<CircleBorder>(CircleBorder(
+                                                side: BorderSide.none)))),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      FontAwesome.instagram,
+                                      size: 40,
+                                    ),
+                                    color: Colors.pinkAccent,
+                                    highlightColor: Colors.amberAccent,
+                                    hoverColor: Colors.yellow,
+                                    style: ButtonStyle(
+                                        shape: MaterialStateProperty.all<
+                                                RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(14),
+                                                side: BorderSide.none)))),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.facebook_outlined,
+                                      size: 40,
+                                    ),
+                                    color: Colors.blue,
+                                    highlightColor: Colors.amberAccent,
+                                    hoverColor: Colors.yellow,
+                                    style: ButtonStyle(
+                                        shape: MaterialStateProperty
+                                            .all<CircleBorder>(CircleBorder(
+                                                side: BorderSide.none)))),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Контакты',
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Контакты',
+                                style: TextStyle(
+                                    fontSize: isDesktop(context) ? 18 : 14,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.amberAccent)),
+                            SizedBox(height: 20),
+                            Text(
+                              'Офис',
                               style: TextStyle(
                                   fontSize: isDesktop(context) ? 18 : 14,
                                   fontWeight: FontWeight.w800,
-                                  color: Colors.amberAccent)),
-                          SizedBox(height: 20),
-                          Text(
-                            'Офис',
-                            style: TextStyle(
-                                fontSize: isDesktop(context) ? 18 : 14,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            'Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower»',
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                                fontSize: isDesktop(context) ? 16 : 12,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.white),
-                          ),
-                          SizedBox(height: 15),
-                          Text(
-                            '+998 78 147 00 80',
-                            style: TextStyle(
-                                fontSize: isDesktop(context) ? 16 : 12,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white),
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            '+998 78 147 00 90',
-                            style: TextStyle(
-                                fontSize: isDesktop(context) ? 16 : 12,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white),
-                          ),
-                        ],
+                                  color: Colors.white),
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              'Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower»',
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: isDesktop(context) ? 16 : 12,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white),
+                            ),
+                            SizedBox(height: 15),
+                            Text(
+                              '+998 78 147 00 80',
+                              style: TextStyle(
+                                  fontSize: isDesktop(context) ? 16 : 12,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              '+998 78 147 00 90',
+                              style: TextStyle(
+                                  fontSize: isDesktop(context) ? 16 : 12,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      // width: MediaQuery.of(context).size.width/1,
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 35),
-                          Text(
-                            'Сервис',
-                            style: TextStyle(
-                                fontSize: isDesktop(context) ? 18 : 14,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white),
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            'Ташкент, 100146, Яшнабадский район, массив Панельный, ул. Уйсозлар 23А',
-                            style: TextStyle(
-                                fontSize: isDesktop(context) ? 18 : 14,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.white),
-                          ),
-                          SizedBox(height: 15),
-                          Text(
-                            '+998 71 283 00 07',
-                            style: TextStyle(
-                                fontSize: isDesktop(context) ? 16 : 12,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white),
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            '+998 71 290 28 28',
-                            style: TextStyle(
-                                fontSize: isDesktop(context) ? 16 : 12,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white),
-                          ),
-                        ],
+                    Expanded(
+                      child: Container(
+                        // width: MediaQuery.of(context).size.width/1,
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 35),
+                            Text(
+                              'Сервис',
+                              style: TextStyle(
+                                  fontSize: isDesktop(context) ? 18 : 14,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white),
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              'Ташкент, 100146, Яшнабадский район, массив Панельный, ул. Уйсозлар 23А',
+                              style: TextStyle(
+                                  fontSize: isDesktop(context) ? 18 : 14,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white),
+                            ),
+                            SizedBox(height: 15),
+                            Text(
+                              '+998 71 283 00 07',
+                              style: TextStyle(
+                                  fontSize: isDesktop(context) ? 16 : 12,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white),
+                            ),
+                            SizedBox(height: 10),
+                            Text(
+                              '+998 71 290 28 28',
+                              style: TextStyle(
+                                  fontSize: isDesktop(context) ? 16 : 12,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
+                  ],
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.red),
+// color: Colors.grey,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width / 3.5,
+                    height: MediaQuery.of(context).size.height / 2.8,
+                    child: GoogleMap(),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.red),
-                    // color: Colors.grey,
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width / 3.5,
-                      height: MediaQuery.of(context).size.height / 2.8,
-                    ),
-                  ),
-                ],
-              ),
-          ),
+                ),
+              ],
+            )),
       ],
     );
   }
@@ -408,16 +412,7 @@ class MobileFooter extends StatelessWidget {
             height: 10,
           ),
           Expanded(
-            child: Container(
-                color: Colors.grey,
-                child: Column(
-                    children: [
-                      Expanded(
-                        child: Container(),
-                      )
-                    ],
-                  ),
-                ),
+            child: Container(color: Colors.yellow, child: Text("Hello")),
           ),
         ],
       ),
