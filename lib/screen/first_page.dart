@@ -72,14 +72,14 @@ class _FirstPageState extends State<FirstPage> {
                       fontWeight: FontWeight.w800,
                       color: kTextColor),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 40),
                 Text(
                   'TAS придерживается своей основной ценности «Взять на себя большую ответственность, действовать с высокой моралью и добиваться больших достижений» и своего корпоративного духа «Строгого, Практичного, Прогрессивного и Креативного», чтобы продолжать двигаться к своей конечной цели.',
                   textAlign:
                       isMobile(context) ? TextAlign.center : TextAlign.center,
                   style: TextStyle(
-                      fontSize: isMobile(context) ? 13 : 18,
-                      fontWeight: FontWeight.w300,
+                      fontSize: isMobile(context) ? 13 : 22,
+                      fontWeight: FontWeight.w400,
                       color: kTextColor),
                 ),
                 SizedBox(height: 10),

@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../components/constants.dart';
 import '../components/responsive.dart';
 
@@ -23,15 +21,11 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
               builder: (context) {
                 final double height = MediaQuery.of(context).size.height;
                 final double width = MediaQuery.of(context).size.width;
-                return Expanded(
-                  child: Container(
-                    child: Image.network(
-                      "assets/images/bg2.jpeg",
-                      fit: BoxFit.fill,
-                      height: height,
-                      width: width,
-                    ),
-                  ),
+                return Image.network(
+                  "assets/images/bg2.jpeg",
+                  fit: BoxFit.fill,
+                  height: height,
+                  width: width,
                 );
               },
             ),
@@ -39,7 +33,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                 height: MediaQuery.of(context).size.height,
                 color: Colors.black.withOpacity(0.55),
                 padding:
-                    EdgeInsets.only(left: 40, right: 40, top: 100, bottom: 10),
+                    const EdgeInsets.only(left: 40, right: 40, top: 100, bottom: 10),
                 child: Padding(
                   padding: EdgeInsets.all(!isMobile(context) ? 40 : 10),
                   child: Column(
@@ -48,18 +42,16 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                     children: <Widget>[
                       Stack(alignment: Alignment.center,
                         children: [
-                          Expanded(
-                            child: SvgPicture.asset(
+                         SvgPicture.asset(
                               "assets/images/tassvg.svg",
                               fit: BoxFit.contain,
                               alignment: Alignment.center,
                               color: Colors.white.withOpacity(0.5),
                             ),
-                          ),
                           Text('О Компании', style: styleTitle2(context),),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       Text(
@@ -72,17 +64,16 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                               fontWeight: FontWeight.w800,
                               color: kTextColor),
                         ),
-                      SizedBox(height: 30,),
-
+                      const SizedBox(height: 30,),
                       Expanded(
                         child: Text(
-                          'Компания \"TEXNIKA ADVANS SERVIS\" была основана в 2009 году и является одной из надежных компаний по осуществлению поставок спецтехники, оборудования и запчастей из KHP\. \n Спецтехника, оборудование и запчасти, поставляемые нашей компанией, выполнены в экспортном варианте и соответствуют высоким стандартам качества. \n•  Более 20 000 поставок техники и оборудования. \n•  12 лет на рынке.\n• 12 месяцев  (гарантия 1 год или 2000 моточасов). \n На сегодняшний день компания TEXNIKA ADVANS SERVIS официально представляет на рынке Узбекистана такие мировые бренды как XCMG, SHACMAN, SHANTUI, которые производят весь спектр строительной, дорожной, карьерной спецтехники и заводов по производству бетона и асфальта на уровне мировых стандартов.',
+                          'Компания «TEXNIKA ADVANS SERVIS» была основана в 2009 году и является одной из надежных компаний по осуществлению поставок спецтехники, оборудования и запчастей из KHP\. \n Спецтехника, оборудование и запчасти, поставляемые нашей компанией, выполнены в экспортном варианте и соответствуют высоким стандартам качества. \n•  Более 20 000 поставок техники и оборудования. \n•  12 лет на рынке.\n• 12 месяцев  (гарантия 1 год или 2000 моточасов). \n На сегодняшний день компания TEXNIKA ADVANS SERVIS официально представляет на рынке Узбекистана такие мировые бренды как XCMG, SHACMAN, SHANTUI, которые производят весь спектр строительной, дорожной, карьерной спецтехники и заводов по производству бетона и асфальта на уровне мировых стандартов.',
                           textAlign: isMobile(context)
                               ? TextAlign.center
                               : TextAlign.center,
                           style: TextStyle(
-                              fontSize: isMobile(context) ? 13 : 18,
-                              fontWeight: FontWeight.w300,
+                              fontSize: isMobile(context) ? 13 : 19,
+                              fontWeight: FontWeight.w400,
                               color: kTextColor),
                         ),
                       ),

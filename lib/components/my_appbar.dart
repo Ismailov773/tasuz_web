@@ -80,8 +80,7 @@ class _MyAppBarState extends State<MyAppBar> {
           fit: BoxFit.fill,
         ),
       ),
-      title: Expanded(
-        child: Container(
+      title: Container(
           alignment: Alignment.topLeft,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -108,7 +107,6 @@ class _MyAppBarState extends State<MyAppBar> {
             ],
           ),
         ),
-      ),
       titleSpacing: 0,
       notificationPredicate: (ScrollNotification notification) {
         return notification.depth == 1;

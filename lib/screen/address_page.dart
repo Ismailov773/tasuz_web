@@ -46,7 +46,7 @@ class DesktopFooter extends StatelessWidget {
         Container(
           height: MediaQuery.of(context).size.height,
           color: Colors.transparent,
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(40),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -202,14 +202,13 @@ class DesktopFooter extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.red),
-                // color: Colors.grey,
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width / 2,
-                  height: MediaQuery.of(context).size.height / 2,
+              Expanded(
+                flex: 2,
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      ),
+                  // color: Colors.grey,
                   child: GoogleMap(),
                 ),
               ),
