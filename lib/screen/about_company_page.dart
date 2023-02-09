@@ -67,7 +67,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                       const SizedBox(height: 30,),
                       Expanded(
                         child: Text(
-                          'Компания «TEXNIKA ADVANS SERVIS» была основана в 2009 году и является одной из надежных компаний по осуществлению поставок спецтехники, оборудования и запчастей из KHP\. \n Спецтехника, оборудование и запчасти, поставляемые нашей компанией, выполнены в экспортном варианте и соответствуют высоким стандартам качества. \n•  Более 20 000 поставок техники и оборудования. \n•  12 лет на рынке.\n• 12 месяцев  (гарантия 1 год или 2000 моточасов). \n На сегодняшний день компания TEXNIKA ADVANS SERVIS официально представляет на рынке Узбекистана такие мировые бренды как XCMG, SHACMAN, SHANTUI, которые производят весь спектр строительной, дорожной, карьерной спецтехники и заводов по производству бетона и асфальта на уровне мировых стандартов.',
+                          'Компания «TEXNIKA ADVANS SERVIS» была основана в 2009 году и является одной из надежных компаний по осуществлению поставок спецтехники, оборудования и запчастей из KHP. \n Спецтехника, оборудование и запчасти, поставляемые нашей компанией, выполнены в экспортном варианте и соответствуют высоким стандартам качества. \n•  Более 20 000 поставок техники и оборудования. \n•  12 лет на рынке.\n• 12 месяцев  (гарантия 1 год или 2000 моточасов). \n На сегодняшний день компания TEXNIKA ADVANS SERVIS официально представляет на рынке Узбекистана такие мировые бренды как XCMG, SHACMAN, SHANTUI, которые производят весь спектр строительной, дорожной, карьерной спецтехники и заводов по производству бетона и асфальта на уровне мировых стандартов.',
                           textAlign: isMobile(context)
                               ? TextAlign.center
                               : TextAlign.center,
@@ -84,7 +84,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
           ],
         ),
         Container(
-          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 40),
           height: isMobile(context) ? MediaQuery.of(context).size.height / 1.5 : MediaQuery.of(context).size.height / 1.3,
           color: Colors.white,
           child: Row(
@@ -106,7 +106,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
               ),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   color: Colors.transparent,
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
@@ -124,7 +124,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                             fontWeight: FontWeight.w800,
                             color: Colors.black),
                       ),
-                      SizedBox(height: 30
+                      const SizedBox(height: 30
                       ),
                       Text(
                           'Мы сотрудничаем с компаниями, которые производят весь спектр строительной, дорожной, карьерной спецтехники и заводов по производству бетона и асфальта на уровне высших мировых стандартов.',
@@ -137,9 +137,9 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                               color: Colors.black.withOpacity(0.8)),
                         ),
 
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -150,7 +150,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                                   fit: BoxFit.fill,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                               Expanded(
@@ -164,7 +164,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                         ),
 
                       Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Row(
                             children: [
                               Expanded(
@@ -174,7 +174,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                                   alignment: Alignment.center,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                               Expanded(
@@ -196,7 +196,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
           ),
         ),
         Container(
-          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 40),
           height: isMobile(context) ? MediaQuery.of(context).size.height / 1 : MediaQuery.of(context).size.height / 1.3,
           color: Colors.white,
           child: Row(
@@ -205,7 +205,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
             children: [
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   color: Colors.transparent,
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
@@ -223,7 +223,7 @@ class _AboutCompanyPageState extends State<AboutCompanyPage> {
                             fontWeight: FontWeight.w800,
                             color: Colors.black),
                       ),
-                      SizedBox(height: 40),
+                      const SizedBox(height: 40),
                       Text(
                           '•  Диагностическое оборудование и официальное программное обеспечение '
                               'для эффективной диагностики различных систем двигателей.'

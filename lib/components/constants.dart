@@ -1,6 +1,3 @@
-import 'dart:js';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:tasuz_web/components/responsive.dart';
 
@@ -15,19 +12,19 @@ styleTitle(BuildContext context) => TextStyle(
     shadows: [
       Shadow(
           // bottomLeft
-          offset: Offset(-1.5, -1.5),
+          offset: const Offset(-1.5, -1.5),
           color: Colors.black.withOpacity(0.5)),
       Shadow(
           // bottomRight
-          offset: Offset(5.5, -1.5),
+          offset: const Offset(5.5, -1.5),
           color: Colors.black.withOpacity(0.5)),
       Shadow(
           // topRight
-          offset: Offset(5.5, 1.5),
+          offset: const Offset(5.5, 1.5),
           color: Colors.black.withOpacity(0.5)),
       Shadow(
           // topLeft
-          offset: Offset(-1.5, 1.5),
+          offset: const Offset(-1.5, 1.5),
           color: Colors.black.withOpacity(0.5)),
     ],
     color: Colors.yellow.shade400);
@@ -39,30 +36,30 @@ styleTitle2(BuildContext context) => TextStyle(
     shadows: [
       Shadow(
         // bottomLeft
-          offset: Offset(-1.5, -1.5),
+          offset: const Offset(-1.5, -1.5),
           color: Colors.black.withOpacity(0.3)),
       Shadow(
         // bottomRight
-          offset: Offset(5.5, -1.5),
+          offset: const Offset(5.5, -1.5),
           color: Colors.black.withOpacity(0.3)),
       Shadow(
         // topRight
-          offset: Offset(5.5, 1.5),
+          offset: const Offset(5.5, 1.5),
           color: Colors.black.withOpacity(0.3)),
       Shadow(
         // topLeft
-          offset: Offset(-1.5, 1.5),
+          offset: const Offset(-1.5, 1.5),
           color: Colors.black.withOpacity(0.3)),
     ],
     color: Colors.white);
 
-stylePageBackground(BuildContext context) => BoxDecoration(
+stylePageBackground(BuildContext context) => const BoxDecoration(
     gradient: LinearGradient(colors: [
       Colors.white,
       Colors.white,
     ],
-      begin: const FractionalOffset(0.0, 0.0),
-      end: const FractionalOffset(1.0, 0.0),
+      begin: FractionalOffset(0.0, 0.0),
+      end: FractionalOffset(1.0, 0.0),
       stops: [0.0, 1.0],
       tileMode: TileMode.mirror,
     )

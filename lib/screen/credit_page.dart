@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
-
-import '../components/responsive.dart';
 import '../controller/controller.dart';
 
 class CreditPage extends StatefulWidget {
@@ -53,7 +49,7 @@ class _CreditPageState extends State<CreditPage> {
                           height: MediaQuery.of(context).size.height,
                           width: MediaQuery.of(context).size.width,
                           color: Colors.black.withOpacity(0.3),
-                          padding: EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(20),
                           // child: Column(
                           //   children: [
                           //     Text(
@@ -158,7 +154,7 @@ class _CreditPageState extends State<CreditPage> {
                             height: MediaQuery.of(context).size.height,
                             width: MediaQuery.of(context).size.width,
                             color: Colors.yellow.withOpacity(0.3),
-                            padding: EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(20),
                             child: Column(
                             ),
                           ),

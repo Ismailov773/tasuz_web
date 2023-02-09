@@ -37,7 +37,7 @@ class GoogleMap extends StatelessWidget {
       final marker = Marker(
           MarkerOptions()
         ..position = myLatlng
-            // ..icon = 'assets/images/tss.png'
+            ..icon = 'assets/images/tss.png'
         ..map = map);
       // ..icon =
       //     'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png');

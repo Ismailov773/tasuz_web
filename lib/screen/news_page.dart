@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../components/constants.dart';
@@ -29,7 +28,7 @@ class _NewsPageState extends State<NewsPage> {
           } else {
             List<NewsItem> listnewsitem = snapshot.data!;
             return Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               height: MediaQuery.of(context).size.height * 1.1,
               decoration: stylePageBackground(context),
               // padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
@@ -53,9 +52,9 @@ class _NewsPageState extends State<NewsPage> {
                   ),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       child: ListView.builder(
-                        padding: EdgeInsets.only(top: 5),
+                        padding: const EdgeInsets.only(top: 5),
                         itemCount: listnewsitem.length,
                         itemBuilder: (context, index) {
                           return Card(
@@ -65,19 +64,15 @@ class _NewsPageState extends State<NewsPage> {
                               child: Row(
                                 children: [
                                   Expanded(
-                                    child: Container(
-                                      child:
-                                      Image.network(
-                                        'https://admin.tascom.uz:8083/api/download/news/${listnewsitem[index].imagepath}',
-
-                                        fit: BoxFit.fill,
-                                      ),
+                                    child: Image.network(
+                                      'https://admin.tascom.uz:8083/api/download/news/${listnewsitem[index].imagepath}',
+                                      fit: BoxFit.fill,
                                     ),
                                   ),
                                   Expanded(
                                     flex: 5,
                                     child: Container(
-                                      padding: EdgeInsets.all(10),
+                                      padding: const EdgeInsets.all(10),
                                       height: 300,
                                       child: Column(
                                         crossAxisAlignment:
@@ -87,23 +82,25 @@ class _NewsPageState extends State<NewsPage> {
                                         children: [
                                           Text(
                                             listnewsitem[index].title!,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 20,
-                                                fontWeight: FontWeight.bold),
+                                                fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 30,
                                           ),
                                           Text(
                                             listnewsitem[index].description!,
-                                            style: TextStyle(
+                                            textAlign: TextAlign.justify,
+                                            style: const TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w500),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 20,
                                           ),
-                                          Divider(),
+                                          const Divider(),
                                           Text(listnewsitem[index].date!),
                                         ],
                                       ),
@@ -111,7 +108,6 @@ class _NewsPageState extends State<NewsPage> {
                                   ),
                                 ],
                               ));
-                          ;
                         },
                       ),
                     ),

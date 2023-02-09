@@ -1,4 +1,4 @@
-import 'package:flutter/gestures.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -6,12 +6,12 @@ import 'package:intl/intl.dart';
 import 'package:tasuz_web/components/constants.dart';
 import 'package:tasuz_web/models/producers/ModelSet.dart';
 import 'package:tasuz_web/models/producers/OptionSet.dart';
-import 'package:tasuz_web/models/producers/Producer.dart';
 import 'package:tasuz_web/models/producers/Section.dart';
 import 'package:tasuz_web/screen/catalog_select_page.dart';
 import '../components/onhover.dart';
 import '../components/responsive.dart';
 import '../controller/controller.dart';
+
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({Key? key}) : super(key: key);
@@ -28,36 +28,44 @@ class _CatalogPageState extends State<CatalogPage> {
 
   int selectedIndex = 0;
 
-  var seen = Set<String>();
+  var seen = <String>{};
   List<Section> uniquelist = [];
+  
+
+
+  
 
   @override
   void initState() {
     super.initState();
 
-    _controller.listProducer.forEach((element) {
-      element.modelSet!.forEach((element) {
+    for (var element in _controller.listProducer) {
+      for (var element in element.modelSet!) {
         int i = _controller.listSection
-            .indexWhere((element1) => element1.name == element.name);
+            .indexWhere((element1) => element1.id == element.id);
         if (i == -1) {
           _controller.listSection.add(element.section!);
         } else {
-          print(element.section!.name);
+          if (kDebugMode) {
+            print(element.section!.id);
+          }
         }
-      });
-    });
+      }
+    }
 
-    _controller.listModelSet.forEach((element) {
-      element.optionSet!.forEach((element) {
+    for (var element in _controller.listModelSet) {
+      for (var element in element.optionSet!) {
         int i = _controller.listOptionSet
             .indexWhere((element1) => element1.id == element.id);
         if (i == -1) {
           _controller.listOptionSet.add(element);
         } else {
-          print(element.id);
+          if (kDebugMode) {
+            print(element.id);
+          }
         }
-      });
-    });
+      }
+    }
 
     uniquelist = _controller.listSection
         .where((section) => seen.add(section.name!))
@@ -70,7 +78,7 @@ class _CatalogPageState extends State<CatalogPage> {
       child: Expanded(
         child: Container(
           decoration: stylePageBackground(context),
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           child: Padding(
             padding: EdgeInsets.only(right: !isMobile(context) ? 10 : 10),
             child: Column(
@@ -91,14 +99,14 @@ class _CatalogPageState extends State<CatalogPage> {
                     Text('Каталоги', style: styleTitle(context)),
                   ],
                 ),
-                Text(
+                const Text(
                   "Работа напрямую с производителями позволяет предоставлять клиенту лучшую цену на рынке спецтехники",
                   style: TextStyle(fontSize: 18),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Container(
+                SizedBox(
                   // margin: EdgeInsets.all(20),
                   height: MediaQuery.of(context).size.height * 1.5,
                   child: Row(
@@ -114,12 +122,12 @@ class _CatalogPageState extends State<CatalogPage> {
                         onDestinationSelected: (int index) {
                           _listModelset = [];
                           _listOptionset = [];
-                          _controller.listProducer.forEach((element) {
+                          for (var element in _controller.listProducer) {
                             _listModelset.addAll(element.modelSet!
                                 .where((mod) =>
                                     mod.section!.id == uniquelist[index].id)
                                 .toList());
-                          });
+                          }
                           setState(() {
                             selectedIndex = index;
                           });
@@ -127,10 +135,10 @@ class _CatalogPageState extends State<CatalogPage> {
                         labelType: isMobile(context)
                             ? NavigationRailLabelType.none
                             : NavigationRailLabelType.all,
-                        selectedLabelTextStyle: TextStyle(
+                        selectedLabelTextStyle: const TextStyle(
                           color: Colors.lightBlueAccent,
                         ),
-                        unselectedLabelTextStyle: TextStyle(
+                        unselectedLabelTextStyle: const TextStyle(
                           color: Colors.black54,
                         ),
                         destinations:
@@ -138,8 +146,8 @@ class _CatalogPageState extends State<CatalogPage> {
                             uniquelist.length,
                             (index) => NavigationRailDestination(
                                   padding: isMobile(context)
-                                      ? EdgeInsets.symmetric(vertical: 0)
-                                      : EdgeInsets.symmetric(vertical: 9),
+                                      ? const EdgeInsets.symmetric(vertical: 0)
+                                      : const EdgeInsets.symmetric(vertical: 9),
                                   icon: Image.network(
                                     'https://admin.tascom.uz:8083/api/download/section/${uniquelist[index].imagepath}',
                                     fit: BoxFit.fill,
@@ -148,12 +156,12 @@ class _CatalogPageState extends State<CatalogPage> {
                                   label: Text(uniquelist[index].name!),
                                 )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.all(0),
+                          padding: const EdgeInsets.all(0),
                           child: getCatalog(),
                         ),
                       )
@@ -171,7 +179,7 @@ class _CatalogPageState extends State<CatalogPage> {
   GridView getCatalog() {
     var numberFormat = NumberFormat();
     return GridView.builder(
-      padding: EdgeInsets.only(top: 10, bottom: 0),
+      padding: const EdgeInsets.only(top: 10, bottom: 0),
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: isMobile(context) ? 2 / 2.8 : 6 / 5,
@@ -184,14 +192,14 @@ class _CatalogPageState extends State<CatalogPage> {
         onTap: () {
           setState(() {
             _controller.changeModelSet(_listModelset[index]);
-            _controller.listModelSet.forEach((element) {
+            for (var element in _controller.listModelSet) {
               _listOptionset.addAll(element.optionSet!
                   .where((mod) => mod.id == _listModelset[index].id)
                   .toList());
               _controller.changeOptionSet(_listOptionset[index]);
               // print();
-            });
-            Get.to(CatalogSelectPage());
+            }
+            Get.to(const CatalogSelectPage());
           });
         },
         child: OnHover(
@@ -202,7 +210,7 @@ class _CatalogPageState extends State<CatalogPage> {
                 shadowColor: Colors.lime,
                 elevation: isHovered ? 10 : 0,
                 child: Container(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   color: color,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -218,7 +226,7 @@ class _CatalogPageState extends State<CatalogPage> {
                             fontSize: isDesktop(context) ? 20 : 10,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Image.network(
@@ -231,7 +239,7 @@ class _CatalogPageState extends State<CatalogPage> {
                             : MediaQuery.of(context).size.height / 4,
                         fit: BoxFit.fill,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -244,7 +252,7 @@ class _CatalogPageState extends State<CatalogPage> {
                             fontSize: isDesktop(context) ? 20 : 10,
                             fontWeight: FontWeight.bold),
                       ),
-                      Divider(),
+                      const Divider(),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -254,12 +262,12 @@ class _CatalogPageState extends State<CatalogPage> {
                             textAlign: isMobile(context)
                                 ? TextAlign.center
                                 : TextAlign.start,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Colors.black54,
                                 fontSize: 15,
                                 fontStyle: FontStyle.italic),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
@@ -284,6 +292,5 @@ class _CatalogPageState extends State<CatalogPage> {
         ),
       ),
     );
-    ;
   }
 }

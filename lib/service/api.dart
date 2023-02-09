@@ -15,10 +15,11 @@ class Api {
       List<Producer> list = json.map((e) => Producer.fromJson(e)).toList();
 
       return list;
-    } else
+    } else {
       (Exception e) {
         return Exception(e);
       };
+    }
 
     return [];
   }
@@ -30,10 +31,11 @@ class Api {
       List<NewsItem> list2 = json.map((e) => NewsItem.fromJson(e)).toList();
 
       return list2;
-    } else
+    } else {
       (Exception e) {
         return Exception(e);
       };
+    }
 
     return [];
   }

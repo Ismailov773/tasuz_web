@@ -1,7 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../components/constants.dart';
 import '../components/responsive.dart';
 
@@ -40,15 +38,13 @@ class _FirstPageState extends State<FirstPage> {
                 autoPlay: true,
               ),
               items: imgList
-                  .map((item) => Container(
-                        child: Center(
-                            child: Image.network(
-                          item,
-                          fit: BoxFit.fill,
-                          height: height,
-                          width: width,
-                        )),
-                      ))
+                  .map((item) => Center(
+                      child: Image.network(
+                    item,
+                    fit: BoxFit.fill,
+                    height: height,
+                    width: width,
+                  )))
                   .toList(),
             );
           },
@@ -56,7 +52,7 @@ class _FirstPageState extends State<FirstPage> {
         Container(
           height: MediaQuery.of(context).size.height,
           color: Colors.black.withOpacity(0.4),
-          padding: EdgeInsets.symmetric(horizontal: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Padding(
             padding: EdgeInsets.all(!isMobile(context) ? 40 : 20),
             child: Column(
@@ -72,7 +68,7 @@ class _FirstPageState extends State<FirstPage> {
                       fontWeight: FontWeight.w800,
                       color: kTextColor),
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 Text(
                   'TAS придерживается своей основной ценности «Взять на себя большую ответственность, действовать с высокой моралью и добиваться больших достижений» и своего корпоративного духа «Строгого, Практичного, Прогрессивного и Креативного», чтобы продолжать двигаться к своей конечной цели.',
                   textAlign:
@@ -82,13 +78,13 @@ class _FirstPageState extends State<FirstPage> {
                       fontWeight: FontWeight.w400,
                       color: kTextColor),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(Icons.arrow_back_ios_new_sharp),
+                      icon: const Icon(Icons.arrow_back_ios_new_sharp),
                       color: Colors.green,
                       onPressed: () {
                         setState(() {
@@ -96,10 +92,10 @@ class _FirstPageState extends State<FirstPage> {
                         });
                       },
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     IconButton(
                       color: Colors.green,
-                      icon: Icon(Icons.arrow_forward_ios_rounded),
+                      icon: const Icon(Icons.arrow_forward_ios_rounded),
                       onPressed: () {
                         _controller.nextPage();
                       },

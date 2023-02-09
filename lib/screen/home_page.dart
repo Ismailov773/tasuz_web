@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:tasuz_web/components/my_appbar.dart';
 import 'package:tasuz_web/screen/about_company_page.dart';
 import 'package:tasuz_web/screen/address_page.dart';
@@ -9,8 +7,6 @@ import 'package:tasuz_web/screen/first_page.dart';
 import 'package:tasuz_web/screen/catalog_page.dart';
 import 'package:tasuz_web/screen/news_page.dart';
 import 'package:tasuz_web/screen/service_page.dart';
-
-import '../components/responsive.dart';
 import '../controller/controller.dart';
 import 'credit_page.dart';
 
@@ -27,54 +23,48 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.black.withOpacity(0.8),
         extendBodyBehindAppBar: true,
         // extendBody: true,
-        appBar: MyAppBar(),
+        appBar: const MyAppBar(),
         body: TabBarView(
           children: <Widget>[
             SingleChildScrollView(
               controller: _controller.homeController,
-              child: Container(
-                  child: Column(
-                    children: [
-                      FirstPage(),
-                      CatalogPage(),
-                      ServicePage(),
-                      NewsPage(),
-                      AboutCompanyPage(),
-                      AddressPage()
-                    ],
-                  ),
-                ),
+              child: Column(
+                children: const [
+                  FirstPage(),
+                  CatalogPage(),
+                  ServicePage(),
+                  NewsPage(),
+                  AboutCompanyPage(),
+                  AddressPage()
+                ],
+              ),
             ),
             SingleChildScrollView(
               controller: _controller.homeController,
               child: Container(
-                margin: EdgeInsets.only(top: 114),
+                margin: const EdgeInsets.only(top: 114),
                 // height: height,
-                child: CatalogPage(),
+                child: const CatalogPage(),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 114),
+            const Padding(
+              padding: EdgeInsets.only(top: 114),
               child: CreditPage(),
             ),
             SingleChildScrollView(
-              padding: EdgeInsets.only(top: 114),
-              controller: _controller.homeController,
-              child: Container(
-                child: ServicePage(),
-              ),
-            ),
-            Padding(
               padding: const EdgeInsets.only(top: 114),
+              controller: _controller.homeController,
+              child: const ServicePage(),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 114),
               child: NewsPage(),
             ),
             SingleChildScrollView(
               controller: _controller.homeController,
-              child: Container(
-                child: AboutCompanyPage(),
-              ),
+              child: const AboutCompanyPage(),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(top: 114),
               child: AddressPage(),
             ),

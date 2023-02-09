@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:tasuz_web/components/responsive.dart';
 import 'package:tasuz_web/controller/controller.dart';
 
@@ -25,13 +24,13 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize {
-    return Size(double.infinity, 115);
+    return const Size(double.infinity, 115);
   }
 }
 
 class _MyAppBarState extends State<MyAppBar> {
   bool isAppbarCollapsing = false;
-  Controller _controller = Get.put(Controller());
+  final Controller _controller = Get.put(Controller());
 
   @override
   void initState() {
@@ -73,7 +72,7 @@ class _MyAppBarState extends State<MyAppBar> {
           isAppbarCollapsing ? Colors.yellow.shade400 : Colors.transparent,
       leadingWidth: 150,
       leading: Container(
-        padding: EdgeInsets.only(right: 15, left: 15, top: 5),
+        padding: const EdgeInsets.only(right: 15, left: 15, top: 5),
         child: Image.asset(
           'assets/images/tss.png',
           width: MediaQuery.of(context).size.width / 2,
@@ -120,18 +119,19 @@ class _MyAppBarState extends State<MyAppBar> {
             overlayColor: MaterialStateProperty.all(Colors.transparent),
             foregroundColor: MaterialStateProperty.resolveWith<Color>(
                 (Set<MaterialState> states) {
-              if (states.contains(MaterialState.hovered))
+              if (states.contains(MaterialState.hovered)) {
                 return isAppbarCollapsing
                     ? Colors.white
                     : Colors.yellow.shade400;
+              }
               return isAppbarCollapsing ? Colors.black : Colors.white;
             }),
           ),
           onPressed: () {
             // handle the press
           },
-          icon: Icon(Icons.call),
-          label: Text("+998 78 147 00 80"),
+          icon: const Icon(Icons.call),
+          label: const Text("+998 78 147 00 80"),
         ),
       ],
       bottom: TabBar(

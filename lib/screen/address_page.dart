@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:tasuz_web/screen/googlemap.dart';
-
 import '../components/responsive.dart';
 
 class AddressPage extends StatelessWidget {
@@ -13,7 +11,7 @@ class AddressPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (!isMobile(context)) ? DesktopFooter() : MobileFooter();
+    return (!isMobile(context)) ? const DesktopFooter() : const MobileFooter();
   }
 }
 
@@ -32,7 +30,7 @@ class DesktopFooter extends StatelessWidget {
             final double height = MediaQuery.of(context).size.height;
             final double width = MediaQuery.of(context).size.width;
             return Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: SvgPicture.asset(
                 "assets/images/tassvg.svg",
                 fit: BoxFit.contain,
@@ -46,14 +44,14 @@ class DesktopFooter extends StatelessWidget {
         Container(
           height: MediaQuery.of(context).size.height,
           color: Colors.transparent,
-          padding: EdgeInsets.all(40),
+          padding: const EdgeInsets.all(40),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +61,7 @@ class DesktopFooter extends StatelessWidget {
                               fontSize: isDesktop(context) ? 18 : 14,
                               fontWeight: FontWeight.w800,
                               color: Colors.amberAccent)),
-                      SizedBox(height: 55),
+                      const SizedBox(height: 55),
                       Text(
                         'Офис',
                         style: TextStyle(
@@ -71,7 +69,7 @@ class DesktopFooter extends StatelessWidget {
                             fontWeight: FontWeight.w800,
                             color: Colors.white),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(
                         'Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower»',
                         textAlign: TextAlign.start,
@@ -80,7 +78,7 @@ class DesktopFooter extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                             color: Colors.white),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Text(
                         '+998 78 147 00 80',
                         style: TextStyle(
@@ -88,7 +86,7 @@ class DesktopFooter extends StatelessWidget {
                             fontWeight: FontWeight.w800,
                             color: Colors.white),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         '+998 78 147 00 90',
                         style: TextStyle(
@@ -96,33 +94,36 @@ class DesktopFooter extends StatelessWidget {
                             fontWeight: FontWeight.w800,
                             color: Colors.white),
                       ),
-                      SizedBox(height: 40,),
+                      const SizedBox(
+                        height: 40,
+                      ),
                       Wrap(
                         alignment: WrapAlignment.start,
                         crossAxisAlignment: WrapCrossAlignment.start,
                         runAlignment: WrapAlignment.start,
                         children: <Widget>[
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           IconButton(
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.telegram_outlined,
                                 size: 40,
                               ),
                               color: Colors.blue,
                               hoverColor: Colors.yellow,
                               style: ButtonStyle(
-                                  shape: MaterialStateProperty
-                                      .all<CircleBorder>(CircleBorder(
-                                      side: BorderSide.none)))),
-                          SizedBox(
+                                  shape:
+                                      MaterialStateProperty.all<CircleBorder>(
+                                          const CircleBorder(
+                                              side: BorderSide.none)))),
+                          const SizedBox(
                             width: 10,
                           ),
                           IconButton(
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 FontAwesome.instagram,
                                 size: 40,
                               ),
@@ -131,18 +132,17 @@ class DesktopFooter extends StatelessWidget {
                               hoverColor: Colors.yellow,
                               style: ButtonStyle(
                                   shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
+                                          RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(14),
-                                          side: BorderSide.none))
-                              )),
-                          SizedBox(
+                                              BorderRadius.circular(14),
+                                          side: BorderSide.none)))),
+                          const SizedBox(
                             width: 10,
                           ),
                           IconButton(
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.facebook_outlined,
                                 size: 40,
                               ),
@@ -150,9 +150,9 @@ class DesktopFooter extends StatelessWidget {
                               highlightColor: Colors.amberAccent,
                               hoverColor: Colors.yellow,
                               style: ButtonStyle(
-                                  shape: MaterialStateProperty
-                                      .all<CircleBorder>(CircleBorder(
-                                      side: BorderSide.none)))),
+                                  shape: MaterialStateProperty.all<
+                                          CircleBorder>(
+                                      const CircleBorder(side: BorderSide.none)))),
                         ],
                       ),
                     ],
@@ -162,7 +162,7 @@ class DesktopFooter extends StatelessWidget {
               Expanded(
                 child: Container(
                   // width: MediaQuery.of(context).size.width/1,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -174,7 +174,7 @@ class DesktopFooter extends StatelessWidget {
                             fontWeight: FontWeight.w800,
                             color: Colors.white),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(
                         'Ташкент, 100146, Яшнабадский район, массив Панельный, ул. Уйсозлар 23А',
                         style: TextStyle(
@@ -182,7 +182,7 @@ class DesktopFooter extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                             color: Colors.white),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Text(
                         '+998 71 283 00 07',
                         style: TextStyle(
@@ -190,7 +190,7 @@ class DesktopFooter extends StatelessWidget {
                             fontWeight: FontWeight.w800,
                             color: Colors.white),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         '+998 71 290 28 28',
                         style: TextStyle(
@@ -206,10 +206,10 @@ class DesktopFooter extends StatelessWidget {
                 flex: 2,
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                   // color: Colors.grey,
-                  child: GoogleMap(),
+                  child: const GoogleMap(),
                 ),
               ),
             ],
@@ -231,18 +231,18 @@ class MobileFooter extends StatelessWidget {
       color: Colors.transparent,
       height: MediaQuery.of(context).size.height / 1,
       width: double.infinity,
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Column(
         children: <Widget>[
           Wrap(
             alignment: WrapAlignment.center,
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.telegram_outlined,
                     size: 40,
                   ),
@@ -252,13 +252,13 @@ class MobileFooter extends StatelessWidget {
                   hoverColor: Colors.yellow,
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all<CircleBorder>(
-                          CircleBorder(side: BorderSide.none)))),
-              SizedBox(
+                          const CircleBorder(side: BorderSide.none)))),
+              const SizedBox(
                 width: 10,
               ),
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     FontAwesome.instagram,
                     size: 40,
                   ),
@@ -271,12 +271,12 @@ class MobileFooter extends StatelessWidget {
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(14),
                               side: BorderSide.none)))),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.facebook_outlined,
                     size: 40,
                   ),
@@ -286,10 +286,10 @@ class MobileFooter extends StatelessWidget {
                   hoverColor: Colors.yellow,
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all<CircleBorder>(
-                          CircleBorder(side: BorderSide.none)))),
+                          const CircleBorder(side: BorderSide.none)))),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Container(
@@ -308,7 +308,7 @@ class MobileFooter extends StatelessWidget {
                           fontSize: isDesktop(context) ? 15 : 10,
                           fontWeight: FontWeight.w800,
                           color: Colors.amberAccent)),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     'Офис',
                     style: TextStyle(
@@ -316,17 +316,17 @@ class MobileFooter extends StatelessWidget {
                         fontWeight: FontWeight.w800,
                         color: Colors.white),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     'Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower»',
                     textAlign:
-                    isMobile(context) ? TextAlign.start : TextAlign.start,
+                        isMobile(context) ? TextAlign.start : TextAlign.start,
                     style: TextStyle(
                         fontSize: isDesktop(context) ? 15 : 10,
                         fontWeight: FontWeight.w300,
                         color: Colors.white),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     '+998 78 147 00 80',
                     style: TextStyle(
@@ -334,7 +334,7 @@ class MobileFooter extends StatelessWidget {
                         fontWeight: FontWeight.w800,
                         color: Colors.white),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     '+ 998 78 147 00 90',
                     style: TextStyle(
@@ -352,7 +352,7 @@ class MobileFooter extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 25),
+                const SizedBox(height: 25),
                 Text(
                   'Сервис',
                   style: TextStyle(
@@ -360,17 +360,17 @@ class MobileFooter extends StatelessWidget {
                       fontWeight: FontWeight.w800,
                       color: Colors.white),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   'Ташкент, 100146, Яшнабадский район, массив Панельный, ул. Уйсозлар 23А',
                   textAlign:
-                  isMobile(context) ? TextAlign.start : TextAlign.start,
+                      isMobile(context) ? TextAlign.start : TextAlign.start,
                   style: TextStyle(
                       fontSize: isDesktop(context) ? 15 : 10,
                       fontWeight: FontWeight.w300,
                       color: Colors.white),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   '+998 71 283 00 07',
                   style: TextStyle(
@@ -378,7 +378,7 @@ class MobileFooter extends StatelessWidget {
                       fontWeight: FontWeight.w800,
                       color: Colors.white),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   '+ 998 71 290 28 28',
                   style: TextStyle(
@@ -387,10 +387,9 @@ class MobileFooter extends StatelessWidget {
                       color: Colors.white),
                 ),
               ],
-            )
-            ),
+            )),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Expanded(

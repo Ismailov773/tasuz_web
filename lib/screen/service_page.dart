@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:tasuz_web/components/constants.dart';
 import '../components/onhover.dart';
 import '../components/responsive.dart';
@@ -34,7 +32,7 @@ class _ServicePageState extends State<ServicePage> {
       height: isMobile(context)
           ? MediaQuery.of(context).size.height * 2
           : MediaQuery.of(context).size.height * 2.1,
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -48,17 +46,20 @@ class _ServicePageState extends State<ServicePage> {
                 Text('Сервисный центр', style: styleTitle(context)),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Text(
               "TAS стремится к высочайшему качеству обслуживания во всех аспектах работы. Наша цель состоит в том, чтобы обеспечить ценность за счет высококачественного ремонта автомобилей, обслуживания клиентов и доступных цен. TAS предлагает комплексные услуги, выходящие за рамки общего ремонта. Мы предлагаем лучший сервис по разумной цене."
               " От рабочей этики до делового взаимодействия наша цель — всегда быть честными и понимающими. "
               "Мы ценим наши долгосрочные отношения с клиентами, сообществами, поставщиками и арендодателями.",
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 17,  color: Colors.black.withOpacity(0.6)),
+              style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 17,
+                  color: Colors.black.withOpacity(0.6)),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             getCatalog(),
@@ -74,9 +75,9 @@ class _ServicePageState extends State<ServicePage> {
         barrierDismissible: true,
         builder: (BuildContext dialogContext) {
           return AlertDialog(
-            contentPadding: EdgeInsets.all(0),
-            insetPadding: EdgeInsets.all(100),
-            content: Container(
+            contentPadding: const EdgeInsets.all(0),
+            insetPadding: const EdgeInsets.all(100),
+            content: SizedBox(
               height: !isMobile(context)
                   ? MediaQuery.of(context).size.height / 1
                   : MediaQuery.of(context).size.height / 1,
@@ -84,134 +85,131 @@ class _ServicePageState extends State<ServicePage> {
                   ? MediaQuery.of(context).size.width / 1.5
                   : MediaQuery.of(context).size.width / 1,
               child: !isMobile(context)
-                    ? Row(
-                        children: [
-                          catalogServiceItem!.imageDialog,
-                          Expanded(
-                            child: Container(
-                              child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Column(
-                                    mainAxisAlignment: !isMobile(context)
-                                        ? MainAxisAlignment.start
-                                        : MainAxisAlignment.center,
-                                    crossAxisAlignment: !isMobile(context)
-                                        ? CrossAxisAlignment.start
-                                        : CrossAxisAlignment.center,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          catalogServiceItem!.icon,
-                                          IconButton(
-                                              onPressed: () =>
-                                                  Navigator.pop(context),
-                                              icon: const Icon(
-                                                Icons.cancel_outlined,
-                                                size: 30,
-                                              ))
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 50,
-                                      ),
-                                      Text(
-                                        catalogServiceItem!.title,
-                                        style: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 30,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      Text(
-                                        catalogServiceItem!.description,
-                                        style: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      Text(
-                                        catalogServiceItem!.descriptionDialog,
-                                        style: const TextStyle(
-                                            color: Colors.blueGrey,
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
+                  ? Row(
+                      children: [
+                        catalogServiceItem!.imageDialog,
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Column(
+                              mainAxisAlignment: !isMobile(context)
+                                  ? MainAxisAlignment.start
+                                  : MainAxisAlignment.center,
+                              crossAxisAlignment: !isMobile(context)
+                                  ? CrossAxisAlignment.start
+                                  : CrossAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    catalogServiceItem!.icon,
+                                    IconButton(
+                                        onPressed: () =>
+                                            Navigator.pop(context),
+                                        icon: const Icon(
+                                          Icons.cancel_outlined,
+                                          size: 30,
+                                        ))
+                                  ],
                                 ),
+                                const SizedBox(
+                                  height: 50,
+                                ),
+                                Text(
+                                  catalogServiceItem!.title,
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  catalogServiceItem!.description,
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  catalogServiceItem!.descriptionDialog,
+                                  style: const TextStyle(
+                                      color: Colors.blueGrey,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      )
-                    : Column(
-                        children: [
-                          catalogServiceItem!.imageDialog,
-                          Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                mainAxisAlignment: !isMobile(context)
-                                    ? MainAxisAlignment.start
-                                    : MainAxisAlignment.center,
-                                crossAxisAlignment: !isMobile(context)
-                                    ? CrossAxisAlignment.start
-                                    : CrossAxisAlignment.center,
+                        ),
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        catalogServiceItem!.imageDialog,
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            mainAxisAlignment: !isMobile(context)
+                                ? MainAxisAlignment.start
+                                : MainAxisAlignment.center,
+                            crossAxisAlignment: !isMobile(context)
+                                ? CrossAxisAlignment.start
+                                : CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      catalogServiceItem!.icon,
-                                      IconButton(
-                                          onPressed: () =>
-                                              Navigator.pop(context),
-                                          icon: const Icon(
-                                            Icons.cancel_outlined,
-                                            size: 30,
-                                          ))
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    catalogServiceItem!.title,
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    catalogServiceItem!.description,
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    catalogServiceItem!.descriptionDialog,
-                                    style: const TextStyle(
-                                        color: Colors.blueGrey,
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                                  catalogServiceItem!.icon,
+                                  IconButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      icon: const Icon(
+                                        Icons.cancel_outlined,
+                                        size: 30,
+                                      ))
                                 ],
                               ),
-                            ),
-                        ],
-                      ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                catalogServiceItem!.title,
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                catalogServiceItem!.description,
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                catalogServiceItem!.descriptionDialog,
+                                style: const TextStyle(
+                                    color: Colors.blueGrey,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
             ),
           );
         });
@@ -220,146 +218,129 @@ class _ServicePageState extends State<ServicePage> {
   Widget getCatalog() {
     if (isMobile(context)) assert(debugCheckHasMaterial(context));
     return GridView.builder(
-        padding: EdgeInsets.all(15),
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          childAspectRatio: !isMobile(context) ? 13 / 8 : 3 / 3,
-          crossAxisCount: !isMobile(context) ? 3 : 2,
-          crossAxisSpacing: !isMobile(context) ? 20 : 10,
-          mainAxisSpacing: !isMobile(context) ? 20 : 10,
-        ),
-        itemCount: _controller.listCatalogServiceItem.length,
-        itemBuilder: (BuildContext context, int index) => InkWell(
-          onTap: () {
-            switch (index) {
-              case 0:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 1:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 2:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 3:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 4:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 5:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 6:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 7:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 8:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 9:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 10:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-              case 11:
-                {
-                  catalogServiceItem =
-                      _controller.listCatalogServiceItem[index];
-                  showdialog();
-                }
-                break;
-            }
-          },
-          child: OnHover(
-            builder: (isHovered) {
-              final color = isHovered
-                  ? Colors.yellow.shade400
-                  : Color.fromRGBO(235, 235, 235, 95);
-              return PhysicalModel(
-                color: Colors.white60,
-                shadowColor: Colors.lime,
-                elevation: isHovered ? 10 : 0,
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  color: color,
-                  child: Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              ShaderMask(
-                                blendMode: BlendMode.srcATop,
-                                shaderCallback: (bounds) =>
-                                    const LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [
-                                      Colors.yellow,
-                                      Colors.black
-                                    ]).createShader(bounds),
-                                child: _controller
-                                    .listCatalogServiceItem[index].icon,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Expanded(
-                                  child: Container(
+      padding: const EdgeInsets.all(15),
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        childAspectRatio: !isMobile(context) ? 13 / 8 : 3 / 3,
+        crossAxisCount: !isMobile(context) ? 3 : 2,
+        crossAxisSpacing: !isMobile(context) ? 20 : 10,
+        mainAxisSpacing: !isMobile(context) ? 20 : 10,
+      ),
+      itemCount: _controller.listCatalogServiceItem.length,
+      itemBuilder: (BuildContext context, int index) => InkWell(
+        onTap: () {
+          switch (index) {
+            case 0:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 1:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 2:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 3:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 4:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 5:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 6:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 7:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 8:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 9:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 10:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+            case 11:
+              {
+                catalogServiceItem = _controller.listCatalogServiceItem[index];
+                showdialog();
+              }
+              break;
+          }
+        },
+        child: OnHover(
+          builder: (isHovered) {
+            final color = isHovered
+                ? Colors.yellow.shade400
+                : const Color.fromRGBO(235, 235, 235, 95);
+            return PhysicalModel(
+              color: Colors.white60,
+              shadowColor: Colors.lime,
+              elevation: isHovered ? 10 : 0,
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                color: color,
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ShaderMask(
+                              blendMode: BlendMode.srcATop,
+                              shaderCallback: (bounds) => const LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [Colors.yellow, Colors.black])
+                                  .createShader(bounds),
+                              child: _controller
+                                  .listCatalogServiceItem[index].icon,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
                                 child: Text(
-                                  _controller
-                                      .listCatalogServiceItem[index].title,
+                                  _controller.listCatalogServiceItem[index].title,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.black,
@@ -368,47 +349,48 @@ class _ServicePageState extends State<ServicePage> {
                                         ? FontWeight.w900
                                         : FontWeight.bold,
                                   ),
-                                ),
-                              ))
-                            ]),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Center(
-                          child: Text(
-                            _controller
-                                .listCatalogServiceItem[index].description
-                                .toString(),
-                            textAlign: isMobile(context)
-                                ? TextAlign.center
-                                : TextAlign.start,
-                            style: TextStyle(
-                              color: isHovered
-                                  ? Colors.lightBlueAccent
-                                  : Colors.black54,
-                              fontSize: isDesktop(context) ? 17 : 9,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 15,),
-                        Text("Читать далее → ",
+                                ))
+                          ]),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Center(
+                        child: Text(
+                          _controller.listCatalogServiceItem[index].description
+                              .toString(),
+                          textAlign: isMobile(context)
+                              ? TextAlign.center
+                              : TextAlign.start,
                           style: TextStyle(
                             color: isHovered
-                                ? Colors.black
+                                ? Colors.lightBlueAccent
                                 : Colors.black54,
+                            fontSize: isDesktop(context) ? 17 : 9,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        "Читать далее → ",
+                        style: TextStyle(
+                            color: isHovered ? Colors.black : Colors.black54,
                             fontSize: isDesktop(context) ? 17 : 10,
                             fontStyle: FontStyle.italic,
-                            fontWeight: isHovered ? FontWeight.w500 :FontWeight.normal
-                          ),)
-                      ],
-                    ),
+                            fontWeight: isHovered
+                                ? FontWeight.w500
+                                : FontWeight.normal),
+                      )
+                    ],
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
-      );
+      ),
+    );
   }
 }

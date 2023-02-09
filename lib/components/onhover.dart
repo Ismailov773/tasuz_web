@@ -23,7 +23,7 @@ class _OnHoverState extends State<OnHover> {
       onEnter: (_)=> onEntered(true),
       onExit: (_)=> onEntered(false),
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         transform: transform,
         child: widget.builder(isHovered),
       ),

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tasuz_web/models/producers/ModelSet.dart';
@@ -23,10 +22,10 @@ class Controller extends GetxController {
   OptionSet? optionSet;
 
 
-
   List<CatalogServiceItem> listCatalogServiceItem = <CatalogServiceItem>[].obs;
 
   final ApiConnector _apiConnector = ApiConnector();
+
 
   @override
   void onInit() {
@@ -77,7 +76,7 @@ class Controller extends GetxController {
             'Типы ремонтных работ по ходовой части: диагностика, выявление поломок, замена или '
             'починка деталей, консультация заказчиков после ремонта.');
     CatalogServiceItem catalogServiceItem3 = CatalogServiceItem(
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/images/service/3.png'),
           size: 60,
         ),
@@ -93,7 +92,7 @@ class Controller extends GetxController {
             'Демонтаж, разборка, дефектовка, рихтовка, сбор и установка различных элементов кузова '
             'машины, шпатлевание дефектовка, полировка лакового покрытия автомобиля и тд.');
     CatalogServiceItem catalogServiceItem4 = CatalogServiceItem(
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/images/service/4.png'),
           size: 60,
         ),
@@ -108,7 +107,7 @@ class Controller extends GetxController {
             "Работы проводимые по блокам управления: блок управления двигателем, блок управления "
             "АКПП, блок управления парктроником, блок комфорта, блоки стеклоподъёмников и прочие блоки.");
     CatalogServiceItem catalogServiceItem5 = CatalogServiceItem(
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/images/service/5.png'),
           size: 60,
         ),
@@ -124,7 +123,7 @@ class Controller extends GetxController {
             "Полная компьютерная диагностика на предмет выявления неисправностей с контактами; "
             "замена проводов, разъемов, штекеров; поиск и устранение неисправностей проводки и тд.");
     CatalogServiceItem catalogServiceItem6 = CatalogServiceItem(
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/images/service/6.png'),
           size: 60,
         ),
@@ -140,7 +139,7 @@ class Controller extends GetxController {
             "Выполнение ремонта поделятся на фазы: демонтаж, разборка с дефекацией узлов механизма, "
             "устранение дефектов, сборка и монтаж, выполнение необходимых регулировок сцепления.");
     CatalogServiceItem catalogServiceItem7 = CatalogServiceItem(
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/images/service/7.png'),
           size: 60,
         ),
@@ -156,7 +155,7 @@ class Controller extends GetxController {
             "Типы ремонтных работ по ходовой части: замена передних и задних тормозных колодок, "
             "задних накладок, колодок, шланговые трубки, ремонт усилителя тормозов.");
     CatalogServiceItem catalogServiceItem8 = CatalogServiceItem(
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/images/service/8.png'),
           size: 60,
         ),
@@ -172,7 +171,7 @@ class Controller extends GetxController {
             "Типы ремонтных работ по ходовой части: протяжка соединений подвесок, регулировка "
             "развала и схождения; замена механизмов и узлов: пружин, опор, наконечников рулевой тяги и тд");
     CatalogServiceItem catalogServiceItem9 = CatalogServiceItem(
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/images/service/9.png'),
           size: 60,
         ),
@@ -219,7 +218,7 @@ class Controller extends GetxController {
             "Подробная проверка блоков с целью выявить изменение пробега и определить его реальное "
             "значение, сканирование всех электронных блоков");
     CatalogServiceItem catalogServiceItem12 = CatalogServiceItem(
-        icon: ImageIcon(
+        icon: const ImageIcon(
           AssetImage('assets/images/service/12.png'),
           size: 60,
         ),
@@ -250,6 +249,7 @@ class Controller extends GetxController {
     ].toList();
 
 
+
   }
 
   changeModelSet(ModelSet modelSet) {
@@ -266,6 +266,7 @@ class Controller extends GetxController {
   fetchNews() async {
     listNewsItem = await _apiConnector.getNews();
   }
+
 }
 
 

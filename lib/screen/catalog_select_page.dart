@@ -1,10 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttericon/font_awesome_icons.dart';
-import 'package:fluttericon/octicons_icons.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:tasuz_web/controller/controller.dart';
@@ -31,7 +27,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
   final _phoneController = TextEditingController();
   final _emailController = TextEditingController();
 
-  var maskFormatter = new MaskTextInputFormatter(
+  var maskFormatter = MaskTextInputFormatter(
       mask: '(##) ###-##-##',
       filter: { "#": RegExp(r'[0-9]') },
       type: MaskAutoCompletionType.lazy
@@ -44,6 +40,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
     super.initState();
   }
 
+  @override
   void dispose() {
     _nameController.dispose();
     _phoneController.dispose();
@@ -64,15 +61,15 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ваше выбор!"),
+        title: const Text("Ваше выбор!"),
         centerTitle: true,
         actions: [
           TextButton.icon(
-            icon: Icon(Icons.receipt_rounded),
+            icon: const Icon(Icons.receipt_rounded),
             onPressed: () {
               showdialog();
             },
-            label: Text("Заказать"),
+            label: const Text("Заказать"),
             style: ButtonStyle(
               textStyle: MaterialStateProperty.all(
                   TextStyle(fontSize: isMobile(context) ? 15 : 20)),
@@ -86,7 +83,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
               }),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           )
         ],
@@ -99,7 +96,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
             Expanded(
               flex: 2,
               child: Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   children: [
                     Text(
@@ -110,7 +107,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                           fontSize: isDesktop(context) ? 20 : 10,
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Row(
@@ -125,7 +122,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                           ),
                         ),
                         Text(
-                          "${(controller.modelSet!.name).toString()}",
+                          (controller.modelSet!.name).toString(),
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: isDesktop(context) ? 20 : 10,
@@ -133,7 +130,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Row(
@@ -147,7 +144,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                               fontSize: isDesktop(context) ? 17 : 12,
                               fontStyle: FontStyle.italic),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
@@ -162,7 +159,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Image.network(
@@ -183,11 +180,11 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                           fontSize: isDesktop(context) ? 20 : 10,
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Text(
-                      "${(controller.modelSet!.description).toString()}",
+                      (controller.modelSet!.description).toString(),
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           color: Colors.black,
@@ -200,7 +197,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
             ),
             Expanded(
                 child: Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   Text(
@@ -210,7 +207,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                         fontSize: isDesktop(context) ? 20 : 10,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   ListView.builder(
@@ -242,9 +239,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
         barrierDismissible: true,
         builder: (BuildContext dialogContext) {
           return AlertDialog(
-            contentPadding: EdgeInsets.all(0),
-            insetPadding: EdgeInsets.all(10),
-            content: Container(
+            contentPadding: const EdgeInsets.all(0),
+            insetPadding: const EdgeInsets.all(10),
+            content: SizedBox(
               height: !isMobile(context)
                   ? MediaQuery.of(context).size.height / 0.5
                   : MediaQuery.of(context).size.height / 0.5,
@@ -253,7 +250,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                   : MediaQuery.of(context).size.width / 3,
               child: Column(
                 children: [
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   Text(
                     "${controller.modelSet!.section!.name!} - ${controller.modelSet!.producername} :",
                     textAlign: TextAlign.start,
@@ -262,7 +259,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                         fontSize: isDesktop(context) ? 20 : 10,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
@@ -277,7 +274,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                         ),
                       ),
                       Text(
-                        "${(controller.modelSet!.name).toString()}",
+                        (controller.modelSet!.name).toString(),
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: isDesktop(context) ? 20 : 10,
@@ -285,7 +282,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Image.network(
@@ -299,120 +296,118 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                     fit: BoxFit.fill,
                   ),
                   Expanded(
-                    child: Container(
-                      child: Form(
-                        key: _formKey,
-                        child: ListView(
-                          padding: EdgeInsets.all(15),
-                          children: [
-                            TextFormField(
-                              focusNode: _nameFocus,
-                              autofocus: true,
-                              onFieldSubmitted: (_) {
-                                setState(() {
-                                  _fieldFocusChange(
-                                      context, _nameFocus, _phoneFocus);
-                                });
+                    child: Form(
+                      key: _formKey,
+                      child: ListView(
+                        padding: const EdgeInsets.all(15),
+                        children: [
+                          TextFormField(
+                            focusNode: _nameFocus,
+                            autofocus: true,
+                            onFieldSubmitted: (_) {
+                              setState(() {
+                                _fieldFocusChange(
+                                    context, _nameFocus, _phoneFocus);
+                              });
 
-                              },
-                              controller: _nameController,
-                              decoration: InputDecoration(
-                                labelText: "Ф.И.О. ",
-                                // hintText: "What do people call you?",
-                                prefixIcon: Icon(Icons.person),
-                                suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    _nameController.clear();
-                                  },
-                                  child: Icon(
-                                    Icons.delete_outline,
-                                    color: Colors.redAccent,
-                                  ),
+                            },
+                            controller: _nameController,
+                            decoration: InputDecoration(
+                              labelText: "Ф.И.О. ",
+                              // hintText: "What do people call you?",
+                              prefixIcon: const Icon(Icons.person),
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  _nameController.clear();
+                                },
+                                child: const Icon(
+                                  Icons.delete_outline,
+                                  color: Colors.redAccent,
                                 ),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20.0)),
-                                    borderSide: BorderSide(
-                                        color: Colors.black54, width: 2.0)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20.0)),
-                                    borderSide: BorderSide(
-                                        color: Colors.blueAccent, width: 2.0)),
                               ),
-                              validator: _validateName,
-                              onSaved: (value) => newUser.name = value,
+                              enabledBorder: const OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20.0)),
+                                  borderSide: BorderSide(
+                                      color: Colors.black54, width: 2.0)),
+                              focusedBorder: const OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20.0)),
+                                  borderSide: BorderSide(
+                                      color: Colors.blueAccent, width: 2.0)),
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              focusNode: _phoneFocus,
-                              onFieldSubmitted: (_) {
-                                setState(() {
-                                  _fieldFocusChange(
-                                      context, _phoneFocus, _emailFocus);
-                                });
+                            validator: _validateName,
+                            onSaved: (value) => newUser.name = value,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            focusNode: _phoneFocus,
+                            onFieldSubmitted: (_) {
+                              setState(() {
+                                _fieldFocusChange(
+                                    context, _phoneFocus, _emailFocus);
+                              });
 
-                              },
-                              controller: _phoneController,
-                              decoration: InputDecoration(
-                                labelText: "Номер телефона ",
-                                prefixIcon: Icon(Icons.call),
-                                prefixText: "+998 ",
-                                suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    _phoneController.clear();
-                                  },
-                                  child: Icon(
-                                    Icons.delete_outline,
-                                    color: Colors.redAccent,
-                                  ),
+                            },
+                            controller: _phoneController,
+                            decoration: InputDecoration(
+                              labelText: "Номер телефона ",
+                              prefixIcon: const Icon(Icons.call),
+                              prefixText: "+998 ",
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  _phoneController.clear();
+                                },
+                                child: const Icon(
+                                  Icons.delete_outline,
+                                  color: Colors.redAccent,
                                 ),
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20.0)),
-                                    borderSide: BorderSide(
-                                        color: Colors.black54, width: 2.0)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20.0)),
-                                    borderSide: BorderSide(
-                                        color: Colors.blueAccent, width: 2.0)),
                               ),
-                              keyboardType: TextInputType.phone,
-                              inputFormatters: [maskFormatter
-                              ],
-                              validator: (value) => _validatePhoneNumber(value!)
-                                  ? null
-                                  : "Phone number must be entered as (XXX)XX XXX-XX-XX",
-                              onSaved: (value) => newUser.phone = value,
+                              enabledBorder: const OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20.0)),
+                                  borderSide: BorderSide(
+                                      color: Colors.black54, width: 2.0)),
+                              focusedBorder: const OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20.0)),
+                                  borderSide: BorderSide(
+                                      color: Colors.blueAccent, width: 2.0)),
                             ),
-                            SizedBox(
-                              height: 10,
+                            keyboardType: TextInputType.phone,
+                            inputFormatters: [maskFormatter
+                            ],
+                            validator: (value) => _validatePhoneNumber(value!)
+                                ? null
+                                : "Phone number must be entered as (XXX)XX XXX-XX-XX",
+                            onSaved: (value) => newUser.phone = value,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          TextFormField(
+                            focusNode: _emailFocus,
+                            controller: _emailController,
+                            decoration: const InputDecoration(
+                              labelText: "Эл.почта ",
+                              icon: Icon(Icons.mail),
                             ),
-                            TextFormField(
-                              focusNode: _emailFocus,
-                              controller: _emailController,
-                              decoration: InputDecoration(
-                                labelText: "Эл.почта ",
-                                icon: Icon(Icons.mail),
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                              validator: _validateEmail,
-                              onSaved: (value) => newUser.email = value,
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            ElevatedButton(
-                                onPressed: _submitForm,
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.yellow.shade400)),
-                                child: Text("Заказ звонка!", style: TextStyle(fontSize: 20),))
-                          ],
-                        ),
+                            keyboardType: TextInputType.emailAddress,
+                            validator: _validateEmail,
+                            onSaved: (value) => newUser.email = value,
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          ElevatedButton(
+                              onPressed: _submitForm,
+                              style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Colors.yellow.shade400)),
+                              child: const Text("Заказ звонка!", style: TextStyle(fontSize: 20),))
+                        ],
                       ),
                     ),
                   ),
@@ -426,9 +421,15 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      print("Name: ${_nameController.text}");
-      print("Phone: ${_phoneController.text}");
-      print("Email: ${_emailController.text}");
+      if (kDebugMode) {
+        print("Name: ${_nameController.text}");
+      }
+      if (kDebugMode) {
+        print("Phone: ${_phoneController.text}");
+      }
+      if (kDebugMode) {
+        print("Email: ${_emailController.text}");
+      }
     } else {
       _showMessage(message: "Form is not valid! Please review and correct");
     }
@@ -438,11 +439,11 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
     // _scaffoldKey.currentState.showSnackBar()
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        duration: Duration(seconds: 5),
+        duration: const Duration(seconds: 5),
         backgroundColor: Colors.redAccent,
         content: Text(
           message!,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.black54, fontWeight: FontWeight.w600, fontSize: 16),
         ),
       ),
