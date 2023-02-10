@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttericon/typicons_icons.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:tasuz_web/controller/controller.dart';
+import 'package:tasuz_web/screen/credit_page.dart';
 import '../components/responsive.dart';
 import '../models/user.dart';
 
@@ -15,6 +17,8 @@ class CatalogSelectPage extends StatefulWidget {
 }
 
 class _CatalogSelectPageState extends State<CatalogSelectPage> {
+  bool _changeLocal = false;
+
   final Controller controller = Get.put(Controller());
   var numberFormat = NumberFormat();
   final _formKey = GlobalKey<FormState>();
@@ -29,9 +33,8 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
 
   var maskFormatter = MaskTextInputFormatter(
       mask: '(##) ###-##-##',
-      filter: { "#": RegExp(r'[0-9]') },
-      type: MaskAutoCompletionType.lazy
-  );
+      filter: {"#": RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy);
 
   User newUser = User();
 
@@ -61,15 +64,40 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ваше выбор!"),
+        title: Text(_changeLocal ? "Sizning tanlovingiz!" :"Ваше выбор!"),
         centerTitle: true,
         actions: [
+          SizedBox(
+            width: 30,
+          ),
           TextButton.icon(
             icon: const Icon(Icons.receipt_rounded),
             onPressed: () {
               showdialog();
             },
-            label: const Text("Заказать"),
+            label: Text(_changeLocal ? "Buyurtma qilish" : "Заказать"),
+            style: ButtonStyle(
+              textStyle: MaterialStateProperty.all(
+                  TextStyle(fontSize: isMobile(context) ? 15 : 20)),
+              overlayColor: MaterialStateProperty.all(Colors.yellow.shade400),
+              backgroundColor:
+                  MaterialStateProperty.all(Colors.yellow.withOpacity(0.3)),
+              foregroundColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                if (states.contains(MaterialState.hovered)) return Colors.black;
+                return Colors.black;
+              }),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          TextButton.icon(
+            icon: const Icon(Typicons.calculator),
+            onPressed: () {
+              Get.to(CreditPage());
+            },
+            label: Text(_changeLocal ? "Kredit" : "Кредит"),
             style: ButtonStyle(
               textStyle: MaterialStateProperty.all(
                   TextStyle(fontSize: isMobile(context) ? 15 : 20)),
@@ -84,7 +112,26 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
             ),
           ),
           const SizedBox(
-            width: 10,
+            width: 20,
+          ),
+          InkWell(
+            radius: 20,
+            borderRadius: BorderRadius.circular(10),
+            onTap: () {
+              setState(() {
+                _changeLocal = !_changeLocal;
+              });
+            },
+            child: Center(
+              child: Text(
+                _changeLocal ? 'UZ' : 'RU',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 40,
           )
         ],
       ),
@@ -100,7 +147,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                 child: Column(
                   children: [
                     Text(
-                      "${controller.modelSet!.section!.name!} - ${controller.modelSet!.producername} :",
+                      _changeLocal
+                          ? "${controller.modelSet!.section!.nameuz!} - ${controller.modelSet!.producername} :"
+                          : "${controller.modelSet!.section!.name!} - ${controller.modelSet!.producername} :",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           color: Colors.black,
@@ -115,7 +164,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "модель:",
+                          _changeLocal ? "model: " : "модель: ",
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: isDesktop(context) ? 17 : 12,
@@ -138,7 +187,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "цены от: ",
+                          _changeLocal ? "boshlang'ich narxi: " : "цены от: ",
                           style: TextStyle(
                               color: Colors.black54,
                               fontSize: isDesktop(context) ? 17 : 12,
@@ -148,8 +197,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                           width: 10,
                         ),
                         Text(
-                          // "${(_listModelset[index].priceuzs).toString()}",
-                          "${numberFormat.format(controller.modelSet!.priceuzs)} cум ",
+                          _changeLocal
+                              ? "${numberFormat.format(controller.modelSet!.priceuzs)} so`m "
+                              : "${numberFormat.format(controller.modelSet!.priceuzs)} cум ",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.blue,
@@ -173,7 +223,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       fit: BoxFit.fill,
                     ),
                     Text(
-                      "Описание: ",
+                      _changeLocal ? "Tavsifi: " : "Описание: ",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           color: Colors.black,
@@ -184,8 +234,10 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       height: 20,
                     ),
                     Text(
-                      (controller.modelSet!.description).toString(),
-                      textAlign: TextAlign.start,
+                      _changeLocal
+                          ? (controller.modelSet!.descriptionuz).toString()
+                          : (controller.modelSet!.description).toString(),
+                      textAlign: TextAlign.justify,
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: isDesktop(context) ? 17 : 10,
@@ -201,7 +253,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
               child: Column(
                 children: [
                   Text(
-                    "Характеристика",
+                    _changeLocal ? "Xarakteristikasi: " : "Характеристика: ",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: isDesktop(context) ? 20 : 10,
@@ -215,11 +267,13 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       itemCount: controller.modelSet!.optionSet!.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
-                          title: Text(
-                              controller.modelSet!.optionSet![index]
-                              .optionConstant!.namerus
-                              .toString()
-                          ),
+                          title: Text(_changeLocal
+                              ? controller.modelSet!.optionSet![index]
+                                  .optionConstant!.nameuz
+                                  .toString()
+                              : controller.modelSet!.optionSet![index]
+                                  .optionConstant!.namerus
+                                  .toString()),
                           trailing: Text(controller
                               .modelSet!.optionSet![index].optionname!),
                         );
@@ -250,9 +304,13 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                   : MediaQuery.of(context).size.width / 3,
               child: Column(
                 children: [
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Text(
-                    "${controller.modelSet!.section!.name!} - ${controller.modelSet!.producername} :",
+                    _changeLocal
+                        ? "${controller.modelSet!.section!.nameuz!} - ${controller.modelSet!.producername} :"
+                        : "${controller.modelSet!.section!.name!} - ${controller.modelSet!.producername} :",
                     textAlign: TextAlign.start,
                     style: TextStyle(
                         color: Colors.black,
@@ -267,7 +325,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "модель:",
+                        _changeLocal ? "model: " : "модель: ",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: isDesktop(context) ? 17 : 12,
@@ -309,11 +367,10 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                                 _fieldFocusChange(
                                     context, _nameFocus, _phoneFocus);
                               });
-
                             },
                             controller: _nameController,
                             decoration: InputDecoration(
-                              labelText: "Ф.И.О. ",
+                              labelText: _changeLocal ? "F.I.SH." : "Ф.И.О. ",
                               // hintText: "What do people call you?",
                               prefixIcon: const Icon(Icons.person),
                               suffixIcon: GestureDetector(
@@ -349,11 +406,10 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                                 _fieldFocusChange(
                                     context, _phoneFocus, _emailFocus);
                               });
-
                             },
                             controller: _phoneController,
                             decoration: InputDecoration(
-                              labelText: "Номер телефона ",
+                              labelText: _changeLocal ? "Telefon raqamingiz" : "Номер телефона ",
                               prefixIcon: const Icon(Icons.call),
                               prefixText: "+998 ",
                               suffixIcon: GestureDetector(
@@ -377,11 +433,10 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                                       color: Colors.blueAccent, width: 2.0)),
                             ),
                             keyboardType: TextInputType.phone,
-                            inputFormatters: [maskFormatter
-                            ],
+                            inputFormatters: [maskFormatter],
                             validator: (value) => _validatePhoneNumber(value!)
                                 ? null
-                                : "Phone number must be entered as (XXX)XX XXX-XX-XX",
+                                : _changeLocal ? "Tel raqamingizni kiriting" : "Заполните номер телефона",
                             onSaved: (value) => newUser.phone = value,
                           ),
                           const SizedBox(
@@ -390,8 +445,8 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                           TextFormField(
                             focusNode: _emailFocus,
                             controller: _emailController,
-                            decoration: const InputDecoration(
-                              labelText: "Эл.почта ",
+                            decoration: InputDecoration(
+                              labelText: _changeLocal ? "E-mail" : "Эл.почта ",
                               icon: Icon(Icons.mail),
                             ),
                             keyboardType: TextInputType.emailAddress,
@@ -406,7 +461,10 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
                                       Colors.yellow.shade400)),
-                              child: const Text("Заказ звонка!", style: TextStyle(fontSize: 20),))
+                              child: Text(_changeLocal ? "Buyurtma berish!":
+                                "Заказ звонка!",
+                                style: TextStyle(fontSize: 20),
+                              ))
                         ],
                       ),
                     ),
@@ -431,7 +489,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
         print("Email: ${_emailController.text}");
       }
     } else {
-      _showMessage(message: "Form is not valid! Please review and correct");
+      _showMessage(message: _changeLocal ? "Forma to`liqmas! Iltimos, ko'rib chiqing va to'g'rilang!" : "Форма недействительна! Пожалуйста, просмотрите и исправьте!");
     }
   }
 
@@ -453,9 +511,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
   String? _validateName(String? value) {
     final nameExp = RegExp(r"^[A-Za-z]+$");
     if (value!.isEmpty) {
-      return "Name is required.";
+      return _changeLocal ? "F.I.SH. to`ldirilmagan!" :  "Ф.И.О. не заполнено!";
     } else if (nameExp.hasMatch(value)) {
-      return "Pleaser enter alphabetical characters.";
+      return _changeLocal ? "Iltimos alifbo belgilari bilan kiriting!" : "Пожалуйста, введите буквы алфавита.";
     } else {
       return null;
     }
@@ -468,9 +526,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
 
   String? _validateEmail(String? value) {
     if (value!.isEmpty) {
-      return "Email cannot be empty!";
+      return _changeLocal ? "E-mail to`ldirilmagan!" : "Электронная почта не может быть пустой!";
     } else if (!_emailController.text.contains('@')) {
-      return "Invalid email address";
+      return _changeLocal ? "Email manzili noto‘g‘ri" : "Неверный адрес электронной почты";
     } else {
       return null;
     }

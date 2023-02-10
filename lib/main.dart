@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      locale: const Locale('ru', 'RU'),
       theme: ThemeData(fontFamily: "Oswald", useMaterial3: true),
       home: HomePage(),
       // getPages: [
