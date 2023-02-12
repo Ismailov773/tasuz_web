@@ -19,7 +19,7 @@ class CatalogSelectPage extends StatefulWidget {
 class _CatalogSelectPageState extends State<CatalogSelectPage> {
   bool _changeLocal = false;
 
-  final Controller controller = Get.put(Controller());
+  final Controller controller = Get.find();
   var numberFormat = NumberFormat();
   final _formKey = GlobalKey<FormState>();
 
@@ -64,10 +64,10 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_changeLocal ? "Sizning tanlovingiz!" :"Ваше выбор!"),
+        title: Text(controller.changeLocal.isFalse ? "Sizning tanlovingiz!" :"Ваше выбор!"),
         centerTitle: true,
         actions: [
-          SizedBox(
+          const SizedBox(
             width: 30,
           ),
           TextButton.icon(
@@ -89,7 +89,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
               }),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           TextButton.icon(
@@ -119,12 +119,12 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
             borderRadius: BorderRadius.circular(10),
             onTap: () {
               setState(() {
-                _changeLocal = !_changeLocal;
+                controller.changeLocale();
               });
             },
             child: Center(
               child: Text(
-                _changeLocal ? 'UZ' : 'RU',
+                controller.changeLocal.isFalse ? 'UZ' : 'RU',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
               ),
@@ -147,7 +147,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                 child: Column(
                   children: [
                     Text(
-                      _changeLocal
+                      controller.changeLocal.isFalse
                           ? "${controller.modelSet!.section!.nameuz!} - ${controller.modelSet!.producername} :"
                           : "${controller.modelSet!.section!.name!} - ${controller.modelSet!.producername} :",
                       textAlign: TextAlign.start,
@@ -164,7 +164,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          _changeLocal ? "model: " : "модель: ",
+                          controller.changeLocal.isFalse ? "model: " : "модель: ",
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: isDesktop(context) ? 17 : 12,
@@ -187,7 +187,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          _changeLocal ? "boshlang'ich narxi: " : "цены от: ",
+                          controller.changeLocal.isFalse ? "boshlang'ich narxi: " : "цены от: ",
                           style: TextStyle(
                               color: Colors.black54,
                               fontSize: isDesktop(context) ? 17 : 12,
@@ -197,7 +197,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                           width: 10,
                         ),
                         Text(
-                          _changeLocal
+                          controller.changeLocal.isFalse
                               ? "${numberFormat.format(controller.modelSet!.priceuzs)} so`m "
                               : "${numberFormat.format(controller.modelSet!.priceuzs)} cум ",
                           textAlign: TextAlign.center,
@@ -223,7 +223,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       fit: BoxFit.fill,
                     ),
                     Text(
-                      _changeLocal ? "Tavsifi: " : "Описание: ",
+                      controller.changeLocal.isFalse ? "Tavsifi: " : "Описание: ",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           color: Colors.black,
@@ -234,7 +234,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       height: 20,
                     ),
                     Text(
-                      _changeLocal
+                      controller.changeLocal.isFalse
                           ? (controller.modelSet!.descriptionuz).toString()
                           : (controller.modelSet!.description).toString(),
                       textAlign: TextAlign.justify,
@@ -253,7 +253,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
               child: Column(
                 children: [
                   Text(
-                    _changeLocal ? "Xarakteristikasi: " : "Характеристика: ",
+                    controller.changeLocal.isFalse ? "Xarakteristikasi: " : "Характеристика: ",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: isDesktop(context) ? 20 : 10,
@@ -267,7 +267,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       itemCount: controller.modelSet!.optionSet!.length,
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
-                          title: Text(_changeLocal
+                          title: Text(controller.changeLocal.isFalse
                               ? controller.modelSet!.optionSet![index]
                                   .optionConstant!.nameuz
                                   .toString()
@@ -308,7 +308,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                     height: 20,
                   ),
                   Text(
-                    _changeLocal
+                    controller.changeLocal.isFalse
                         ? "${controller.modelSet!.section!.nameuz!} - ${controller.modelSet!.producername} :"
                         : "${controller.modelSet!.section!.name!} - ${controller.modelSet!.producername} :",
                     textAlign: TextAlign.start,
@@ -325,7 +325,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        _changeLocal ? "model: " : "модель: ",
+                        controller.changeLocal.isFalse ? "model: " : "модель: ",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: isDesktop(context) ? 17 : 12,
@@ -370,7 +370,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                             },
                             controller: _nameController,
                             decoration: InputDecoration(
-                              labelText: _changeLocal ? "F.I.SH." : "Ф.И.О. ",
+                              labelText: controller.changeLocal.isFalse ? "F.I.SH." : "Ф.И.О. ",
                               // hintText: "What do people call you?",
                               prefixIcon: const Icon(Icons.person),
                               suffixIcon: GestureDetector(
@@ -409,7 +409,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                             },
                             controller: _phoneController,
                             decoration: InputDecoration(
-                              labelText: _changeLocal ? "Telefon raqamingiz" : "Номер телефона ",
+                              labelText: controller.changeLocal.isFalse ? "Telefon raqamingiz" : "Номер телефона ",
                               prefixIcon: const Icon(Icons.call),
                               prefixText: "+998 ",
                               suffixIcon: GestureDetector(
@@ -436,7 +436,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                             inputFormatters: [maskFormatter],
                             validator: (value) => _validatePhoneNumber(value!)
                                 ? null
-                                : _changeLocal ? "Tel raqamingizni kiriting" : "Заполните номер телефона",
+                                : controller.changeLocal.isFalse ? "Tel raqamingizni kiriting" : "Заполните номер телефона",
                             onSaved: (value) => newUser.phone = value,
                           ),
                           const SizedBox(
@@ -446,7 +446,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                             focusNode: _emailFocus,
                             controller: _emailController,
                             decoration: InputDecoration(
-                              labelText: _changeLocal ? "E-mail" : "Эл.почта ",
+                              labelText: controller.changeLocal.isFalse ? "E-mail" : "Эл.почта ",
                               icon: Icon(Icons.mail),
                             ),
                             keyboardType: TextInputType.emailAddress,
@@ -461,7 +461,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
                                       Colors.yellow.shade400)),
-                              child: Text(_changeLocal ? "Buyurtma berish!":
+                              child: Text(controller.changeLocal.isFalse ? "Buyurtma berish!":
                                 "Заказ звонка!",
                                 style: TextStyle(fontSize: 20),
                               ))
@@ -489,7 +489,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
         print("Email: ${_emailController.text}");
       }
     } else {
-      _showMessage(message: _changeLocal ? "Forma to`liqmas! Iltimos, ko'rib chiqing va to'g'rilang!" : "Форма недействительна! Пожалуйста, просмотрите и исправьте!");
+      _showMessage(message: controller.changeLocal.isFalse ? "Forma to`liqmas! Iltimos, ko'rib chiqing va to'g'rilang!" : "Форма недействительна! Пожалуйста, просмотрите и исправьте!");
     }
   }
 
@@ -511,9 +511,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
   String? _validateName(String? value) {
     final nameExp = RegExp(r"^[A-Za-z]+$");
     if (value!.isEmpty) {
-      return _changeLocal ? "F.I.SH. to`ldirilmagan!" :  "Ф.И.О. не заполнено!";
+      return controller.changeLocal.isFalse ? "F.I.SH. to`ldirilmagan!" :  "Ф.И.О. не заполнено!";
     } else if (nameExp.hasMatch(value)) {
-      return _changeLocal ? "Iltimos alifbo belgilari bilan kiriting!" : "Пожалуйста, введите буквы алфавита.";
+      return controller.changeLocal.isFalse ? "Iltimos alifbo belgilari bilan kiriting!" : "Пожалуйста, введите буквы алфавита.";
     } else {
       return null;
     }
@@ -526,9 +526,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
 
   String? _validateEmail(String? value) {
     if (value!.isEmpty) {
-      return _changeLocal ? "E-mail to`ldirilmagan!" : "Электронная почта не может быть пустой!";
+      return controller.changeLocal.isFalse ? "E-mail to`ldirilmagan!" : "Электронная почта не может быть пустой!";
     } else if (!_emailController.text.contains('@')) {
-      return _changeLocal ? "Email manzili noto‘g‘ri" : "Неверный адрес электронной почты";
+      return controller.changeLocal.isFalse ? "Email manzili noto‘g‘ri" : "Неверный адрес электронной почты";
     } else {
       return null;
     }

@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.black.withOpacity(0.8),
         extendBodyBehindAppBar: true,
         // extendBody: true,
-        appBar: const MyAppBar(),
+        appBar: MyAppBar(),
         body: TabBarView(
           children: <Widget>[
             SingleChildScrollView(

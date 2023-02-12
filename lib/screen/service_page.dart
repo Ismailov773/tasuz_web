@@ -7,7 +7,7 @@ import '../components/responsive.dart';
 import '../controller/controller.dart';
 import '../models/catalog_service_item.dart';
 
-final Controller _controller = Get.put(Controller());
+
 
 class ServicePage extends StatefulWidget {
   const ServicePage({Key? key}) : super(key: key);
@@ -18,11 +18,15 @@ class ServicePage extends StatefulWidget {
 
 class _ServicePageState extends State<ServicePage> {
   CatalogServiceItem? catalogServiceItem;
+  final Controller _controller = Get.find();
 
   @override
   void initState() {
     super.initState();
+    // _controller.changeLocale();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,22 +47,24 @@ class _ServicePageState extends State<ServicePage> {
                   fit: BoxFit.contain,
                   alignment: Alignment.center,
                 ),
-                Text('Сервисный центр', style: styleTitle(context)),
+               Obx(() =>  Text(_controller.changeLocal.isFalse? "Servis markazi" :'Сервисный центр', style: styleTitle(context))),
               ],
             ),
             const SizedBox(
               height: 30,
             ),
-            Text(
-              "TAS стремится к высочайшему качеству обслуживания во всех аспектах работы. Наша цель состоит в том, чтобы обеспечить ценность за счет высококачественного ремонта автомобилей, обслуживания клиентов и доступных цен. TAS предлагает комплексные услуги, выходящие за рамки общего ремонта. Мы предлагаем лучший сервис по разумной цене."
-              " От рабочей этики до делового взаимодействия наша цель — всегда быть честными и понимающими. "
-              "Мы ценим наши долгосрочные отношения с клиентами, сообществами, поставщиками и арендодателями.",
+            Obx(() => Text(_controller.changeLocal.isFalse? "TAS ishning barcha jabhalarida yuqori sifatli xizmat ko'rsatishga intiladi. Bizning maqsadimiz - yuqori sifatli avto ta'mirlash, mijozlarga xizmat ko'rsatish va arzon narxlar orqali qiymat berishdir. TAS umumiy ta'mirlashdan tashqari keng qamrovli xizmatlarni taklif etadi. Biz o'rtacha narxda eng yaxshi xizmatni taklif qilamiz."
+                "Mehnat odob-axloqidan biznes aloqalarigacha, bizning maqsadimiz doimo halol va tushunarli bo'lishdir. "
+                "Biz mijozlar, hamjamiyat va yetkazib beruvchilar bilan uzoq muddatli munosabatlarimizni qadrlaymiz." :
+            "TAS стремится к высочайшему качеству обслуживания во всех аспектах работы. Наша цель состоит в том, чтобы обеспечить ценность за счет высококачественного ремонта автомобилей, обслуживания клиентов и доступных цен. TAS предлагает комплексные услуги, выходящие за рамки общего ремонта. Мы предлагаем лучший сервис по разумной цене."
+                " От рабочей этики до делового взаимодействия наша цель — всегда быть честными и понимающими. "
+                "Мы ценим наши долгосрочные отношения с клиентами, сообществами, поставщиками и арендодателями.",
               style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 17,
                   color: Colors.black.withOpacity(0.6)),
               textAlign: TextAlign.center,
-            ),
+            )),
             const SizedBox(
               height: 50,
             ),
@@ -116,7 +122,7 @@ class _ServicePageState extends State<ServicePage> {
                                 const SizedBox(
                                   height: 50,
                                 ),
-                                Text(
+                                Text(_controller.changeLocal.isFalse? catalogServiceItem!.titleuz :
                                   catalogServiceItem!.title,
                                   style: const TextStyle(
                                       color: Colors.black,
@@ -126,7 +132,7 @@ class _ServicePageState extends State<ServicePage> {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                Text(
+                                Text(_controller.changeLocal.isFalse ? catalogServiceItem!.descriptionuz :
                                   catalogServiceItem!.description,
                                   style: const TextStyle(
                                       color: Colors.black,
@@ -136,7 +142,7 @@ class _ServicePageState extends State<ServicePage> {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                Text(
+                                Text(_controller.changeLocal.isFalse ? catalogServiceItem!.descriptionDialoguz :
                                   catalogServiceItem!.descriptionDialog,
                                   style: const TextStyle(
                                       color: Colors.blueGrey,
@@ -179,6 +185,7 @@ class _ServicePageState extends State<ServicePage> {
                                 height: 20,
                               ),
                               Text(
+                                _controller.changeLocal.isFalse? catalogServiceItem!.titleuz :
                                 catalogServiceItem!.title,
                                 style: const TextStyle(
                                     color: Colors.black,
@@ -189,6 +196,7 @@ class _ServicePageState extends State<ServicePage> {
                                 height: 20,
                               ),
                               Text(
+                                _controller.changeLocal.isFalse ? catalogServiceItem!.descriptionuz :
                                 catalogServiceItem!.description,
                                 style: const TextStyle(
                                     color: Colors.black,
@@ -199,6 +207,7 @@ class _ServicePageState extends State<ServicePage> {
                                 height: 20,
                               ),
                               Text(
+                                _controller.changeLocal.isFalse ? catalogServiceItem!.descriptionDialoguz :
                                 catalogServiceItem!.descriptionDialog,
                                 style: const TextStyle(
                                     color: Colors.blueGrey,
@@ -340,7 +349,8 @@ class _ServicePageState extends State<ServicePage> {
                             ),
                             Expanded(
                                 child: Text(
-                                  _controller.listCatalogServiceItem[index].title,
+                                  _controller.changeLocal.isFalse? catalogServiceItem!.titleuz :
+                                  catalogServiceItem!.title,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.black,
@@ -356,8 +366,8 @@ class _ServicePageState extends State<ServicePage> {
                       ),
                       Center(
                         child: Text(
-                          _controller.listCatalogServiceItem[index].description
-                              .toString(),
+                            _controller.changeLocal.isFalse ? catalogServiceItem!.descriptionuz :
+                            catalogServiceItem!.description,
                           textAlign: isMobile(context)
                               ? TextAlign.center
                               : TextAlign.start,
@@ -373,7 +383,7 @@ class _ServicePageState extends State<ServicePage> {
                       const SizedBox(
                         height: 15,
                       ),
-                      Text(
+                      Text(_controller.changeLocal.isFalse ? "Davomini o'qish → " :
                         "Читать далее → ",
                         style: TextStyle(
                             color: isHovered ? Colors.black : Colors.black54,
@@ -394,3 +404,4 @@ class _ServicePageState extends State<ServicePage> {
     );
   }
 }
+

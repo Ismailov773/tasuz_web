@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:tasuz_web/controller/controller.dart';
 import 'package:tasuz_web/screen/googlemap.dart';
 import '../components/responsive.dart';
+
+final Controller _controller = Get.find();
+
+
 
 class AddressPage extends StatelessWidget {
   const AddressPage({
     Key? key,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return (!isMobile(context)) ? const DesktopFooter() : const MobileFooter();
   }
+
 }
 
 class DesktopFooter extends StatelessWidget {
@@ -63,7 +72,7 @@ class DesktopFooter extends StatelessWidget {
                               color: Colors.amberAccent)),
                       const SizedBox(height: 55),
                       Text(
-                        'Офис',
+                        _controller.changeLocal.isFalse ? "Ofis" :'Офис',
                         style: TextStyle(
                             fontSize: isDesktop(context) ? 18 : 14,
                             fontWeight: FontWeight.w800,
