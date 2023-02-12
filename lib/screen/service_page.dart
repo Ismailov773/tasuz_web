@@ -348,9 +348,8 @@ class _ServicePageState extends State<ServicePage> {
                               width: 5,
                             ),
                             Expanded(
-                                child: Text(
-                                  _controller.changeLocal.isFalse? catalogServiceItem!.titleuz :
-                                  catalogServiceItem!.title,
+                                child: Obx(() => Text(_controller.changeLocal.isFalse ? _controller.listCatalogServiceItem[index].titleuz :
+                                _controller.listCatalogServiceItem[index].title,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.black,
@@ -359,15 +358,17 @@ class _ServicePageState extends State<ServicePage> {
                                         ? FontWeight.w900
                                         : FontWeight.bold,
                                   ),
-                                ))
+                                )),
+                            )
                           ]),
                       const SizedBox(
                         height: 20,
                       ),
                       Center(
-                        child: Text(
-                            _controller.changeLocal.isFalse ? catalogServiceItem!.descriptionuz :
-                            catalogServiceItem!.description,
+                        child: Obx(() => Text(_controller.changeLocal.isFalse ? _controller.listCatalogServiceItem[index].descriptionuz
+                            .toString() :
+                        _controller.listCatalogServiceItem[index].description
+                            .toString(),
                           textAlign: isMobile(context)
                               ? TextAlign.center
                               : TextAlign.start,
@@ -378,12 +379,12 @@ class _ServicePageState extends State<ServicePage> {
                             fontSize: isDesktop(context) ? 17 : 9,
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
+                        )),
                       ),
                       const SizedBox(
                         height: 15,
                       ),
-                      Text(_controller.changeLocal.isFalse ? "Davomini o'qish → " :
+                      Text(_controller.changeLocal.isFalse ? "Davomini o`qish → " :
                         "Читать далее → ",
                         style: TextStyle(
                             color: isHovered ? Colors.black : Colors.black54,
