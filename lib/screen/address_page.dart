@@ -9,19 +9,15 @@ import '../components/responsive.dart';
 
 final Controller _controller = Get.find();
 
-
-
 class AddressPage extends StatelessWidget {
   const AddressPage({
     Key? key,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return (!isMobile(context)) ? const DesktopFooter() : const MobileFooter();
   }
-
 }
 
 class DesktopFooter extends StatelessWidget {
@@ -65,28 +61,33 @@ class DesktopFooter extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Контакты',
+                      Obx(() => Text(
+                          _controller.changeLocal.isFalse
+                              ? "Kontaktlar"
+                              : 'Контакты',
                           style: TextStyle(
                               fontSize: isDesktop(context) ? 18 : 14,
                               fontWeight: FontWeight.w800,
-                              color: Colors.amberAccent)),
+                              color: Colors.amberAccent))),
                       const SizedBox(height: 55),
-                      Text(
-                        _controller.changeLocal.isFalse ? "Ofis" :'Офис',
-                        style: TextStyle(
-                            fontSize: isDesktop(context) ? 18 : 14,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white),
-                      ),
+                      Obx(() => Text(
+                            _controller.changeLocal.isFalse ? "Ofis" : 'Офис',
+                            style: TextStyle(
+                                fontSize: isDesktop(context) ? 18 : 14,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white),
+                          )),
                       const SizedBox(height: 20),
-                      Text(
-                        'Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower»',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: isDesktop(context) ? 18 : 14,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white),
-                      ),
+                      Obx(() => Text(
+                            _controller.changeLocal.isFalse
+                                ? "Toshkent, 100084, Yunusobod tumani, A.Temur 95A, «UzOman Tower»"
+                                : 'Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower»',
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                                fontSize: isDesktop(context) ? 18 : 14,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
+                          )),
                       const SizedBox(height: 15),
                       Text(
                         '+998 78 147 00 80',
@@ -159,9 +160,10 @@ class DesktopFooter extends StatelessWidget {
                               highlightColor: Colors.amberAccent,
                               hoverColor: Colors.yellow,
                               style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<
-                                          CircleBorder>(
-                                      const CircleBorder(side: BorderSide.none)))),
+                                  shape:
+                                      MaterialStateProperty.all<CircleBorder>(
+                                          const CircleBorder(
+                                              side: BorderSide.none)))),
                         ],
                       ),
                     ],
@@ -176,21 +178,25 @@ class DesktopFooter extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Сервис',
-                        style: TextStyle(
-                            fontSize: isDesktop(context) ? 18 : 14,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white),
-                      ),
+                      Obx(() => Text(
+                            _controller.changeLocal.isFalse
+                                ? "Servis"
+                                : 'Сервис',
+                            style: TextStyle(
+                                fontSize: isDesktop(context) ? 18 : 14,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white),
+                          )),
                       const SizedBox(height: 20),
-                      Text(
-                        'Ташкент, 100146, Яшнабадский район, массив Панельный, ул. Уйсозлар 23А',
-                        style: TextStyle(
-                            fontSize: isDesktop(context) ? 18 : 14,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white),
-                      ),
+                      Obx(() => Text(
+                            _controller.changeLocal.isFalse
+                                ? "Toshkent, 100146, Yashnobod tumani, Panelniy massiv, Uysozlar 23A  "
+                                : 'Ташкент, 100146, Яшнабадский район, массив Панельный, ул. Уйсозлар 23А',
+                            style: TextStyle(
+                                fontSize: isDesktop(context) ? 18 : 14,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
+                          )),
                       const SizedBox(height: 15),
                       Text(
                         '+998 71 283 00 07',
@@ -312,29 +318,35 @@ class MobileFooter extends StatelessWidget {
                     ? CrossAxisAlignment.start
                     : CrossAxisAlignment.start,
                 children: [
-                  Text('Контакты',
+                  Obx(() => Text(
+                      _controller.changeLocal.isFalse
+                          ? "Kontaktlar"
+                          : 'Контакты',
                       style: TextStyle(
                           fontSize: isDesktop(context) ? 15 : 10,
                           fontWeight: FontWeight.w800,
-                          color: Colors.amberAccent)),
+                          color: Colors.amberAccent))),
                   const SizedBox(height: 20),
-                  Text(
-                    'Офис',
-                    style: TextStyle(
-                        fontSize: isDesktop(context) ? 15 : 10,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.white),
-                  ),
+                  Obx(() => Text(
+                        _controller.changeLocal.isFalse ? "Ofis" : 'Офис',
+                        style: TextStyle(
+                            fontSize: isDesktop(context) ? 15 : 10,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white),
+                      )),
                   const SizedBox(height: 10),
-                  Text(
-                    'Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower»',
-                    textAlign:
-                        isMobile(context) ? TextAlign.start : TextAlign.start,
-                    style: TextStyle(
-                        fontSize: isDesktop(context) ? 15 : 10,
-                        fontWeight: FontWeight.w300,
-                        color: Colors.white),
-                  ),
+                  Obx(() => Text(
+                        _controller.changeLocal.isFalse
+                            ? "Toshkent, 100084, Yunusobod tumani, A.Temur 95A, «UzOman Tower»"
+                            : 'Ташкент, 100084, Юнусабадский район, ул. А.Тимура 95А, «UzOman Tower»',
+                        textAlign: isMobile(context)
+                            ? TextAlign.start
+                            : TextAlign.start,
+                        style: TextStyle(
+                            fontSize: isDesktop(context) ? 15 : 10,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.white),
+                      )),
                   const SizedBox(height: 10),
                   Text(
                     '+998 78 147 00 80',
@@ -362,23 +374,25 @@ class MobileFooter extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 25),
-                Text(
-                  'Сервис',
-                  style: TextStyle(
-                      fontSize: isDesktop(context) ? 15 : 10,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white),
-                ),
+                Obx(() => Text(
+                      _controller.changeLocal.isFalse ? "Servis" : 'Сервис',
+                      style: TextStyle(
+                          fontSize: isDesktop(context) ? 15 : 10,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white),
+                    )),
                 const SizedBox(height: 10),
-                Text(
-                  'Ташкент, 100146, Яшнабадский район, массив Панельный, ул. Уйсозлар 23А',
-                  textAlign:
-                      isMobile(context) ? TextAlign.start : TextAlign.start,
-                  style: TextStyle(
-                      fontSize: isDesktop(context) ? 15 : 10,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white),
-                ),
+                Obx(() => Text(
+                      _controller.changeLocal.isFalse
+                          ? "Toshkent, 100146, Yashnobod tumani, Panelniy massiv, Uysozlar 23A  "
+                          : 'Ташкент, 100146, Яшнабадский район, массив Панельный, ул. Уйсозлар 23А',
+                      textAlign:
+                          isMobile(context) ? TextAlign.start : TextAlign.start,
+                      style: TextStyle(
+                          fontSize: isDesktop(context) ? 15 : 10,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.white),
+                    )),
                 const SizedBox(height: 10),
                 Text(
                   '+998 71 283 00 07',

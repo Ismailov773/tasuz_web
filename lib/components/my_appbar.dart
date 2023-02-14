@@ -16,6 +16,16 @@ List<String> titles = <String>[
   'Адреса',
 ];
 
+List<String> titles2 = <String>[
+  'Bosh',
+  'Kataloglar',
+  'Kredit',
+  'Servis',
+  'Yangiliklar',
+  'Kompaniya haqida',
+  'Manzil',
+];
+
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   const MyAppBar({Key? key}) : super(key: key);
 
@@ -45,12 +55,6 @@ class _MyAppBarState extends State<MyAppBar> {
   void dispose() {
     _controller.homeController.dispose();
     super.dispose();
-  }
-
-  void changeT(bool isfalse){
-    setState(() {
-      _controller.changeLocal.value = isfalse;
-    });
   }
 
   void _initializeController() {
@@ -94,15 +98,10 @@ class _MyAppBarState extends State<MyAppBar> {
               : CrossAxisAlignment.center,
           children: [
             Text(
-              "Поставки спецтехники, оборудования ",
+              _controller.changeLocal.isFalse
+                  ? "Xitoydan O‘zbekistonga maxsus texnika, \nuskunalar va ehtiyot qismlar yetkazib berish."
+                  : "Поставки спецтехники, оборудования \nи запчастей из Китая в Узбекистан ",
               textAlign: isMobile(context) ? TextAlign.center : TextAlign.start,
-              style: TextStyle(
-                fontSize: 13,
-                color: isAppbarCollapsing ? Colors.black : Colors.white,
-              ),
-            ),
-            Text(
-              "и запчастей из Китая в Узбекистан",
               style: TextStyle(
                 fontSize: 13,
                 color: isAppbarCollapsing ? Colors.black : Colors.white,
@@ -148,7 +147,6 @@ class _MyAppBarState extends State<MyAppBar> {
             setState(() {
               // _changeLocal = !_changeLocal;
               _controller.changeLocale();
-              changeT(_controller.changeLocal.value);
             });
           },
           child: Center(
@@ -180,31 +178,59 @@ class _MyAppBarState extends State<MyAppBar> {
         tabs: <Widget>[
           Tab(
             icon: const Icon(Icons.home),
-            text: !isMobile(context) ? titles[0] : null,
+            text: !isMobile(context)
+                ? _controller.changeLocal.isFalse
+                    ? titles2[0]
+                    : titles[0]
+                : null,
           ),
           Tab(
             icon: const Icon(Typicons.th_large_outline),
-            text: !isMobile(context) ? titles[1] : null,
+            text: !isMobile(context)
+                ? _controller.changeLocal.isFalse
+                    ? titles2[1]
+                    : titles[1]
+                : null,
           ),
           Tab(
             icon: const Icon(FontAwesome.calc),
-            text: !isMobile(context) ? titles[2] : null,
+            text: !isMobile(context)
+                ? _controller.changeLocal.isFalse
+                    ? titles2[2]
+                    : titles[2]
+                : null,
           ),
           Tab(
             icon: const Icon(Icons.car_repair),
-            text: !isMobile(context) ? titles[3] : null,
+            text: !isMobile(context)
+                ? _controller.changeLocal.isFalse
+                    ? titles2[3]
+                    : titles[3]
+                : null,
           ),
           Tab(
             icon: const Icon(Typicons.news),
-            text: !isMobile(context) ? titles[4] : null,
+            text: !isMobile(context)
+                ? _controller.changeLocal.isFalse
+                    ? titles2[4]
+                    : titles[4]
+                : null,
           ),
           Tab(
             icon: const Icon(CupertinoIcons.building_2_fill),
-            text: !isMobile(context) ? titles[5] : null,
+            text: !isMobile(context)
+                ? _controller.changeLocal.isFalse
+                    ? titles2[5]
+                    : titles[5]
+                : null,
           ),
           Tab(
             icon: const Icon(CupertinoIcons.map_pin_ellipse),
-            text: !isMobile(context) ? titles[6] : null,
+            text: !isMobile(context)
+                ? _controller.changeLocal.isFalse
+                    ? titles2[6]
+                    : titles[6]
+                : null,
           ),
         ],
       ),

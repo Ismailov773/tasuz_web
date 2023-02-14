@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:tasuz_web/controller/controller.dart';
 import '../components/constants.dart';
 import '../components/responsive.dart';
 
@@ -19,6 +22,7 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
   final CarouselController _controller = CarouselController();
+  final Controller controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +43,12 @@ class _FirstPageState extends State<FirstPage> {
               ),
               items: imgList
                   .map((item) => Center(
-                      child: Image.network(
-                    item,
-                    fit: BoxFit.fill,
-                    height: height,
-                    width: width,
-                  )))
+                          child: Image.network(
+                        item,
+                        fit: BoxFit.fill,
+                        height: height,
+                        width: width,
+                      )))
                   .toList(),
             );
           },
@@ -59,25 +63,31 @@ class _FirstPageState extends State<FirstPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'Поставки  спецтехники,  оборудования и запчастей',
-                  textAlign:
-                      isMobile(context) ? TextAlign.center : TextAlign.center,
-                  style: TextStyle(
-                      fontSize: isMobile(context) ? 25 : 50,
-                      fontWeight: FontWeight.w800,
-                      color: kTextColor),
-                ),
+                Obx(() => Text(
+                      controller.changeLocal.isFalse
+                          ? "Maxsus texnikalar, uskunalar va ehtiyot qismlarni etkazib berish."
+                          : 'Поставки  спецтехники,  оборудования и запчастей',
+                      textAlign: isMobile(context)
+                          ? TextAlign.center
+                          : TextAlign.center,
+                      style: TextStyle(
+                          fontSize: isMobile(context) ? 25 : 50,
+                          fontWeight: FontWeight.w800,
+                          color: kTextColor),
+                    )),
                 const SizedBox(height: 40),
-                Text(
-                  'TAS придерживается своей основной ценности «Взять на себя большую ответственность, действовать с высокой моралью и добиваться больших достижений» и своего корпоративного духа «Строгого, Практичного, Прогрессивного и Креативного», чтобы продолжать двигаться к своей конечной цели.',
-                  textAlign:
-                      isMobile(context) ? TextAlign.center : TextAlign.center,
-                  style: TextStyle(
-                      fontSize: isMobile(context) ? 13 : 22,
-                      fontWeight: FontWeight.w400,
-                      color: kTextColor),
-                ),
+                Obx(() => Text(
+                      controller.changeLocal.isFalse
+                          ? "TAS o‘zining asosiy qadriyatiga sodiq bo‘lib, “Buyuk mas’uliyatni o‘z zimmasiga olish, yuksak axloq bilan ish tutish va katta yutuqlarga erishish” va o‘zining “Qat’iy, Amaliy, Ilg‘or va Ijodkor” korporativ ruhiga, o‘zining yakuniy maqsadi sari olg‘a intilaveradi."
+                          : 'TAS придерживается своей основной ценности «Взять на себя большую ответственность, действовать с высокой моралью и добиваться больших достижений» и своего корпоративного духа «Строгого, Практичного, Прогрессивного и Креативного», чтобы продолжать двигаться к своей конечной цели.',
+                      textAlign: isMobile(context)
+                          ? TextAlign.center
+                          : TextAlign.center,
+                      style: TextStyle(
+                          fontSize: isMobile(context) ? 13 : 22,
+                          fontWeight: FontWeight.w400,
+                          color: kTextColor),
+                    )),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

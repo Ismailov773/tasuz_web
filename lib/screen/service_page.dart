@@ -7,8 +7,6 @@ import '../components/responsive.dart';
 import '../controller/controller.dart';
 import '../models/catalog_service_item.dart';
 
-
-
 class ServicePage extends StatefulWidget {
   const ServicePage({Key? key}) : super(key: key);
 
@@ -25,8 +23,6 @@ class _ServicePageState extends State<ServicePage> {
     super.initState();
     // _controller.changeLocale();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,24 +43,30 @@ class _ServicePageState extends State<ServicePage> {
                   fit: BoxFit.contain,
                   alignment: Alignment.center,
                 ),
-               Obx(() =>  Text(_controller.changeLocal.isFalse? "Servis markazi" :'Сервисный центр', style: styleTitle(context))),
+                Obx(() => Text(
+                    _controller.changeLocal.isFalse
+                        ? "Servis markazi"
+                        : 'Сервисный центр',
+                    style: styleTitle(context))),
               ],
             ),
             const SizedBox(
               height: 30,
             ),
-            Obx(() => Text(_controller.changeLocal.isFalse? "TAS ishning barcha jabhalarida yuqori sifatli xizmat ko'rsatishga intiladi. Bizning maqsadimiz - yuqori sifatli avto ta'mirlash, mijozlarga xizmat ko'rsatish va arzon narxlar orqali qiymat berishdir. TAS umumiy ta'mirlashdan tashqari keng qamrovli xizmatlarni taklif etadi. Biz o'rtacha narxda eng yaxshi xizmatni taklif qilamiz."
-                "Mehnat odob-axloqidan biznes aloqalarigacha, bizning maqsadimiz doimo halol va tushunarli bo'lishdir. "
-                "Biz mijozlar, hamjamiyat va yetkazib beruvchilar bilan uzoq muddatli munosabatlarimizni qadrlaymiz." :
-            "TAS стремится к высочайшему качеству обслуживания во всех аспектах работы. Наша цель состоит в том, чтобы обеспечить ценность за счет высококачественного ремонта автомобилей, обслуживания клиентов и доступных цен. TAS предлагает комплексные услуги, выходящие за рамки общего ремонта. Мы предлагаем лучший сервис по разумной цене."
-                " От рабочей этики до делового взаимодействия наша цель — всегда быть честными и понимающими. "
-                "Мы ценим наши долгосрочные отношения с клиентами, сообществами, поставщиками и арендодателями.",
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 17,
-                  color: Colors.black.withOpacity(0.6)),
-              textAlign: TextAlign.center,
-            )),
+            Obx(() => Text(
+                  _controller.changeLocal.isFalse
+                      ? "TAS ishning barcha jabhalarida yuqori sifatli xizmat ko'rsatishga intiladi. Bizning maqsadimiz - yuqori sifatli avto ta'mirlash, mijozlarga xizmat ko'rsatish va arzon narxlar orqali qiymat berishdir. TAS umumiy ta'mirlashdan tashqari keng qamrovli xizmatlarni taklif etadi. Biz o'rtacha narxda eng yaxshi xizmatni taklif qilamiz."
+                          "Mehnat odob-axloqidan biznes aloqalarigacha, bizning maqsadimiz doimo halol va tushunarli bo'lishdir. "
+                          "Biz mijozlar, hamjamiyat va yetkazib beruvchilar bilan uzoq muddatli munosabatlarimizni qadrlaymiz."
+                      : "TAS стремится к высочайшему качеству обслуживания во всех аспектах работы. Наша цель состоит в том, чтобы обеспечить ценность за счет высококачественного ремонта автомобилей, обслуживания клиентов и доступных цен. TAS предлагает комплексные услуги, выходящие за рамки общего ремонта. Мы предлагаем лучший сервис по разумной цене."
+                          " От рабочей этики до делового взаимодействия наша цель — всегда быть честными и понимающими. "
+                          "Мы ценим наши долгосрочные отношения с клиентами, сообществами, поставщиками и арендодателями.",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 17,
+                      color: Colors.black.withOpacity(0.6)),
+                  textAlign: TextAlign.center,
+                )),
             const SizedBox(
               height: 50,
             ),
@@ -111,8 +113,7 @@ class _ServicePageState extends State<ServicePage> {
                                   children: [
                                     catalogServiceItem!.icon,
                                     IconButton(
-                                        onPressed: () =>
-                                            Navigator.pop(context),
+                                        onPressed: () => Navigator.pop(context),
                                         icon: const Icon(
                                           Icons.cancel_outlined,
                                           size: 30,
@@ -122,8 +123,10 @@ class _ServicePageState extends State<ServicePage> {
                                 const SizedBox(
                                   height: 50,
                                 ),
-                                Text(_controller.changeLocal.isFalse? catalogServiceItem!.titleuz :
-                                  catalogServiceItem!.title,
+                                Text(
+                                  _controller.changeLocal.isFalse
+                                      ? catalogServiceItem!.titleuz
+                                      : catalogServiceItem!.title,
                                   style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 30,
@@ -132,23 +135,31 @@ class _ServicePageState extends State<ServicePage> {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                Text(_controller.changeLocal.isFalse ? catalogServiceItem!.descriptionuz :
-                                  catalogServiceItem!.description,
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold),
-                                ),
+                                Obx(() => Text(
+                                      _controller.changeLocal.isFalse
+                                          ? catalogServiceItem!.descriptionuz
+                                          : catalogServiceItem!.description,
+                                      textAlign: TextAlign.justify,
+                                      style: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    )),
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                Text(_controller.changeLocal.isFalse ? catalogServiceItem!.descriptionDialoguz :
-                                  catalogServiceItem!.descriptionDialog,
-                                  style: const TextStyle(
-                                      color: Colors.blueGrey,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold),
-                                ),
+                                Obx(() => Text(
+                                      _controller.changeLocal.isFalse
+                                          ? catalogServiceItem!
+                                              .descriptionDialoguz
+                                          : catalogServiceItem!
+                                              .descriptionDialog,
+                                      textAlign: TextAlign.justify,
+                                      style: const TextStyle(
+                                          color: Colors.blueGrey,
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
+                                    )),
                               ],
                             ),
                           ),
@@ -184,36 +195,41 @@ class _ServicePageState extends State<ServicePage> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                _controller.changeLocal.isFalse? catalogServiceItem!.titleuz :
-                                catalogServiceItem!.title,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                              Obx(() => Text(
+                                    _controller.changeLocal.isFalse
+                                        ? catalogServiceItem!.titleuz
+                                        : catalogServiceItem!.title,
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                  )),
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                _controller.changeLocal.isFalse ? catalogServiceItem!.descriptionuz :
-                                catalogServiceItem!.description,
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                              Obx(() => Text(
+                                    _controller.changeLocal.isFalse
+                                        ? catalogServiceItem!.descriptionuz
+                                        : catalogServiceItem!.description,
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold),
+                                  )),
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                _controller.changeLocal.isFalse ? catalogServiceItem!.descriptionDialoguz :
-                                catalogServiceItem!.descriptionDialog,
-                                style: const TextStyle(
-                                    color: Colors.blueGrey,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                              Obx(() => Text(
+                                    _controller.changeLocal.isFalse
+                                        ? catalogServiceItem!
+                                            .descriptionDialoguz
+                                        : catalogServiceItem!.descriptionDialog,
+                                    textAlign: TextAlign.justify,
+                                    style: const TextStyle(
+                                        color: Colors.blueGrey,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold),
+                                  )),
                             ],
                           ),
                         ),
@@ -348,44 +364,56 @@ class _ServicePageState extends State<ServicePage> {
                               width: 5,
                             ),
                             Expanded(
-                                child: Obx(() => Text(_controller.changeLocal.isFalse ? _controller.listCatalogServiceItem[index].titleuz :
-                                _controller.listCatalogServiceItem[index].title,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: isDesktop(context) ? 20 : 12,
-                                    fontWeight: isHovered
-                                        ? FontWeight.w900
-                                        : FontWeight.bold,
-                                  ),
-                                )),
+                              child: Obx(() => Text(
+                                    _controller.changeLocal.isFalse
+                                        ? _controller
+                                            .listCatalogServiceItem[index]
+                                            .titleuz
+                                        : _controller
+                                            .listCatalogServiceItem[index]
+                                            .title,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: isDesktop(context) ? 20 : 12,
+                                      fontWeight: isHovered
+                                          ? FontWeight.w900
+                                          : FontWeight.bold,
+                                    ),
+                                  )),
                             )
                           ]),
                       const SizedBox(
                         height: 20,
                       ),
                       Center(
-                        child: Obx(() => Text(_controller.changeLocal.isFalse ? _controller.listCatalogServiceItem[index].descriptionuz
-                            .toString() :
-                        _controller.listCatalogServiceItem[index].description
-                            .toString(),
-                          textAlign: isMobile(context)
-                              ? TextAlign.center
-                              : TextAlign.start,
-                          style: TextStyle(
-                            color: isHovered
-                                ? Colors.lightBlueAccent
-                                : Colors.black54,
-                            fontSize: isDesktop(context) ? 17 : 9,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )),
+                        child: Obx(() => Text(
+                              _controller.changeLocal.isFalse
+                                  ? _controller.listCatalogServiceItem[index]
+                                      .descriptionuz
+                                      .toString()
+                                  : _controller
+                                      .listCatalogServiceItem[index].description
+                                      .toString(),
+                              textAlign: isMobile(context)
+                                  ? TextAlign.justify
+                                  : TextAlign.justify,
+                              style: TextStyle(
+                                color: isHovered
+                                    ? Colors.lightBlueAccent
+                                    : Colors.black54,
+                                fontSize: isDesktop(context) ? 17 : 9,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )),
                       ),
                       const SizedBox(
                         height: 15,
                       ),
-                      Text(_controller.changeLocal.isFalse ? "Davomini o`qish → " :
-                        "Читать далее → ",
+                      Text(
+                        _controller.changeLocal.isFalse
+                            ? "Davomini o`qish → "
+                            : "Читать далее → ",
                         style: TextStyle(
                             color: isHovered ? Colors.black : Colors.black54,
                             fontSize: isDesktop(context) ? 17 : 10,
@@ -405,4 +433,3 @@ class _ServicePageState extends State<ServicePage> {
     );
   }
 }
-

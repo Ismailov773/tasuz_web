@@ -17,8 +17,6 @@ class CatalogSelectPage extends StatefulWidget {
 }
 
 class _CatalogSelectPageState extends State<CatalogSelectPage> {
-  bool _changeLocal = false;
-
   final Controller controller = Get.find();
   var numberFormat = NumberFormat();
   final _formKey = GlobalKey<FormState>();
@@ -64,7 +62,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(controller.changeLocal.isFalse ? "Sizning tanlovingiz!" :"Ваше выбор!"),
+        title: Text(controller.changeLocal.isFalse
+            ? "Sizning tanlovingiz!"
+            : "Ваше выбор!"),
         centerTitle: true,
         actions: [
           const SizedBox(
@@ -75,7 +75,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
             onPressed: () {
               showdialog();
             },
-            label: Text(_changeLocal ? "Buyurtma qilish" : "Заказать"),
+            label: Text(controller.changeLocal.isFalse
+                ? "Buyurtma qilish"
+                : "Заказать"),
             style: ButtonStyle(
               textStyle: MaterialStateProperty.all(
                   TextStyle(fontSize: isMobile(context) ? 15 : 20)),
@@ -97,7 +99,7 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
             onPressed: () {
               Get.to(CreditPage());
             },
-            label: Text(_changeLocal ? "Kredit" : "Кредит"),
+            label: Text(controller.changeLocal.isFalse ? "Kredit" : "Кредит"),
             style: ButtonStyle(
               textStyle: MaterialStateProperty.all(
                   TextStyle(fontSize: isMobile(context) ? 15 : 20)),
@@ -123,11 +125,14 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
               });
             },
             child: Center(
-              child: Text(
-                controller.changeLocal.isFalse ? 'UZ' : 'RU',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.blue),
-              ),
+              child: Obx(() => Text(
+                    controller.changeLocal.isFalse ? 'UZ' : 'RU',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue),
+                  )),
             ),
           ),
           const SizedBox(
@@ -164,7 +169,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          controller.changeLocal.isFalse ? "model: " : "модель: ",
+                          controller.changeLocal.isFalse
+                              ? "model: "
+                              : "модель: ",
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: isDesktop(context) ? 17 : 12,
@@ -187,7 +194,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          controller.changeLocal.isFalse ? "boshlang'ich narxi: " : "цены от: ",
+                          controller.changeLocal.isFalse
+                              ? "boshlang'ich narxi: "
+                              : "цены от: ",
                           style: TextStyle(
                               color: Colors.black54,
                               fontSize: isDesktop(context) ? 17 : 12,
@@ -223,7 +232,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                       fit: BoxFit.fill,
                     ),
                     Text(
-                      controller.changeLocal.isFalse ? "Tavsifi: " : "Описание: ",
+                      controller.changeLocal.isFalse
+                          ? "Tavsifi: "
+                          : "Описание: ",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           color: Colors.black,
@@ -253,7 +264,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
               child: Column(
                 children: [
                   Text(
-                    controller.changeLocal.isFalse ? "Xarakteristikasi: " : "Характеристика: ",
+                    controller.changeLocal.isFalse
+                        ? "Xarakteristikasi: "
+                        : "Характеристика: ",
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: isDesktop(context) ? 20 : 10,
@@ -370,7 +383,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                             },
                             controller: _nameController,
                             decoration: InputDecoration(
-                              labelText: controller.changeLocal.isFalse ? "F.I.SH." : "Ф.И.О. ",
+                              labelText: controller.changeLocal.isFalse
+                                  ? "F.I.SH."
+                                  : "Ф.И.О. ",
                               // hintText: "What do people call you?",
                               prefixIcon: const Icon(Icons.person),
                               suffixIcon: GestureDetector(
@@ -409,7 +424,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                             },
                             controller: _phoneController,
                             decoration: InputDecoration(
-                              labelText: controller.changeLocal.isFalse ? "Telefon raqamingiz" : "Номер телефона ",
+                              labelText: controller.changeLocal.isFalse
+                                  ? "Telefon raqamingiz"
+                                  : "Номер телефона ",
                               prefixIcon: const Icon(Icons.call),
                               prefixText: "+998 ",
                               suffixIcon: GestureDetector(
@@ -436,7 +453,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                             inputFormatters: [maskFormatter],
                             validator: (value) => _validatePhoneNumber(value!)
                                 ? null
-                                : controller.changeLocal.isFalse ? "Tel raqamingizni kiriting" : "Заполните номер телефона",
+                                : controller.changeLocal.isFalse
+                                    ? "Tel raqamingizni kiriting"
+                                    : "Заполните номер телефона",
                             onSaved: (value) => newUser.phone = value,
                           ),
                           const SizedBox(
@@ -446,7 +465,9 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                             focusNode: _emailFocus,
                             controller: _emailController,
                             decoration: InputDecoration(
-                              labelText: controller.changeLocal.isFalse ? "E-mail" : "Эл.почта ",
+                              labelText: controller.changeLocal.isFalse
+                                  ? "E-mail"
+                                  : "Эл.почта ",
                               icon: Icon(Icons.mail),
                             ),
                             keyboardType: TextInputType.emailAddress,
@@ -461,8 +482,10 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
                               style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
                                       Colors.yellow.shade400)),
-                              child: Text(controller.changeLocal.isFalse ? "Buyurtma berish!":
-                                "Заказ звонка!",
+                              child: Text(
+                                controller.changeLocal.isFalse
+                                    ? "Buyurtma berish!"
+                                    : "Заказ звонка!",
                                 style: TextStyle(fontSize: 20),
                               ))
                         ],
@@ -489,7 +512,10 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
         print("Email: ${_emailController.text}");
       }
     } else {
-      _showMessage(message: controller.changeLocal.isFalse ? "Forma to`liqmas! Iltimos, ko'rib chiqing va to'g'rilang!" : "Форма недействительна! Пожалуйста, просмотрите и исправьте!");
+      _showMessage(
+          message: controller.changeLocal.isFalse
+              ? "Forma to`liqmas! Iltimos, ko'rib chiqing va to'g'rilang!"
+              : "Форма недействительна! Пожалуйста, просмотрите и исправьте!");
     }
   }
 
@@ -511,9 +537,13 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
   String? _validateName(String? value) {
     final nameExp = RegExp(r"^[A-Za-z]+$");
     if (value!.isEmpty) {
-      return controller.changeLocal.isFalse ? "F.I.SH. to`ldirilmagan!" :  "Ф.И.О. не заполнено!";
+      return controller.changeLocal.isFalse
+          ? "F.I.SH. to`ldirilmagan!"
+          : "Ф.И.О. не заполнено!";
     } else if (nameExp.hasMatch(value)) {
-      return controller.changeLocal.isFalse ? "Iltimos alifbo belgilari bilan kiriting!" : "Пожалуйста, введите буквы алфавита.";
+      return controller.changeLocal.isFalse
+          ? "Iltimos alifbo belgilari bilan kiriting!"
+          : "Пожалуйста, введите буквы алфавита.";
     } else {
       return null;
     }
@@ -526,9 +556,13 @@ class _CatalogSelectPageState extends State<CatalogSelectPage> {
 
   String? _validateEmail(String? value) {
     if (value!.isEmpty) {
-      return controller.changeLocal.isFalse ? "E-mail to`ldirilmagan!" : "Электронная почта не может быть пустой!";
+      return controller.changeLocal.isFalse
+          ? "E-mail to`ldirilmagan!"
+          : "Электронная почта не может быть пустой!";
     } else if (!_emailController.text.contains('@')) {
-      return controller.changeLocal.isFalse ? "Email manzili noto‘g‘ri" : "Неверный адрес электронной почты";
+      return controller.changeLocal.isFalse
+          ? "Email manzili noto‘g‘ri"
+          : "Неверный адрес электронной почты";
     } else {
       return null;
     }

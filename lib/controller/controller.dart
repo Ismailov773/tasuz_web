@@ -16,9 +16,7 @@ class Controller extends GetxController {
   List<Section> listSection = <Section>[].obs;
   List<ModelSet> listModelSet = <ModelSet>[].obs;
   List<OptionSet> listOptionSet = <OptionSet>[].obs;
-  final count = 0.obs;
 
-  increment() => count.value++;
   ModelSet? modelSet;
   OptionSet? optionSet;
 
@@ -164,166 +162,179 @@ class Controller extends GetxController {
             " simlarni, ulagichlarni, vilkalarni almashtirish; simlar bilan bog'liq muammolarni bartaraf etish va boshqalar.");
 
     CatalogServiceItem catalogServiceItem6 = CatalogServiceItem(
-        icon: const ImageIcon(
-          AssetImage('assets/images/service/6.png'),
-          size: 60,
-        ),
-        title: "Ремонт КПП",
-        titleuz: "Uzatish qutisini ta'mirlash",
-        description:
-            "Проверка работоспособности АКПП и МКПП, определить неисправность коробки или другого "
-            "механизма.",
-        descriptionuz: "Avtomatik uzatish va mexanik uzatishning ishlashini tekshirish, "
-            "qutining yoki boshqa mexanizmning noto'g'ri ishlashini aniqlash.",
-        imageDialog: Image.asset(
-          'assets/images/6.jpeg',
-          fit: BoxFit.contain,
-        ),
-        descriptionDialog:
-            "Выполнение ремонта поделятся на фазы: демонтаж, разборка с дефекацией узлов механизма, "
-            "устранение дефектов, сборка и монтаж, выполнение необходимых регулировок сцепления.",
-        descriptionDialoguz: "Ta'mirlash bosqichlarga bo'linadi: demontaj, mexanizm komponentlarini "
-            "defekatsiya qilish bilan demontaj qilish, nuqsonlarni bartaraf etish, yig'ish va o'rnatish,"
-            " debriyajni kerakli sozlashlarni amalga oshirish.",
+      icon: const ImageIcon(
+        AssetImage('assets/images/service/6.png'),
+        size: 60,
+      ),
+      title: "Ремонт КПП",
+      titleuz: "Uzatish qutisini ta'mirlash",
+      description:
+          "Проверка работоспособности АКПП и МКПП, определить неисправность коробки или другого "
+          "механизма.",
+      descriptionuz:
+          "Avtomatik uzatish va mexanik uzatishning ishlashini tekshirish, "
+          "qutining yoki boshqa mexanizmning noto'g'ri ishlashini aniqlash.",
+      imageDialog: Image.asset(
+        'assets/images/6.jpeg',
+        fit: BoxFit.contain,
+      ),
+      descriptionDialog:
+          "Выполнение ремонта поделятся на фазы: демонтаж, разборка с дефекацией узлов механизма, "
+          "устранение дефектов, сборка и монтаж, выполнение необходимых регулировок сцепления.",
+      descriptionDialoguz:
+          "Ta'mirlash bosqichlarga bo'linadi: demontaj, mexanizm komponentlarini "
+          "defekatsiya qilish bilan demontaj qilish, nuqsonlarni bartaraf etish, yig'ish va o'rnatish,"
+          " debriyajni kerakli sozlashlarni amalga oshirish.",
     );
 
     CatalogServiceItem catalogServiceItem7 = CatalogServiceItem(
-        icon: const ImageIcon(
-          AssetImage('assets/images/service/7.png'),
-          size: 60,
-        ),
-        title: "Ремонт тормозной системы",
-        titleuz: "Tormoz tizimini ta'mirlash",
-        description:
-            "Ремонт тормозных механизмов колесной базы при утечки жидкостей, изнашевание наклодок "
-            "или колодок.",
-        descriptionuz: "Suyuqlikning oqishi, prokladkalar yoki prokladkalarning eskirishi holatlarida "
-            "g'ildirak bazasi tormoz mexanizmlarini ta'mirlash.",
-        imageDialog: Image.asset(
-          'assets/images/7.jpeg',
-          fit: BoxFit.contain,
-        ),
-        descriptionDialog:
-            "Типы ремонтных работ по ходовой части: замена передних и задних тормозных колодок, "
-            "задних накладок, колодок, шланговые трубки, ремонт усилителя тормозов.",
-        descriptionDialoguz: "Yurish moslamalarida ta'mirlash ishlarining turlari: "
-            "old va orqa tormoz prokladkalarini, orqa prokladkalarni, prokladkalarni, "
-            "shlang quvurlarini almashtirish, tormoz kuchaytirgichini ta'mirlash.",
+      icon: const ImageIcon(
+        AssetImage('assets/images/service/7.png'),
+        size: 60,
+      ),
+      title: "Ремонт тормозной системы",
+      titleuz: "Tormoz tizimini ta'mirlash",
+      description:
+          "Ремонт тормозных механизмов колесной базы при утечки жидкостей, изнашевание наклодок "
+          "или колодок.",
+      descriptionuz:
+          "Suyuqlikning oqishi, prokladkalar yoki prokladkalarning eskirishi holatlarida "
+          "g'ildirak bazasi tormoz mexanizmlarini ta'mirlash.",
+      imageDialog: Image.asset(
+        'assets/images/7.jpeg',
+        fit: BoxFit.contain,
+      ),
+      descriptionDialog:
+          "Типы ремонтных работ по ходовой части: замена передних и задних тормозных колодок, "
+          "задних накладок, колодок, шланговые трубки, ремонт усилителя тормозов.",
+      descriptionDialoguz:
+          "Yurish moslamalarida ta'mirlash ishlarining turlari: "
+          "old va orqa tormoz prokladkalarini, orqa prokladkalarni, prokladkalarni, "
+          "shlang quvurlarini almashtirish, tormoz kuchaytirgichini ta'mirlash.",
     );
 
     CatalogServiceItem catalogServiceItem8 = CatalogServiceItem(
-        icon: const ImageIcon(
-          AssetImage('assets/images/service/8.png'),
-          size: 60,
-        ),
-        title: "Ремонт ходовой части",
-        titleuz: "Yurish qismini ta'mirlash",
-        description:
-            "Полный анализ работоспособности ходовой части машины и выявление все имеющиеся "
-            "неполадки и поломки.",
-        descriptionuz: "Mashinaning yurish moslamasining ishlashini to'liq tahlil qilish "
-            "va barcha mavjud muammolar va buzilishlarni aniqlash.",
-        imageDialog: Image.asset(
-          'assets/images/8.jpeg',
-          fit: BoxFit.contain,
-        ),
-        descriptionDialog:
-            "Типы ремонтных работ по ходовой части: протяжка соединений подвесок, регулировка "
-            "развала и схождения. Замена механизмов и узлов: пружин, опор, наконечников рулевой тяги и тд",
-        descriptionDialoguz: "Yurish qismida ta'mirlash ishlarining turlari: "
-            "osma ulanishlarini cho`zish, kamber va konvergentsiyani sozlash. "
-            "Mexanizmlar va agregatlarni almashtirish: prujinalar, tayanchlar, rul tayog'i uchlari va boshqalar.",
+      icon: const ImageIcon(
+        AssetImage('assets/images/service/8.png'),
+        size: 60,
+      ),
+      title: "Ремонт ходовой части",
+      titleuz: "Yurish qismini ta'mirlash",
+      description:
+          "Полный анализ работоспособности ходовой части машины и выявление все имеющиеся "
+          "неполадки и поломки.",
+      descriptionuz:
+          "Mashinaning yurish moslamasining ishlashini to'liq tahlil qilish "
+          "va barcha mavjud muammolar va buzilishlarni aniqlash.",
+      imageDialog: Image.asset(
+        'assets/images/8.jpeg',
+        fit: BoxFit.contain,
+      ),
+      descriptionDialog:
+          "Типы ремонтных работ по ходовой части: протяжка соединений подвесок, регулировка "
+          "развала и схождения. Замена механизмов и узлов: пружин, опор, наконечников рулевой тяги и тд",
+      descriptionDialoguz: "Yurish qismida ta'mirlash ishlarining turlari: "
+          "osma ulanishlarini cho`zish, kamber va konvergentsiyani sozlash. "
+          "Mexanizmlar va agregatlarni almashtirish: prujinalar, tayanchlar, rul tayog'i uchlari va boshqalar.",
     );
 
     CatalogServiceItem catalogServiceItem9 = CatalogServiceItem(
-        icon: const ImageIcon(
-          AssetImage('assets/images/service/9.png'),
-          size: 60,
-        ),
-        title: "Ремонт топливных систем",
-        titleuz: "Yoqilg'i tizimlarini ta'mirlash",
-        description:
-            "Проверка и ремонт системы питания двигателя, исправность насосных фильтров.",
-        descriptionuz: "Dvigatel quvvat tizimini va nasos filtrlarining to'g'ri ishlashini tekshirish va ta'mirlash.",
-        imageDialog: Image.asset(
-          'assets/images/9.jpeg',
-          fit: BoxFit.contain,
-        ),
-        descriptionDialog:
-            "Услуги по ремонту топливных систем: промывка и замена форсунок, электробензонасоса или "
-            "воздушного фильтра, промывка расходомера воздуха.",
-        descriptionDialoguz: "Yoqilg'i tizimini ta'mirlash xizmatlari: injektorlarni, "
-            "elektr yonilg'i pompasini yoki havo filtrini yuvish va almashtirish, "
-            "havo oqimi o'lchagichni yuvish.",
+      icon: const ImageIcon(
+        AssetImage('assets/images/service/9.png'),
+        size: 60,
+      ),
+      title: "Ремонт топливных систем",
+      titleuz: "Yoqilg'i tizimlarini ta'mirlash",
+      description:
+          "Проверка и ремонт системы питания двигателя, исправность насосных фильтров.",
+      descriptionuz:
+          "Dvigatel quvvat tizimini va nasos filtrlarining to'g'ri ishlashini tekshirish va ta'mirlash.",
+      imageDialog: Image.asset(
+        'assets/images/9.jpeg',
+        fit: BoxFit.contain,
+      ),
+      descriptionDialog:
+          "Услуги по ремонту топливных систем: промывка и замена форсунок, электробензонасоса или "
+          "воздушного фильтра, промывка расходомера воздуха.",
+      descriptionDialoguz:
+          "Yoqilg'i tizimini ta'mirlash xizmatlari: injektorlarni, "
+          "elektr yonilg'i pompasini yoki havo filtrini yuvish va almashtirish, "
+          "havo oqimi o'lchagichni yuvish.",
     );
 
     CatalogServiceItem catalogServiceItem10 = CatalogServiceItem(
-        icon: const ImageIcon(
-          AssetImage('assets/images/service/10.png'),
-          size: 60,
-        ),
-        title: "Ремонт двигателей",
-        titleuz: "Dvigatelni ta'mirlash",
-        description:
-            "Диагностика силового агрегата транспортного средства с исправлен исправлением "
-            "неисправностей.",
-        descriptionuz: "Avtomobilning quvvat blokining diagnostikasi kuchli xatolarni tuzatish bilan.",
-        imageDialog: Image.asset(
-          'assets/images/10.jpeg',
-          fit: BoxFit.contain,
-        ),
-        descriptionDialog:
-            "Типы ремонтных работ в двигателе: диагностика, капремонт, замена свечей, сальников, "
-            "поршневых колец, гофры, натяжного ролика ГРМ, замеры компрессии и давления масла.",
-        descriptionDialoguz: "Dvigatelda ta'mirlash ishlarining turlari: diagnostika, "
-            "kapital ta'mirlash, svechalarni, muhrlarni, piston halqalarini, "
-            "gofrirovkalarni almashtirish, gaz taqsimlash mexanizmi kuchlanish rolikini, "
-            "siqish va yog' bosimini o'lchash.",
+      icon: const ImageIcon(
+        AssetImage('assets/images/service/10.png'),
+        size: 60,
+      ),
+      title: "Ремонт двигателей",
+      titleuz: "Dvigatelni ta'mirlash",
+      description:
+          "Диагностика силового агрегата транспортного средства с исправлен исправлением "
+          "неисправностей.",
+      descriptionuz:
+          "Avtomobilning quvvat blokining diagnostikasi kuchli xatolarni tuzatish bilan.",
+      imageDialog: Image.asset(
+        'assets/images/10.jpeg',
+        fit: BoxFit.contain,
+      ),
+      descriptionDialog:
+          "Типы ремонтных работ в двигателе: диагностика, капремонт, замена свечей, сальников, "
+          "поршневых колец, гофры, натяжного ролика ГРМ, замеры компрессии и давления масла.",
+      descriptionDialoguz:
+          "Dvigatelda ta'mirlash ishlarining turlari: diagnostika, "
+          "kapital ta'mirlash, svechalarni, muhrlarni, piston halqalarini, "
+          "gofrirovkalarni almashtirish, gaz taqsimlash mexanizmi kuchlanish rolikini, "
+          "siqish va yog' bosimini o'lchash.",
     );
 
     CatalogServiceItem catalogServiceItem11 = CatalogServiceItem(
-        icon: const ImageIcon(
-          AssetImage('assets/images/service/11.png'),
-          size: 60,
-        ),
-        title: "Проведение комплексного ТО",
-        titleuz: "Kompleks texnik xizmat ko'rsatishni amalga oshirish",
-        description:
-            "Плановое ТО включает в себя работы, которые необходимо проводить в строго определенный "
-            "срок.",
-        descriptionuz: "Rejali texnik xizmat ko'rsatish qat'iy belgilangan vaqtda "
-            "bajarilishi kerak bo'lgan ishlarni o'z ichiga oladi.",
-        imageDialog: Image.asset(
-          'assets/images/11.jpeg',
-          fit: BoxFit.contain,
-        ),
-        descriptionDialog:
-            "Подробная проверка блоков с целью выявить изменение пробега и определить его реальное "
-            "значение, сканирование всех электронных блоков.",
-        descriptionDialoguz: "Kilometrning o'zgarishini aniqlash va uning haqiqiy qiymatini aniqlash "
-            "uchun bloklarni batafsil tekshirish, barcha elektron bloklarni skanerlash",
+      icon: const ImageIcon(
+        AssetImage('assets/images/service/11.png'),
+        size: 60,
+      ),
+      title: "Проведение комплексного ТО",
+      titleuz: "Kompleks texnik xizmat ko'rsatishni amalga oshirish",
+      description:
+          "Плановое ТО включает в себя работы, которые необходимо проводить в строго определенный "
+          "срок.",
+      descriptionuz:
+          "Rejali texnik xizmat ko'rsatish qat'iy belgilangan vaqtda "
+          "bajarilishi kerak bo'lgan ishlarni o'z ichiga oladi.",
+      imageDialog: Image.asset(
+        'assets/images/11.jpeg',
+        fit: BoxFit.contain,
+      ),
+      descriptionDialog:
+          "Подробная проверка блоков с целью выявить изменение пробега и определить его реальное "
+          "значение, сканирование всех электронных блоков.",
+      descriptionDialoguz:
+          "Kilometrning o'zgarishini aniqlash va uning haqiqiy qiymatini aniqlash "
+          "uchun bloklarni batafsil tekshirish, barcha elektron bloklarni skanerlash",
     );
 
     CatalogServiceItem catalogServiceItem12 = CatalogServiceItem(
-        icon: const ImageIcon(
-          AssetImage('assets/images/service/12.png'),
-          size: 60,
-        ),
-        title: "Компьютерная диагностика",
-        titleuz: "Kompyuter diagnostikasi",
-        description:
-            "Это позволит избежать не нужной замены масла, промывки гидроблока или чистки соленоида.",
-        descriptionuz: "Bu keraksiz yog' almashinuvini, gidroblokni yuvishni yoki solenoidni tozalashni oldini oladi.",
-        imageDialog: Image.asset(
-          'assets/images/12.jpeg',
-          fit: BoxFit.contain,
-        ),
-        descriptionDialog:
-            "Сбор анамнеза, чтение имеющихся и сохранённых ошибок, просмотр потока данных, "
-            "логирование данных «в движении», опрос и сопоставление, тесты исполнительных механизмов и т.д.",
-        descriptionDialoguz: "Tarixni olish, mavjud va saqlangan xatolarni o'qish, "
-            "ma'lumotlar oqimini ko'rish, 'harakatdagi' ma'lumotlarni jurnalga kiritish, "
-            "so'roq qilish va taqqoslash, aktuatorlarning sinovlari va boshqalar.",
+      icon: const ImageIcon(
+        AssetImage('assets/images/service/12.png'),
+        size: 60,
+      ),
+      title: "Компьютерная диагностика",
+      titleuz: "Kompyuter diagnostikasi",
+      description:
+          "Это позволит избежать не нужной замены масла, промывки гидроблока или чистки соленоида.",
+      descriptionuz:
+          "Bu keraksiz yog' almashinuvini, gidroblokni yuvishni yoki solenoidni tozalashni oldini oladi.",
+      imageDialog: Image.asset(
+        'assets/images/12.jpeg',
+        fit: BoxFit.contain,
+      ),
+      descriptionDialog:
+          "Сбор анамнеза, чтение имеющихся и сохранённых ошибок, просмотр потока данных, "
+          "логирование данных «в движении», опрос и сопоставление, тесты исполнительных механизмов и т.д.",
+      descriptionDialoguz:
+          "Tarixni olish, mavjud va saqlangan xatolarni o'qish, "
+          "ma'lumotlar oqimini ko'rish, 'harakatdagi' ma'lumotlarni jurnalga kiritish, "
+          "so'roq qilish va taqqoslash, aktuatorlarning sinovlari va boshqalar.",
     );
 
     listCatalogServiceItem = <CatalogServiceItem>[

@@ -41,8 +41,8 @@ class HomePage extends StatelessWidget {
             ),
             SingleChildScrollView(
               controller: _controller.homeController,
-              child: Container(
-                margin: const EdgeInsets.only(top: 114),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 114),
                 // height: height,
                 child: const CatalogPage(),
               ),
