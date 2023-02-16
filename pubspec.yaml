@@ -96,6 +96,7 @@ flutter:
     - assets/images/12.jpeg
     - assets/images/tool.png
     - assets/images/tassvg.svg
+    - assets/images/logoTasorigin.png
     - assets/images/bg2.jpeg
     - assets/images/bg3.png
     - assets/images/bg4.jpeg
@@ -115,6 +116,26 @@ flutter:
     - assets/images/service/10.png
     - assets/images/service/11.png
     - assets/images/service/12.png
+    - assets/images/partners/foreigncomp1.png
+    - assets/images/partners/foreigncomp2.png
+    - assets/images/partners/foreigncomp3.png
+    - assets/images/partners/foreigncomp4.png
+    - assets/images/partners/incomp1.png
+    - assets/images/partners/incomp2.png
+    - assets/images/partners/incomp3.png
+    - assets/images/partners/incomp4.png
+    - assets/images/partners/incomp5.png
+    - assets/images/partners/incomp6.png
+    - assets/images/partners/incomp7.png
+    - assets/images/partners/incomp8.png
+    - assets/images/partners/incomp9.png
+    - assets/images/partners/incomp10.png
+    - assets/images/partners/incomp11.png
+    - assets/images/partners/incomp12.png
+    - assets/images/partners/incomp13.png
+    - assets/images/partners/incomp14.png
+    - assets/images/partners/leasingcomp1.png
+    - assets/images/partners/leasingcomp2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

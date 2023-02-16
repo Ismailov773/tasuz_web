@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:get/get.dart';
@@ -9,7 +10,7 @@ import 'package:tasuz_web/controller/controller.dart';
 List<String> titles = <String>[
   'Главное',
   'Каталоги',
-  'Кредит',
+  'Партнеры',
   'Сервис',
   'Новости',
   'О компании',
@@ -19,7 +20,7 @@ List<String> titles = <String>[
 List<String> titles2 = <String>[
   'Bosh',
   'Kataloglar',
-  'Kredit',
+  'Hamkorlar',
   'Servis',
   'Yangiliklar',
   'Kompaniya haqida',
@@ -80,12 +81,12 @@ class _MyAppBarState extends State<MyAppBar> {
       surfaceTintColor: Colors.amberAccent,
       backgroundColor:
           isAppbarCollapsing ? Colors.yellow.shade400 : Colors.transparent,
-      leadingWidth: 150,
+      leadingWidth: 100,
       leading: Container(
         padding: const EdgeInsets.only(right: 15, left: 15, top: 5),
         child: Image.asset(
-          'assets/images/tss.png',
-          width: MediaQuery.of(context).size.width / 2,
+          'assets/images/logoTasorigin.png',
+          color: isAppbarCollapsing ?Colors.black :Colors.yellow,
           fit: BoxFit.fill,
         ),
       ),
@@ -193,7 +194,7 @@ class _MyAppBarState extends State<MyAppBar> {
                 : null,
           ),
           Tab(
-            icon: const Icon(FontAwesome.calc),
+            icon: const Icon(FontAwesome5.people_arrows),
             text: !isMobile(context)
                 ? _controller.changeLocal.isFalse
                     ? titles2[2]

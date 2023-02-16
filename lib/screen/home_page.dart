@@ -6,6 +6,7 @@ import 'package:tasuz_web/screen/address_page.dart';
 import 'package:tasuz_web/screen/first_page.dart';
 import 'package:tasuz_web/screen/catalog_page.dart';
 import 'package:tasuz_web/screen/news_page.dart';
+import 'package:tasuz_web/screen/partners_page.dart';
 import 'package:tasuz_web/screen/service_page.dart';
 import '../controller/controller.dart';
 import 'credit_page.dart';
@@ -32,6 +33,7 @@ class HomePage extends StatelessWidget {
                 children: const [
                   FirstPage(),
                   CatalogPage(),
+                  PartnersPage(),
                   ServicePage(),
                   NewsPage(),
                   AboutCompanyPage(),
@@ -47,9 +49,12 @@ class HomePage extends StatelessWidget {
                 child: const CatalogPage(),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 114),
-              child: CreditPage(),
+            SingleChildScrollView(
+              controller: _controller.homeController,
+              child: const Padding(
+                padding: EdgeInsets.only(top: 114),
+                child: PartnersPage(),
+              ),
             ),
             SingleChildScrollView(
               padding: const EdgeInsets.only(top: 114),

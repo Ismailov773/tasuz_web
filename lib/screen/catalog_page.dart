@@ -153,7 +153,7 @@ class _CatalogPageState extends State<CatalogPage> {
                             label: Obx(() => Text(
                                 _controller.changeLocal.isFalse
                                     ? uniquelist[index].nameuz!
-                                    : uniquelist[index].name!)),
+                                    : uniquelist[index].name!, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),)),
                           )),
                 ),
                 const SizedBox(
