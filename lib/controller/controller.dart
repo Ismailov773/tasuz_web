@@ -11,11 +11,11 @@ import '../service/apiconnect.dart';
 class Controller extends GetxController {
   final ScrollController homeController = ScrollController();
 
-  List<Producer> listProducer = <Producer>[].obs;
-  List<NewsItem> listNewsItem = <NewsItem>[].obs;
-  List<Section> listSection = <Section>[].obs;
-  List<ModelSet> listModelSet = <ModelSet>[].obs;
-  List<OptionSet> listOptionSet = <OptionSet>[].obs;
+  var listProducer = <Producer>[].obs;
+  var listNewsItem = <NewsItem>[].obs;
+  var listSection = <Section>[].obs;
+  var listModelSet = <ModelSet>[].obs;
+  var listOptionSet = <OptionSet>[].obs;
 
   ModelSet? modelSet;
   OptionSet? optionSet;
@@ -366,10 +366,10 @@ class Controller extends GetxController {
   }
 
   fetchProducer() async {
-    listProducer = await _apiConnector.getProducer();
+    listProducer.value = await _apiConnector.getProducer();
   }
 
   fetchNews() async {
-    listNewsItem = await _apiConnector.getNews();
+    listNewsItem.value = await _apiConnector.getNews();
   }
 }

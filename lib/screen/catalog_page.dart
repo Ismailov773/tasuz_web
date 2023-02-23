@@ -34,6 +34,11 @@ class _CatalogPageState extends State<CatalogPage> {
   void initState() {
     super.initState();
 
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
     for (var element in _controller.listProducer) {
       for (var element in element.modelSet!) {
         int i = _controller.listSection
@@ -65,22 +70,19 @@ class _CatalogPageState extends State<CatalogPage> {
     uniquelist = _controller.listSection
         .where((section) => seen.add(section.name!))
         .toList();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 1.8,
-      decoration: stylePageBackground(context),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      child: Column(
-        mainAxisAlignment: !isMobile(context)
-            ? MainAxisAlignment.start
-            : MainAxisAlignment.center,
-        crossAxisAlignment: !isMobile(context)
-            ? CrossAxisAlignment.start
-            : CrossAxisAlignment.center,
-        children: <Widget>[
+    return Obx(() => SafeArea(
+            child: Container(
+          height: MediaQuery.of(context).size.height * 1.8,
+          decoration: stylePageBackground(context),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: Column(
+            mainAxisAlignment: !isMobile(context)
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.center,
+            crossAxisAlignment: !isMobile(context)
+                ? CrossAxisAlignment.start
+                : CrossAxisAlignment.center,
+            children: <Widget>[
           Stack(
             children: [
               SvgPicture.asset(
@@ -88,30 +90,30 @@ class _CatalogPageState extends State<CatalogPage> {
                 fit: BoxFit.contain,
                 alignment: Alignment.center,
               ),
-              Obx(
-                () => Text(
-                    _controller.changeLocal.isFalse ? "Kataloglar" : 'Каталоги',
-                    style: styleTitle(context)),
+              Text(
+                      _controller.changeLocal.isFalse
+                          ? "Kataloglar"
+                          : 'Каталоги',
+                      style: styleTitle(context)),
+                ],
               ),
-            ],
-          ),
-          Obx(() => Text(
+              Text(
                 _controller.changeLocal.isFalse
                     ? "Ishlab chiqaruvchilar bilan bevosita ishlash mijozga maxsus uskunalar bozorida eng yaxshi narxni taqdim etish imkonini beradi."
                     : "Работа напрямую с производителями позволяет предоставлять клиенту лучшую цену на рынке спецтехники",
                 style: TextStyle(fontSize: 18),
-              )),
-          const SizedBox(
-            height: 30,
-          ),
-          SizedBox(
-            // margin: EdgeInsets.all(20),
-            height: MediaQuery.of(context).size.height * 1.5,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                NavigationRail(
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                // margin: EdgeInsets.all(20),
+                height: MediaQuery.of(context).size.height * 1.5,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    NavigationRail(
                   groupAlignment: isMobile(context) ? -1.0 : 0.0,
                   minWidth: isMobile(context) ? 30.0 : 70.0,
                   selectedIndex: selectedIndex,
@@ -150,27 +152,29 @@ class _CatalogPageState extends State<CatalogPage> {
                               fit: BoxFit.fill,
                               height: 32,
                             ),
-                            label: Obx(() => Text(
+                          label: Text(
                                 _controller.changeLocal.isFalse
                                     ? uniquelist[index].nameuz!
-                                    : uniquelist[index].name!, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),)),
+                                    : uniquelist[index].name!,
+                                style: TextStyle(
+                                    fontSize: 17, fontWeight: FontWeight.w600),
+                              )),
                           )),
-                ),
                 const SizedBox(
                   width: 10,
                 ),
                 Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(0),
-                    child: getCatalog(),
-                  ),
-                )
-              ],
-            ),
+                      child: Container(
+                        padding: const EdgeInsets.all(0),
+                        child: getCatalog(),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        )));
   }
 
   GridView getCatalog() {
@@ -213,18 +217,18 @@ class _CatalogPageState extends State<CatalogPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Obx(() => Text(
-                          _controller.changeLocal.isFalse
-                              ? "${_listModelset[index].section!.nameuz!}: ${_listModelset[index].producername} (Xitoy)"
-                              : "${_listModelset[index].section!.name!}: ${_listModelset[index].producername} (Китай)",
-                          textAlign: isMobile(context)
-                              ? TextAlign.center
-                              : TextAlign.start,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: isDesktop(context) ? 20 : 10,
-                              fontWeight: FontWeight.bold),
-                        )),
+                    Text(
+                      _controller.changeLocal.isFalse
+                          ? "${_listModelset[index].section!.nameuz!}: ${_listModelset[index].producername} (Xitoy)"
+                          : "${_listModelset[index].section!.name!}: ${_listModelset[index].producername} (Китай)",
+                      textAlign: isMobile(context)
+                          ? TextAlign.center
+                          : TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: isDesktop(context) ? 20 : 10,
+                          fontWeight: FontWeight.bold),
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
@@ -256,34 +260,34 @@ class _CatalogPageState extends State<CatalogPage> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Obx(() => Text(
-                              _controller.changeLocal.isFalse
-                                  ? "boshlang'ich narxi: "
-                                  : "цены от: ",
-                              textAlign: isMobile(context)
-                                  ? TextAlign.center
-                                  : TextAlign.start,
-                              style: const TextStyle(
-                                  color: Colors.black54,
-                                  fontSize: 15,
-                                  fontStyle: FontStyle.italic),
-                            )),
+                        Text(
+                          _controller.changeLocal.isFalse
+                              ? "boshlang'ich narxi: "
+                              : "цены от: ",
+                          textAlign: isMobile(context)
+                              ? TextAlign.center
+                              : TextAlign.start,
+                          style: const TextStyle(
+                              color: Colors.black54,
+                              fontSize: 15,
+                              fontStyle: FontStyle.italic),
+                        ),
                         const SizedBox(
                           width: 10,
                         ),
-                        Obx(() => Text(
-                              _controller.changeLocal.isFalse
-                                  ? "${numberFormat.format(_listModelset[index].priceuzs)} so`m "
-                                  : "${numberFormat.format(_listModelset[index].priceuzs)} cум ",
-                              textAlign: isMobile(context)
-                                  ? TextAlign.center
-                                  : TextAlign.start,
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontSize: isDesktop(context) ? 18 : 10,
-                                  fontWeight: FontWeight.w400,
-                                  fontStyle: FontStyle.italic),
-                            )),
+                        Text(
+                          _controller.changeLocal.isFalse
+                              ? "${numberFormat.format(_listModelset[index].priceuzs)} so`m "
+                              : "${numberFormat.format(_listModelset[index].priceuzs)} cум ",
+                          textAlign: isMobile(context)
+                              ? TextAlign.center
+                              : TextAlign.start,
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: isDesktop(context) ? 18 : 10,
+                              fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.italic),
+                        ),
                       ],
                     ),
                   ],
