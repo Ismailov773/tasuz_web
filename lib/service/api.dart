@@ -16,7 +16,7 @@ class Api {
 
       return list;
     } else {
-      (Exception e) {
+          (Exception e) {
         return Exception(e);
       };
     }
@@ -32,7 +32,7 @@ class Api {
 
       return list2;
     } else {
-      (Exception e) {
+          (Exception e) {
         return Exception(e);
       };
     }

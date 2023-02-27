@@ -45,7 +45,7 @@ class _FirstPageState extends State<FirstPage> {
                   .map((item) => Center(
                           child: Image.network(
                         item,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                         height: height,
                         width: width,
                       )))
@@ -53,17 +53,18 @@ class _FirstPageState extends State<FirstPage> {
             );
           },
         ),
-        Container(
-          height: MediaQuery.of(context).size.height,
-          color: Colors.black.withOpacity(0.4),
-          padding: const EdgeInsets.symmetric(horizontal: 40),
-          child: Padding(
-            padding: EdgeInsets.all(!isMobile(context) ? 40 : 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Obx(() => Text(
+        Obx(() =>
+            Container(
+              height: MediaQuery.of(context).size.height,
+              color: Colors.black.withOpacity(0.4),
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Padding(
+                padding: EdgeInsets.all(!isMobile(context) ? 40 : 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
                       controller.changeLocal.isFalse
                           ? "Maxsus texnikalar, uskunalar va ehtiyot qismlarni etkazib berish."
                           : 'Поставки  спецтехники,  оборудования и запчастей',
@@ -74,9 +75,9 @@ class _FirstPageState extends State<FirstPage> {
                           fontSize: isMobile(context) ? 25 : 50,
                           fontWeight: FontWeight.w800,
                           color: kTextColor),
-                    )),
-                const SizedBox(height: 40),
-                Obx(() => Text(
+                    ),
+                    const SizedBox(height: 40),
+                    Text(
                       controller.changeLocal.isFalse
                           ? "TAS o‘zining asosiy qadriyatiga sodiq bo‘lib, “Buyuk mas’uliyatni o‘z zimmasiga olish, yuksak axloq bilan ish tutish va katta yutuqlarga erishish” va o‘zining “Qat’iy, Amaliy, Ilg‘or va Ijodkor” korporativ ruhiga, o‘zining yakuniy maqsadi sari olg‘a intilaveradi."
                           : 'TAS придерживается своей основной ценности «Взять на себя большую ответственность, действовать с высокой моралью и добиваться больших достижений» и своего корпоративного духа «Строгого, Практичного, Прогрессивного и Креативного», чтобы продолжать двигаться к своей конечной цели.',
@@ -87,35 +88,35 @@ class _FirstPageState extends State<FirstPage> {
                           fontSize: isMobile(context) ? 13 : 22,
                           fontWeight: FontWeight.w400,
                           color: kTextColor),
-                    )),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back_ios_new_sharp),
-                      color: Colors.green,
-                      onPressed: () {
-                        setState(() {
-                          _controller.previousPage();
-                        });
-                      },
                     ),
-                    const SizedBox(width: 10),
-                    IconButton(
-                      color: Colors.green,
-                      icon: const Icon(Icons.arrow_forward_ios_rounded),
-                      onPressed: () {
-                        _controller.nextPage();
-                      },
-                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        IconButton(
+                          icon: const Icon(Icons.arrow_back_ios_new_sharp),
+                          color: Colors.green,
+                          onPressed: () {
+                            setState(() {
+                              _controller.previousPage();
+                            });
+                          },
+                        ),
+                        const SizedBox(width: 10),
+                        IconButton(
+                          color: Colors.green,
+                          icon: const Icon(Icons.arrow_forward_ios_rounded),
+                          onPressed: () {
+                            _controller.nextPage();
+                          },
+                        ),
+                      ],
+                    )
                   ],
-                )
-              ],
-            ),
-          ),
-        ),
+                ),
+              ),
+            )),
       ],
     );
   }

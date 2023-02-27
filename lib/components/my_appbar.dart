@@ -166,6 +166,7 @@ class _MyAppBarState extends State<MyAppBar> {
         ),
       ],
       bottom: TabBar(
+        dividerColor: Colors.transparent,
         indicatorColor: isAppbarCollapsing
             ? Colors.lightBlueAccent
             : Colors.yellow.shade400,

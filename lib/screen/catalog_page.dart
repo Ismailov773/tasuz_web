@@ -33,8 +33,6 @@ class _CatalogPageState extends State<CatalogPage> {
   @override
   void initState() {
     super.initState();
-
-
   }
 
   @override
@@ -70,111 +68,128 @@ class _CatalogPageState extends State<CatalogPage> {
     uniquelist = _controller.listSection
         .where((section) => seen.add(section.name!))
         .toList();
-    return Obx(() => SafeArea(
-            child: Container(
-          height: MediaQuery.of(context).size.height * 1.8,
-          decoration: stylePageBackground(context),
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          child: Column(
-            mainAxisAlignment: !isMobile(context)
-                ? MainAxisAlignment.start
-                : MainAxisAlignment.center,
-            crossAxisAlignment: !isMobile(context)
-                ? CrossAxisAlignment.start
-                : CrossAxisAlignment.center,
-            children: <Widget>[
-          Stack(
-            children: [
-              SvgPicture.asset(
-                "assets/images/tassvg.svg",
-                fit: BoxFit.contain,
-                alignment: Alignment.center,
-              ),
-              Text(
-                      _controller.changeLocal.isFalse
-                          ? "Kataloglar"
-                          : 'Каталоги',
-                      style: styleTitle(context)),
-                ],
-              ),
-              Text(
-                _controller.changeLocal.isFalse
-                    ? "Ishlab chiqaruvchilar bilan bevosita ishlash mijozga maxsus uskunalar bozorida eng yaxshi narxni taqdim etish imkonini beradi."
-                    : "Работа напрямую с производителями позволяет предоставлять клиенту лучшую цену на рынке спецтехники",
-                style: TextStyle(fontSize: 18),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              SizedBox(
-                // margin: EdgeInsets.all(20),
-                height: MediaQuery.of(context).size.height * 1.5,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+
+    if (uniquelist.isEmpty) {
+      return Container(
+          child: Center(
+        child: Obx(() => Text(
+              _controller.changeLocal.isFalse
+                  ? "Server ishlamayapti!!"
+                  : "Сервер не работает!!",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50),
+            )),
+      ));
+    } else {
+      return Obx(() => SafeArea(
+              child: Container(
+            height: MediaQuery.of(context).size.height * 1.8,
+            decoration: stylePageBackground(context),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            child: Column(
+              mainAxisAlignment: !isMobile(context)
+                  ? MainAxisAlignment.start
+                  : MainAxisAlignment.center,
+              crossAxisAlignment: !isMobile(context)
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.center,
+              children: <Widget>[
+                Stack(
                   children: [
-                    NavigationRail(
-                  groupAlignment: isMobile(context) ? -1.0 : 0.0,
-                  minWidth: isMobile(context) ? 30.0 : 70.0,
-                  selectedIndex: selectedIndex,
-                  useIndicator: true,
-                  indicatorColor: Colors.yellow.shade400,
-                  onDestinationSelected: (int index) {
-                    _listModelset = [];
-                    _listOptionset = [];
-                    for (var element in _controller.listProducer) {
-                      _listModelset.addAll(element.modelSet!
-                          .where(
-                              (mod) => mod.section!.id == uniquelist[index].id)
-                          .toList());
-                    }
-                    setState(() {
-                      selectedIndex = index;
-                    });
-                  },
-                  labelType: isMobile(context)
-                      ? NavigationRailLabelType.none
-                      : NavigationRailLabelType.all,
-                  selectedLabelTextStyle: const TextStyle(
-                    color: Colors.lightBlueAccent,
-                  ),
-                  unselectedLabelTextStyle: const TextStyle(
-                    color: Colors.black54,
-                  ),
-                  destinations: List.generate(
-                      uniquelist.length,
-                      (index) => NavigationRailDestination(
-                            padding: isMobile(context)
-                                ? const EdgeInsets.symmetric(vertical: 2)
-                                : const EdgeInsets.symmetric(vertical: 6),
-                            icon: Image.network(
-                              'https://admin.tascom.uz:8083/api/download/section/${uniquelist[index].imagepath}',
-                              fit: BoxFit.fill,
-                              height: 32,
-                            ),
-                          label: Text(
-                                _controller.changeLocal.isFalse
-                                    ? uniquelist[index].nameuz!
-                                    : uniquelist[index].name!,
-                                style: TextStyle(
-                                    fontSize: 17, fontWeight: FontWeight.w600),
-                              )),
-                          )),
-                const SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.all(0),
-                        child: getCatalog(),
-                      ),
-                    )
+                    SvgPicture.asset(
+                      "assets/images/tassvg.svg",
+                      fit: BoxFit.contain,
+                      alignment: Alignment.center,
+                    ),
+                    Text(
+                        _controller.changeLocal.isFalse
+                            ? "Kataloglar"
+                            : 'Каталоги',
+                        style: styleTitle(context)),
                   ],
                 ),
-              ),
-            ],
-          ),
-        )));
+                Text(
+                  _controller.changeLocal.isFalse
+                      ? "Ishlab chiqaruvchilar bilan bevosita ishlash mijozga maxsus uskunalar bozorida eng yaxshi narxni taqdim etish imkonini beradi."
+                      : "Работа напрямую с производителями позволяет предоставлять клиенту лучшую цену на рынке спецтехники",
+                  style: TextStyle(fontSize: 18),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                SizedBox(
+                  // margin: EdgeInsets.all(20),
+                  height: MediaQuery.of(context).size.height * 1.5,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      NavigationRail(
+                          groupAlignment: isMobile(context) ? -1.0 : 0.0,
+                          minWidth: isMobile(context) ? 30.0 : 70.0,
+                          selectedIndex: selectedIndex,
+                          useIndicator: true,
+                          indicatorColor: Colors.yellow.shade400,
+                          onDestinationSelected: (int index) {
+                            _listModelset = [];
+                            _listOptionset = [];
+                            for (var element in _controller.listProducer) {
+                              _listModelset.addAll(element.modelSet!
+                                  .where((mod) =>
+                                      mod.section!.id == uniquelist[index].id)
+                                  .toList());
+                            }
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          labelType: isMobile(context)
+                              ? NavigationRailLabelType.none
+                              : NavigationRailLabelType.all,
+                          selectedLabelTextStyle: const TextStyle(
+                            color: Colors.lightBlueAccent,
+                          ),
+                          unselectedLabelTextStyle: const TextStyle(
+                            color: Colors.black54,
+                          ),
+                          destinations: List.generate(
+                            uniquelist.length,
+                            (index) => NavigationRailDestination(
+                                padding: isMobile(context)
+                                    ? const EdgeInsets.symmetric(vertical: 2)
+                                    : const EdgeInsets.symmetric(vertical: 6),
+                                icon: Image.network(
+                                  'https://admin.tascom.uz:8083/api/download/section/${uniquelist[index].imagepath}',
+                                  fit: BoxFit.fill,
+                                  height: 32,
+                                ),
+                                label: Text(
+                                  _controller.changeLocal.isFalse
+                                      ? uniquelist[index].nameuz!
+                                      : uniquelist[index].name!,
+                                  style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w600),
+                                )),
+                          )),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.all(0),
+                          child: getCatalog(),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )));
+    }
   }
 
   GridView getCatalog() {

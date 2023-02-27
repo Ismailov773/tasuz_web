@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:tasuz_web/components/responsive.dart';
 
@@ -65,7 +66,8 @@ stylePageBackground(BuildContext context) => const BoxDecoration(
     )
 );
 
-stylePartnersText(BuildContext context) => TextStyle(color: Colors.black.withOpacity(0.5),fontSize: 18, fontWeight: FontWeight.bold);
+stylePartnersText(BuildContext context) => TextStyle(color: Colors.black.withOpacity(0.5), fontWeight: FontWeight.bold);
+
 
 
 const primaryColor = Color(0xFF685BFF);
