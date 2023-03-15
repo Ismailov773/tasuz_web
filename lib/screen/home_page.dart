@@ -29,7 +29,8 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             SingleChildScrollView(
               controller: _controller.homeController,
-              child: Column(
+              child:
+              Column(
                 children: const [
                   FirstPage(),
                   CatalogPage(),
@@ -44,9 +45,9 @@ class HomePage extends StatelessWidget {
             SingleChildScrollView(
               controller: _controller.homeController,
               child: Padding(
-                padding: const EdgeInsets.only(top: 114),
+                padding: EdgeInsets.only(top: 114),
                 // height: height,
-                child: const CatalogPage(),
+                child: CatalogPage(),
               ),
             ),
             SingleChildScrollView(

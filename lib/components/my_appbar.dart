@@ -4,8 +4,12 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tasuz_web/components/responsive.dart';
 import 'package:tasuz_web/controller/controller.dart';
+import 'package:tasuz_web/screen/service_page.dart';
+
+import '../main.dart';
 
 List<String> titles = <String>[
   'Главное',
@@ -133,7 +137,7 @@ class _MyAppBarState extends State<MyAppBar> {
             }),
           ),
           onPressed: () {
-            // handle the press
+            context.go('/service_page');
           },
           icon: const Icon(Icons.call),
           label: const Text("+998 78 147 00 80"),

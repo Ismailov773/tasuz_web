@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:tasuz_web/components/constants.dart';
 import 'package:tasuz_web/models/producers/ModelSet.dart';
@@ -33,10 +34,6 @@ class _CatalogPageState extends State<CatalogPage> {
   @override
   void initState() {
     super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     for (var element in _controller.listProducer) {
       for (var element in element.modelSet!) {
         int i = _controller.listSection
@@ -69,133 +66,124 @@ class _CatalogPageState extends State<CatalogPage> {
         .where((section) => seen.add(section.name!))
         .toList();
 
-    if (uniquelist.isEmpty) {
-      return Container(
-          child: Center(
-        child: Obx(() => Text(
-              _controller.changeLocal.isFalse
-                  ? "Server ishlamayapti!!"
-                  : "Сервер не работает!!",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 50),
-            )),
-      ));
-    } else {
-      return Obx(() => SafeArea(
-              child: Container(
-            height: MediaQuery.of(context).size.height * 1.8,
-            decoration: stylePageBackground(context),
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: Column(
-              mainAxisAlignment: !isMobile(context)
-                  ? MainAxisAlignment.start
-                  : MainAxisAlignment.center,
-              crossAxisAlignment: !isMobile(context)
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.center,
-              children: <Widget>[
-                Stack(
-                  children: [
-                    SvgPicture.asset(
-                      "assets/images/tassvg.svg",
-                      fit: BoxFit.contain,
-                      alignment: Alignment.center,
-                    ),
-                    Text(
-                        _controller.changeLocal.isFalse
-                            ? "Kataloglar"
-                            : 'Каталоги',
-                        style: styleTitle(context)),
-                  ],
-                ),
-                Text(
-                  _controller.changeLocal.isFalse
-                      ? "Ishlab chiqaruvchilar bilan bevosita ishlash mijozga maxsus uskunalar bozorida eng yaxshi narxni taqdim etish imkonini beradi."
-                      : "Работа напрямую с производителями позволяет предоставлять клиенту лучшую цену на рынке спецтехники",
-                  style: TextStyle(fontSize: 18),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                SizedBox(
-                  // margin: EdgeInsets.all(20),
-                  height: MediaQuery.of(context).size.height * 1.5,
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Obx(() =>
+        Container(
+          height: MediaQuery.of(context).size.height * 1.8,
+          decoration: stylePageBackground(context),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: Column(
+            mainAxisAlignment: !isMobile(context)
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.center,
+            crossAxisAlignment: !isMobile(context)
+                ? CrossAxisAlignment.start
+                : CrossAxisAlignment.center,
+            children: <Widget>[
+              Stack(
+                children: [
+                  SvgPicture.asset(
+                    "assets/images/tassvg.svg",
+                    fit: BoxFit.contain,
+                    alignment: Alignment.center,
+                  ),
+                  Text(
+                      _controller.changeLocal.isFalse
+                          ? "Kataloglar"
+                          : 'Каталоги',
+                      style: styleTitle(context)),
+                ],
+              ),
+              Text(
+                _controller.changeLocal.isFalse
+                    ? "Ishlab chiqaruvchilar bilan bevosita ishlash mijozga maxsus uskunalar bozorida eng yaxshi narxni taqdim etish imkonini beradi."
+                    : "Работа напрямую с производителями позволяет предоставлять клиенту лучшую цену на рынке спецтехники",
+                style: TextStyle(fontSize: 18),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Expanded(
+                child: Container(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      NavigationRail(
-                          groupAlignment: isMobile(context) ? -1.0 : 0.0,
-                          minWidth: isMobile(context) ? 30.0 : 70.0,
-                          selectedIndex: selectedIndex,
-                          useIndicator: true,
-                          indicatorColor: Colors.yellow.shade400,
-                          onDestinationSelected: (int index) {
-                            _listModelset = [];
-                            _listOptionset = [];
-                            for (var element in _controller.listProducer) {
-                              _listModelset.addAll(element.modelSet!
-                                  .where((mod) =>
-                                      mod.section!.id == uniquelist[index].id)
-                                  .toList());
-                            }
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          },
-                          labelType: isMobile(context)
-                              ? NavigationRailLabelType.none
-                              : NavigationRailLabelType.all,
-                          selectedLabelTextStyle: const TextStyle(
-                            color: Colors.lightBlueAccent,
+                     NavigationRail(
+                              groupAlignment: -1.0,
+                              selectedIndex: selectedIndex,
+                              useIndicator: true,
+                              indicatorColor: Colors.yellow.shade400,
+                              onDestinationSelected: (int index) {
+                                _listModelset = [];
+                                _listOptionset = [];
+                                for (var element in _controller.listProducer) {
+                                  _listModelset.addAll(element.modelSet!
+                                      .where(
+                                          (mod) => mod.section!.id == uniquelist[index].id)
+                                      .toList());
+                                }
+                                setState(() {
+                                  selectedIndex = index;
+                                });
+                              },
+                              labelType: isMobile(context)
+                                  ? NavigationRailLabelType.none
+                                  : NavigationRailLabelType.all,
+                              selectedLabelTextStyle: const TextStyle(
+                                color: Colors.lightBlueAccent,
+                              ),
+                              unselectedLabelTextStyle: const TextStyle(
+                                color: Colors.black54,
+                              ),
+                              destinations:
+                              List.generate(
+                                uniquelist.length,
+                                    (index) => NavigationRailDestination(
+                                    padding: isMobile(context)
+                                        ? const EdgeInsets.symmetric(vertical: 2)
+                                        : const EdgeInsets.symmetric(vertical: 6),
+                                    icon: Image.network(
+                                      'https://admin.tascom.uz:8083/api/download/section/${uniquelist[index].imagepath}',
+                                      fit: BoxFit.contain,
+                                      height: 30,
+
+                                    ),
+                                    label: Text(
+                                      _controller.changeLocal.isFalse
+                                          ? uniquelist[index].nameuz!
+                                          : uniquelist[index].name!,
+                                      style: TextStyle(
+                                          fontSize: 16, fontWeight: FontWeight.w600),
+                                    )),
+                              )
+
                           ),
-                          unselectedLabelTextStyle: const TextStyle(
-                            color: Colors.black54,
-                          ),
-                          destinations: List.generate(
-                            uniquelist.length,
-                            (index) => NavigationRailDestination(
-                                padding: isMobile(context)
-                                    ? const EdgeInsets.symmetric(vertical: 2)
-                                    : const EdgeInsets.symmetric(vertical: 6),
-                                icon: Image.network(
-                                  'https://admin.tascom.uz:8083/api/download/section/${uniquelist[index].imagepath}',
-                                  fit: BoxFit.fill,
-                                  height: 32,
-                                ),
-                                label: Text(
-                                  _controller.changeLocal.isFalse
-                                      ? uniquelist[index].nameuz!
-                                      : uniquelist[index].name!,
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w600),
-                                )),
-                          )),
-                      const SizedBox(
-                        width: 10,
-                      ),
                       Expanded(
+                        flex: 6,
                         child: Container(
-                          padding: const EdgeInsets.all(0),
+                          padding: const EdgeInsets.all(10),
                           child: getCatalog(),
                         ),
                       )
                     ],
                   ),
                 ),
-              ],
-            ),
-          )));
-    }
+              ),
+            ],
+          ),
+        ));
   }
 
   GridView getCatalog() {
     var numberFormat = NumberFormat();
     return GridView.builder(
-      padding: const EdgeInsets.only(top: 10, bottom: 0),
+      padding: const EdgeInsets.only(top: 5, bottom: 5),
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: isMobile(context) ? 2 / 2.8 : 6 / 5,
@@ -215,6 +203,7 @@ class _CatalogPageState extends State<CatalogPage> {
               _controller.changeOptionSet(_listOptionset[index]);
               // print();
             }
+            context.go('/catalog_select_page');
             Get.to(const CatalogSelectPage());
           });
         },
@@ -225,87 +214,88 @@ class _CatalogPageState extends State<CatalogPage> {
               color: Colors.white60,
               shadowColor: Colors.lime,
               elevation: isHovered ? 10 : 0,
-              child: Container(
-                padding: const EdgeInsets.all(5),
-                color: color,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      _controller.changeLocal.isFalse
-                          ? "${_listModelset[index].section!.nameuz!}: ${_listModelset[index].producername} (Xitoy)"
-                          : "${_listModelset[index].section!.name!}: ${_listModelset[index].producername} (Китай)",
-                      textAlign: isMobile(context)
-                          ? TextAlign.center
-                          : TextAlign.start,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: isDesktop(context) ? 20 : 10,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Image.network(
-                      'https://admin.tascom.uz:8083/api/download/model/${_listModelset[index].imagepath}',
-                      width: isMobile(context)
-                          ? MediaQuery.of(context).size.width / 2
-                          : MediaQuery.of(context).size.width / 5,
-                      height: isMobile(context)
-                          ? MediaQuery.of(context).size.height / 3
-                          : MediaQuery.of(context).size.height / 4,
-                      fit: BoxFit.fill,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      (_listModelset[index].name).toString(),
-                      textAlign: isMobile(context)
-                          ? TextAlign.center
-                          : TextAlign.start,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: isDesktop(context) ? 20 : 10,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const Divider(),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          _controller.changeLocal.isFalse
-                              ? "boshlang'ich narxi: "
-                              : "цены от: ",
-                          textAlign: isMobile(context)
-                              ? TextAlign.center
-                              : TextAlign.start,
-                          style: const TextStyle(
-                              color: Colors.black54,
-                              fontSize: 15,
-                              fontStyle: FontStyle.italic),
+              child: Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  color: color,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        _controller.changeLocal.isFalse
+                            ? "${_listModelset[index].section!.nameuz!}: ${_listModelset[index].producername} (Xitoy)"
+                            : "${_listModelset[index].section!.name!}: ${_listModelset[index].producername} (Китай)",
+                        textAlign: isMobile(context)
+                            ? TextAlign.center
+                            : TextAlign.start,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: isDesktop(context) ? 20 : 10,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          child: Image.network(
+                            'https://admin.tascom.uz:8083/api/download/model/${_listModelset[index].imagepath}',
+
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          _controller.changeLocal.isFalse
-                              ? "${numberFormat.format(_listModelset[index].priceuzs)} so`m "
-                              : "${numberFormat.format(_listModelset[index].priceuzs)} cум ",
-                          textAlign: isMobile(context)
-                              ? TextAlign.center
-                              : TextAlign.start,
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: isDesktop(context) ? 18 : 10,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.italic),
-                        ),
-                      ],
-                    ),
-                  ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        (_listModelset[index].name).toString(),
+                        textAlign: isMobile(context)
+                            ? TextAlign.center
+                            : TextAlign.start,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: isDesktop(context) ? 20 : 10,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const Divider(),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            _controller.changeLocal.isFalse
+                                ? "boshlang'ich narxi: "
+                                : "цены от: ",
+                            textAlign: isMobile(context)
+                                ? TextAlign.center
+                                : TextAlign.start,
+                            style: const TextStyle(
+                                color: Colors.black54,
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            _controller.changeLocal.isFalse
+                                ? "${numberFormat.format(_listModelset[index].priceuzs)} so`m "
+                                : "${numberFormat.format(_listModelset[index].priceuzs)} cум ",
+                            textAlign: isMobile(context)
+                                ? TextAlign.center
+                                : TextAlign.start,
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: isDesktop(context) ? 18 : 10,
+                                fontWeight: FontWeight.w400,
+                                fontStyle: FontStyle.italic),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );

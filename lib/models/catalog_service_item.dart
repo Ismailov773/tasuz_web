@@ -24,13 +24,5 @@ class CatalogServiceItem {
         required this.descriptionDialoguz,
       });
 
-  @override
-  String toString() {
-    return 'CatalogServiceItem{'
-        'icon: $icon, '
-        'title: $title, '
-        'description: $description, '
-        'image: $imageDialog, '
-        'description_dialog: $descriptionDialog }';
-  }
+
 }
